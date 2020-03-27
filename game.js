@@ -1,28 +1,49 @@
-var mysteryNumber = 50;
-var playersGuess =0;
+var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var id = [];
+var counterIDs = [];
+var idLength = 5;
 
-var input = document.querySelector('#input');
-var output = document.querySelector('#output');
-
-var button = document.querySelector('button');
-button.style.cursor= 'pointer';
-
-console.log(button);
+var playerID = document.querySelector("#playerID");
+var button = document.querySelector("button");
+button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
 function clickHandler() {
+  // playGameGuessNumber();
   playGame();
 
 }
 
-function playGame()  {
-  playersGuess = parseInt(input.value);
+function playGame() {
+  generateId();
+  var stringID = id[0] + id[1] + id[2] + id[3] + id[4] ;
+  playerID.innerHTML = "your number is " + stringID;
 
-  if(playersGuess > mysteryNumber) {
-    output.innerHTML = "that's too high.";
-  } else if(playersGuess < mysteryNumber) {
-    output.innerHTML = "that's too low."
-  } else if (playersGuess === mysteryNumber) {
-    output.innerHTML = "you got it!";
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+function generateId() {
+  for(var i = 0; i < idLength; i++) {
+    id[i] = generateCharacter();
   }
+}
+
+function generateCharacter() {
+  var randBinary = Math.round(Math.random());
+  var isNumber = randBinary == 1 ? true : false;
+  var idElement = "";
+
+  if(isNumber) {
+    idElement = "" + getRandomInt(9);
+  } else {
+    idElement = letters[getRandomInt(letters.length)];
+  }
+
+  return idElement ;
+  // random letter or number
+  // if letter use randomIn to get index of character in the letters Array
+  //if number use randomInt
 }
