@@ -28,6 +28,11 @@ button {
 }
 #playerID {
   align-self:center;
+  font-size:2em;
+}
+
+#clickText {
+
 }
 
 .deskContainer {

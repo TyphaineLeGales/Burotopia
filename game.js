@@ -8,7 +8,7 @@ var playerHasWon = false;
 var playerIDContainer = document.querySelector("#playerID");
 var deskContainer = document.querySelector("div.deskContainer");
 var desks = document.querySelectorAll("div.counterDesk");
-
+var clickText = document.querySelector("#clickText");
 var button = document.querySelector("button");
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
@@ -16,7 +16,6 @@ button.addEventListener("click", clickHandler, false);
 deskContainer.onclick = e => {
   checkForWin(e);
 }
-
 
 function clickHandler() {
   playGame();
@@ -88,13 +87,14 @@ function generateDesks() {
 
 function reset () {
   playerId = [];
+  playerIDContainer.innerHTML = "";
   playerHasWon = false;
+  clickText.innerHTML = "";
   for(var i = 0; i < desks.length; i++) {
     var deskId = desks[i].childNodes[1];
     var deskState = desks[i].childNodes[3];
     deskState.innerHTML = "";
     deskId.innerHTML = "";
-
     if(desks[i].classList[1] === "isTheAnswer") {
       desks[i].classList.remove("isTheAnswer");
     }
@@ -102,15 +102,13 @@ function reset () {
 }
 
 function checkForWin (e) {
-
   if(e.target.classList[0] === "clickTarget") {
     if(e.target.parentNode.classList[1] === "isTheAnswer") {
       playerHasWon = true;
-      console.log("Well Done !! ");
+      clickText.innerHTML = "Congratulations ! You won";
+      reset();
     } else {
-       console.log("That's wrong try again ");
+      clickText.innerHTML = "I'm afraid that's not the number I called, please wait for your turn";
     }
   }
-  // if user clicks on the isTheAnswerDesk playerHasWon = true
-  //
 }
