@@ -4,14 +4,17 @@ var deskId = [];
 var stringID = "";
 var counterIDs = [];
 var idLength = 5;
-var isTheAnswer = false;
-
-
+var playerHasWon = false;
 var playerIDContainer = document.querySelector("#playerID");
 var desks = document.querySelectorAll("div.counterDesk");
+
 var button = document.querySelector("button");
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
+
+for(var i=0; i< desks.length; i++) {
+  desks[i].addEventListener("click", checkForWin, false);
+}
 
 function clickHandler() {
   playGame();
@@ -32,7 +35,6 @@ function generatePlayerId() {
   for(var i = 0; i < idLength; i++) {
     playerId[i] = generateCharacter();
   }
-
   stringID = playerId[0] + playerId[1] + playerId[2] + playerId[3] + playerId[4] ;
   playerIDContainer.innerHTML = "your number is " + stringID;
 }
@@ -52,7 +54,7 @@ function generateCharacter() {
 }
 
 function generateDesks() {
-  // pick a random desk that will have the same id as the player
+  // pick a random desk that will be the answer
   var correctDesk = desks[getRandomInt(desks.length)];
   correctDesk.classList.add("isTheAnswer");
   correctDesk.childNodes[1].innerHTML = stringID;
@@ -94,4 +96,8 @@ function reset () {
       desks[i].classList.remove("isTheAnswer");
     }
   }
+}
+
+function checkForWin () {
+  console.log("I'm being clicked");
 }
