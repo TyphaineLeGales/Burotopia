@@ -3,22 +3,44 @@
     src: url('Fonts/SilomBold.ttf') format('ttf'),
     font-weight: normal;
     font-style: normal;
-
 }
 
 body {
   font-family: silom;
+  display:flex;
+  background-color:none;
+}
+
+
+button {
+  align-self:center;
+  font-family : silom;
+  font-size:3em;
+  text-decoration: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.ui {
+  margin-top:20%;
+  display:flex;
+  flex-direction: column;
+  width:33%;
+}
+#playerID {
+  align-self:center;
 }
 
 .deskContainer {
+  width:60%;
   display:flex;
+  flex-wrap: wrap;
 }
 
 .counterDesk {
   border-style: solid;
   border-color: black;
   width:10em;
-  height:5em;
+  height:7em;
   margin:1em;
   position:relative;
 }
@@ -33,14 +55,11 @@ body {
   width:2em;
 }
 
-.deskId {
-  position:absolute;
-  left:1em;
-  top:1em;
-}
 
 .deskState {
   left:1em;
   top:2em;
   position:absolute;
 }
+
+
