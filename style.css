@@ -1,4 +1,4 @@
-.container {
+.deskContainer {
   display:flex;
 }
 
@@ -8,4 +8,27 @@
   width:10em;
   height:5em;
   margin:1em;
+  position:relative;
+}
+
+.clickTarget {
+  position:absolute;
+  right:1em;
+  top:1em;
+  background-color:red;
+  border-radius: 50%;
+  height:2em;
+  width:2em;
+}
+
+.deskId {
+  position:absolute;
+  left:1em;
+  top:1em;
+}
+
+.deskState {
+  left:1em;
+  top:2em;
+  position:absolute;
 }

@@ -6,15 +6,17 @@ var counterIDs = [];
 var idLength = 5;
 var playerHasWon = false;
 var playerIDContainer = document.querySelector("#playerID");
+var deskContainer = document.querySelector("div.deskContainer");
 var desks = document.querySelectorAll("div.counterDesk");
 
 var button = document.querySelector("button");
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
-for(var i=0; i< desks.length; i++) {
-  desks[i].addEventListener("click", checkForWin, false);
+deskContainer.onclick = e => {
+  checkForWin(e);
 }
+
 
 function clickHandler() {
   playGame();
@@ -85,7 +87,8 @@ function generateDesks() {
 }
 
 function reset () {
-  var id = [];
+  playerId = [];
+  playerHasWon = false;
   for(var i = 0; i < desks.length; i++) {
     var deskId = desks[i].childNodes[1];
     var deskState = desks[i].childNodes[3];
@@ -98,6 +101,16 @@ function reset () {
   }
 }
 
-function checkForWin () {
-  console.log("I'm being clicked");
+function checkForWin (e) {
+
+  if(e.target.classList[0] === "clickTarget") {
+    if(e.target.parentNode.classList[1] === "isTheAnswer") {
+      playerHasWon = true;
+      console.log("Well Done !! ");
+    } else {
+       console.log("That's wrong try again ");
+    }
+  }
+  // if user clicks on the isTheAnswerDesk playerHasWon = true
+  //
 }
