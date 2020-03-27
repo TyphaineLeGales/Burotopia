@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'silom';
+    src: url('Fonts/SilomBold.ttf') format('ttf'),
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body {
+  font-family: silom;
+}
+
 .deskContainer {
   display:flex;
 }
