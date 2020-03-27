@@ -26,6 +26,15 @@ function playGame() {
   generatePlayerId();
   generateDesks();
 
+  //TO DO :
+  //Remaining guesses
+  //Timer
+  //Closing Doors animation
+  //Other Clients
+  //TextBox
+  //Implement graphics => sprites logic
+  //Animation on deskHover and on click (paper throwing)
+
 }
 
 function getRandomInt(max) {
