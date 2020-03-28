@@ -1,10 +1,11 @@
 var deskContainer = document.querySelector("div.deskContainer");
 
 class Desk{
-  constructor(id, state, isTheAnswer) {
-    this.id = id;
-    this.state = state;
-    this.isTheAnswer = isTheAnswer;
+  constructor() {
+    this.id = [];
+    this.state = "closed";
+    this.isTheAnswer = false;
+
   }
 
   displayDeskId() {
@@ -24,6 +25,7 @@ class Desk{
     var deskState = document.createElement("p");
     deskState.classList.add('deskState');
     divDesk.appendChild(deskState);
+    deskState.innerHTML = this.state;
     var divClickTarget = document.createElement("div");
     divClickTarget.classList.add('clickTarget');
     divDesk.appendChild(divClickTarget);

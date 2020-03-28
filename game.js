@@ -70,7 +70,6 @@ function generateDesks() {
   //create array of empty desks
   for(var i=0; i < numberOfDesks; i++) {
     var desk = new Desk();
-    desk.createDesk([], "closed", false);
     desks.push(desk);
   }
   // pick a random desk that will be the answer
@@ -82,18 +81,20 @@ function generateDesks() {
   correctDesk.id = stringID;
   correctDesk.state = "open";
   correctDesk.isTheAnswer = true;
-  console.log(correctDesk);
+
   for(var i = 0; i< desks.length; i++) {
     //check for every desks that is not the answer
     var desk = desks[i];
     if(desk.isTheAnswer != true) {
-
       var randBinary = Math.round(Math.random());
       if(randBinary === 0) {
         desk.state = "closed";
       } else {
         desk.state = "open";
       }
+
+      console.log(desk);
+      desk.createDesk();
 
       //generate deskId
       // var deskId = desk.childNodes[1];
