@@ -13,9 +13,6 @@ var playForTheFirstTime = true;
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
-deskContainer.onclick = e => {
-  checkForWin(e);
-}
 
 function clickHandler() {
   playGame();
@@ -25,6 +22,9 @@ function clickHandler() {
 function playGame() {
   generatePlayerId();
   generateDesks();
+  deskContainer.onclick = e => {
+  checkForWin(e);
+}
 
   //TO DO :
   //Closing Doors animation

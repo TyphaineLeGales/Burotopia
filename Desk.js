@@ -7,6 +7,7 @@ class Desk{
     this.isTheAnswer = false;
     this.divDesk = document.createElement("div");
     this.divDoors = document.createElement("div");
+    this.doorDelay = getRandomInt(1000);
 
   }
 
@@ -35,12 +36,12 @@ class Desk{
     leftDoor.classList.add("deskDoorLeft");
     leftDoor.classList.add("deskDoors");
     divDesk.appendChild(leftDoor);
-    this.moveDoors(leftDoor, "left");
+    this.moveDoors(leftDoor);
     var rightDoor = document.createElement("div");
     rightDoor.classList.add("deskDoorRight");
     rightDoor.classList.add("deskDoors");
     divDesk.appendChild(rightDoor);
-    this.moveDoors(rightDoor, "right");
+    this.moveDoors(rightDoor);
   }
 
   createDesk() {
@@ -61,17 +62,30 @@ class Desk{
     this.divDesk.remove();
   }
 
-  moveDoors (door, side) {
+  moveDoors (door) {
     var widthPercentage = 0;
-    var id = setInterval(frame, 10);
-    function frame() {
-      if (widthPercentage === 50) {
-        clearInterval(id);
-      } else {
-        door.style.width = widthPercentage + '%';
-        widthPercentage++;
+    setTimeout(startAnim, this.doorDelay);
+    function startAnim () {
+      var id = setInterval(doorToCenter, 10);
+      function doorToCenter() {
+        if (widthPercentage === 45) {
+          clearInterval(id);
+        } else {
+          door.style.width = widthPercentage + '%';
+          widthPercentage++;
+        }
       }
     }
+    // function frame2() {
+    //   if (widthPercentage === 0) {
+    //     clearInterval(frame2, 10);
+    //     setInterval(frame, 10);
+    //   } else {
+    //     door.style.width = widthPercentage + '%';
+    //     widthPercentage--;
+    //   }
+    // }
+
   }
 
 }

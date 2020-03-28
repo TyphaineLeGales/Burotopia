@@ -76,7 +76,8 @@ button {
   left:0;
   top:0;
   height:95%;
-  width:50%;
+  width:0;
+  /*animation: ani 1.7s infinite;*/
 }
 
 .deskDoorRight {
@@ -84,7 +85,20 @@ button {
   right:0;
   top:0;
   height:95%;
-  width:1em;
+  width:0;
+  animation: ani 1.7s infinite;
 }
+/*
+@keyframes ani {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 45%;
+  }
+  100% {
+    width: 0;
+  }
+}*/
 
 
