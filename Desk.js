@@ -5,15 +5,6 @@ class Desk{
     this.id = id;
     this.state = state;
     this.isTheAnswer = isTheAnswer;
-    createDesk();
-  }
-
-  get id(){
-    return `${this.id}`
-  }
-
-  get state() {
-    return `${this.state}`
   }
 
   displayDeskId() {
@@ -23,7 +14,7 @@ class Desk{
   createDesk() {
     var divDesk = document.createElement("div");
     divDesk.classList.add('counterDesk');
-    if(isTheAnswer) {
+    if(this.isTheAnswer) {
       divDesk.classList.add("isTheAnswer");
     }
     deskContainer.appendChild(divDesk);

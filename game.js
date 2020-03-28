@@ -5,7 +5,7 @@ var stringID = "";
 var counterIDs = [];
 var idLength = 5;
 var playerHasWon = false;
-var numberOfDesks = 16;
+var numberOfDesks = 12;
 var playerIDContainer = document.querySelector("#playerID");
 var deskContainer = document.querySelector("div.deskContainer");
 var desks = [];
@@ -70,6 +70,7 @@ function generateDesks() {
   //create array of empty desks
   for(var i=0; i < numberOfDesks; i++) {
     var desk = new Desk();
+    desk.createDesk([], "closed", false);
     desks.push(desk);
   }
   // pick a random desk that will be the answer
@@ -81,7 +82,7 @@ function generateDesks() {
   correctDesk.id = stringID;
   correctDesk.state = "open";
   correctDesk.isTheAnswer = true;
-
+  console.log(correctDesk);
   for(var i = 0; i< desks.length; i++) {
     //check for every desks that is not the answer
     var desk = desks[i];
@@ -95,30 +96,30 @@ function generateDesks() {
       }
 
       //generate deskId
-      var deskId = desk.childNodes[1];
-      for(var j = 0; j < idLength; j++) {
-        desk.id[j] = playerId[getRandomInt(idLength)];
-      }
-      deskId.innerHTML = "" + deskId[0] + deskId[1] + deskId[2] + deskId[3] + deskId[4];
+      // var deskId = desk.childNodes[1];
+      // for(var j = 0; j < idLength; j++) {
+      //   desk.id[j] = playerId[getRandomInt(idLength)];
+      // }
+      // deskId.innerHTML = "" + deskId[0] + deskId[1] + deskId[2] + deskId[3] + deskId[4];
     }
   }
 
 }
 
 function reset () {
-  playerId = [];
+  desks = [];
   playerIDContainer.innerHTML = "";
   playerHasWon = false;
-  clickText.innerHTML = "";
-  for(var i = 0; i < desks.length; i++) {
-    var deskId = desks[i].childNodes[1];
-    var deskState = desks[i].childNodes[3];
-    deskState.innerHTML = "";
-    deskId.innerHTML = "";
-    if(desks[i].classList[1] === "isTheAnswer") {
-      desks[i].classList.remove("isTheAnswer");
-    }
-  }
+  // clickText.innerHTML = "";
+  // for(var i = 0; i < desks.length; i++) {
+  //   var deskId = desks[i].childNodes[1];
+  //   var deskState = desks[i].childNodes[3];
+  //   deskState.innerHTML = "";
+  //   deskId.innerHTML = "";
+  //   if(desks[i].classList[1] === "isTheAnswer") {
+  //     desks[i].classList.remove("isTheAnswer");
+  //   }
+  // }
 }
 
 function checkForWin (e) {
