@@ -35,10 +35,12 @@ class Desk{
     leftDoor.classList.add("deskDoorLeft");
     leftDoor.classList.add("deskDoors");
     divDesk.appendChild(leftDoor);
+    this.moveDoors(leftDoor, "left");
     var rightDoor = document.createElement("div");
     rightDoor.classList.add("deskDoorRight");
     rightDoor.classList.add("deskDoors");
     divDesk.appendChild(rightDoor);
+    this.moveDoors(rightDoor, "right");
   }
 
   createDesk() {
@@ -57,6 +59,19 @@ class Desk{
 
   destroyDesk() {
     this.divDesk.remove();
+  }
+
+  moveDoors (door, side) {
+    var widthPercentage = 0;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (widthPercentage === 50) {
+        clearInterval(id);
+      } else {
+        door.style.width = widthPercentage + '%';
+        widthPercentage++;
+      }
+    }
   }
 
 }
