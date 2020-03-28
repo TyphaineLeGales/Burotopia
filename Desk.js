@@ -5,6 +5,7 @@ class Desk{
     this.id = [];
     this.state = "closed";
     this.isTheAnswer = false;
+    this.divDesk = document.createElement("div");
 
   }
 
@@ -30,16 +31,20 @@ class Desk{
 
 
   createDesk() {
-    var divDesk = document.createElement("div");
-    divDesk.classList.add('counterDesk');
+    this.divDesk = document.createElement("div");
+    this.divDesk.classList.add('counterDesk');
     if(this.isTheAnswer) {
-      divDesk.classList.add("isTheAnswer");
+      this.divDesk.classList.add("isTheAnswer");
     }
-    deskContainer.appendChild(divDesk);
-    this.createDeskId(divDesk);
-    this.createDeskState(divDesk);
-    this.createClickTarget(divDesk);
+    deskContainer.appendChild(this.divDesk);
+    this.createDeskId(this.divDesk);
+    this.createDeskState(this.divDesk);
+    this.createClickTarget(this.divDesk);
 
+  }
+
+  destroyDesk() {
+    this.divDesk.remove();
   }
 
 }

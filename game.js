@@ -1,6 +1,5 @@
 var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var playerId = [];
-var deskId = [];
 var stringID = "";
 var counterIDs = [];
 var idLength = 5;
@@ -11,6 +10,7 @@ var deskContainer = document.querySelector("div.deskContainer");
 var desks = [];
 var clickText = document.querySelector("#clickText");
 var button = document.querySelector("button");
+var playForTheFirstTime = true;
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
@@ -23,7 +23,6 @@ function clickHandler() {
 }
 
 function playGame() {
-  reset();
   generatePlayerId();
   generateDesks();
 
@@ -74,23 +73,23 @@ function generateDesks() {
   }
 
   var correctDesk = desks[getRandomInt(desks.length)];
-  console.log(getRandomInt(desks.length));
   correctDesk.id = stringID;
   correctDesk.state = "open";
   correctDesk.isTheAnswer = true;
 
+  //add desk with same id that are closed
+
   for(var i = 0; i< desks.length; i++) {
-    //check for every desks that is not the answer
     var desk = desks[i];
     if(desk.isTheAnswer != true) {
+      //Generate random state
       var randBinary = Math.round(Math.random());
       if(randBinary === 0) {
         desk.state = "closed";
       } else {
         desk.state = "open";
       }
-
-      //generate deskId
+      //Generate random id with same character as players ID
       for(var j = 0; j < idLength; j++) {
         desk.id[j] = playerId[getRandomInt(idLength)];
       }
@@ -100,22 +99,18 @@ function generateDesks() {
 
   }
 
+  console.log(desks);
+
 }
 
 function reset () {
+  for(var i=0; i < numberOfDesks; i++) {
+    desks[i].destroyDesk();
+  }
   desks = [];
   playerIDContainer.innerHTML = "";
   playerHasWon = false;
-  // clickText.innerHTML = "";
-  // for(var i = 0; i < desks.length; i++) {
-  //   var deskId = desks[i].childNodes[1];
-  //   var deskState = desks[i].childNodes[3];
-  //   deskState.innerHTML = "";
-  //   deskId.innerHTML = "";
-  //   if(desks[i].classList[1] === "isTheAnswer") {
-  //     desks[i].classList.remove("isTheAnswer");
-  //   }
-  // }
+  clickText.innerHTML = "";
 }
 
 function checkForWin (e) {
