@@ -6,6 +6,7 @@ class Desk{
     this.state = "closed";
     this.isTheAnswer = false;
     this.divDesk = document.createElement("div");
+    this.divDeskState = document.createElement("p");
     this.divDoors = document.createElement("div");
     this.doorDelay = getRandomInt(1000);
     this.leftDoor = document.createElement("div");
@@ -13,37 +14,59 @@ class Desk{
 
   }
 
-  createDeskId(divDesk) {
+  createDeskId() {
     var deskId = document.createElement("p");
     deskId.classList.add('deskId');
-    divDesk.appendChild(deskId);
+    this.divDesk.appendChild(deskId);
     deskId.innerHTML = ""+this.id[0] + this.id[1] + this.id[2] + this.id[3] + this.id[4] ;
   }
 
-  createDeskState(divDesk) {
-    var deskState = document.createElement("p");
-    deskState.classList.add('deskState');
-    divDesk.appendChild(deskState);
-    deskState.innerHTML = this.state;
+  createDeskState() {
+    this.divDeskState.classList.add('deskState');
+    this.divDesk.appendChild(this.divDeskState);
+    this.setDeskState();
   }
 
-  createClickTarget(divDesk) {
+  setDeskState() {
+    this.divDeskState.innerHTML = this.state;
+  }
+
+  createClickTarget() {
     var divClickTarget = document.createElement("div");
     divClickTarget.classList.add('clickTarget');
-    divDesk.appendChild(divClickTarget);
+    this.divDesk.appendChild(divClickTarget);
   }
 
-  createDoors (divDesk) {
+  createDoors () {
 
     this.leftDoor.classList.add("deskDoorLeft");
     this.leftDoor.classList.add("deskDoors");
-    divDesk.appendChild(this.leftDoor);
+    this.divDesk.appendChild(this.leftDoor);
     this.setDoors(this.leftDoor);
 
     this.rightDoor.classList.add("deskDoorRight");
     this.rightDoor.classList.add("deskDoors");
-    divDesk.appendChild(this.rightDoor);
+    this.divDesk.appendChild(this.rightDoor);
     this.setDoors(this.rightDoor);
+  }
+
+
+  createDesk() {
+    this.divDesk = document.createElement("div");
+    this.divDesk.classList.add('counterDesk');
+    if(this.isTheAnswer) {
+      this.divDesk.classList.add("isTheAnswer");
+    }
+    deskContainer.appendChild(this.divDesk);
+    this.createDeskId();
+    this.createDeskState();
+    this.createClickTarget();
+    this.createDoors();
+
+  }
+
+  destroyDesk() {
+    this.divDesk.remove();
   }
 
   setDoors (door) {
@@ -54,52 +77,30 @@ class Desk{
     }
   }
 
-  createDesk() {
-    this.divDesk = document.createElement("div");
-    this.divDesk.classList.add('counterDesk');
-    if(this.isTheAnswer) {
-      this.divDesk.classList.add("isTheAnswer");
-    }
-    deskContainer.appendChild(this.divDesk);
-    this.createDeskId(this.divDesk);
-    this.createDeskState(this.divDesk);
-    this.createClickTarget(this.divDesk);
-    this.createDoors(this.divDesk);
 
-  }
-
-  destroyDesk() {
-    this.divDesk.remove();
-  }
-
-  moveDoors() {
-    if(this.state === "closed") {
-      this.openDoors(this.leftDoor);
-      this.openDoors(this.rightDoor);
-    } else if(this.state === "open") {
-      this.closeDoors(this.leftDoor);
-      this.closeDoors(this.rightDoor);
-    }
-  }
-
-  openDoors (door) {
+  openDoors () {
     var widthPercentage = 45;
-    setTimeout(opening, this.doorDelay);
+    var doorLeft = this.leftDoor;
+    var doorRight = this.rightDoor;
+    setTimeout(opening, 10);
     function opening () {
       var id = setInterval(openingAnim, 10);
       function openingAnim() {
         if (widthPercentage === 0) {
           clearInterval(id);
         } else {
-          door.style.width = widthPercentage + '%';
+          doorRight.style.width = widthPercentage + '%';
+          doorLeft.style.width = widthPercentage + '%';
           widthPercentage--;
         }
       }
     }
   }
 
-  closeDoors (door) {
+  closeDoors () {
     var widthPercentage = 0;
+    var doorLeft = this.leftDoor;
+    var doorRight = this.rightDoor;
     setTimeout(closing, this.doorDelay);
     function closing () {
       var id = setInterval(closingAnim, 10);
@@ -107,7 +108,8 @@ class Desk{
         if (widthPercentage ===45) {
           clearInterval(id);
         } else {
-          door.style.width = widthPercentage + '%';
+          doorRight.style.width = widthPercentage + '%';
+          doorLeft.style.width = widthPercentage + '%';
           widthPercentage++;
         }
       }

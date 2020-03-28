@@ -3,7 +3,7 @@ var playerIdArray = [];
 var playerID = "";
 var idLength = 5;
 var playerHasWon = false;
-var numberOfDesks = 12;
+var numberOfDesks = 16;
 var playerIDContainer = document.querySelector("#playerID");
 var deskContainer = document.querySelector("div.deskContainer");
 var desks = [];
@@ -13,6 +13,14 @@ var playForTheFirstTime = true;
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
+  //TO DO :
+  //Closing Doors animation + reshuflle id's and openDesk
+  //Timer
+  //Remaining guesses
+  //Other Clients
+  //TextBox
+  //Implement graphics => sprites logic
+  //Animation on deskHover and on click (paper throwing)
 
 function clickHandler() {
   playGame();
@@ -23,19 +31,9 @@ function playGame() {
   generatePlayerId();
   generateDesks();
   deskContainer.onclick = e => {
-  checkForWin(e);
-}
-
-  //TO DO :
-  //Closing Doors animation
-  //Timer
-  //Remaining guesses
-  //Other Clients
-  //TextBox
-  //Implement graphics => sprites logic
-  //Animation on deskHover and on click (paper throwing)
-
-
+    checkForWin(e);
+  }
+  window.setInterval(randomizeStateDesk, 3000);
 }
 
 function getRandomInt(max) {
@@ -64,8 +62,20 @@ function generateCharacter() {
   return idElement ;
 }
 
+function randomizeStateDesk() {
+  var changingDesk = desks[getRandomInt(desks.length)];
+  doorAnimation(changingDesk);
+}
 function doorAnimation (desk) {
-  desk.moveDoors();
+  if(desk.state === "open") {
+    desk.closeDoors();
+    desk.state= "closed";
+    desk.setDeskState();
+  } else if (desk.state === "closed") {
+    desk.openDoors();
+    desk.state ="open";
+    desk.setDeskState();
+  }
 }
 
 function generateDesks() {
@@ -109,8 +119,6 @@ function generateDesks() {
       }
     }
     desk.createDesk();
-    doorAnimation(desk);
-
   }
 }
 
@@ -132,6 +140,7 @@ function checkForWin (e) {
       clickText.innerHTML = "Congratulations ! You won";
       reset();
     } else {
+      doorAnimation(desks[0]);
       clickText.innerHTML = "I'm afraid that's not the number I called, please wait for your turn";
     }
   }

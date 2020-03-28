@@ -66,6 +66,12 @@ button {
   position:absolute;
 }
 
+.deskId {
+  left:1em;
+  top:4em;
+  position:absolute;
+}
+
 .deskDoors {
   border-style:dotted;
 }
