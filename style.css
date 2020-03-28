@@ -67,4 +67,24 @@ button {
   position:absolute;
 }
 
+.deskDoors {
+  border-style:dotted;
+}
+
+.deskDoorLeft {
+  position:absolute;
+  left:0;
+  top:0;
+  height:95%;
+  width:1em;
+}
+
+.deskDoorRight {
+  position:absolute;
+  right:0;
+  top:0;
+  height:95%;
+  width:1em;
+}
+
 

@@ -6,6 +6,7 @@ class Desk{
     this.state = "closed";
     this.isTheAnswer = false;
     this.divDesk = document.createElement("div");
+    this.divDoors = document.createElement("div");
 
   }
 
@@ -29,6 +30,16 @@ class Desk{
     divDesk.appendChild(divClickTarget);
   }
 
+  createDoors (divDesk) {
+    var leftDoor = document.createElement("div");
+    leftDoor.classList.add("deskDoorLeft");
+    leftDoor.classList.add("deskDoors");
+    divDesk.appendChild(leftDoor);
+    var rightDoor = document.createElement("div");
+    rightDoor.classList.add("deskDoorRight");
+    rightDoor.classList.add("deskDoors");
+    divDesk.appendChild(rightDoor);
+  }
 
   createDesk() {
     this.divDesk = document.createElement("div");
@@ -40,6 +51,7 @@ class Desk{
     this.createDeskId(this.divDesk);
     this.createDeskState(this.divDesk);
     this.createClickTarget(this.divDesk);
+    this.createDoors(this.divDesk);
 
   }
 

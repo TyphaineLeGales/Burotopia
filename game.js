@@ -1,7 +1,6 @@
 var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var playerIdArray = [];
 var playerID = "";
-var counterIDs = [];
 var idLength = 5;
 var playerHasWon = false;
 var numberOfDesks = 12;
@@ -28,10 +27,9 @@ function playGame() {
   generateDesks();
 
   //TO DO :
-  //Make a desk class : Create desks on html desks no the fly with a class method
-  //Remaining guesses
-  //Timer
   //Closing Doors animation
+  //Timer
+  //Remaining guesses
   //Other Clients
   //TextBox
   //Implement graphics => sprites logic
@@ -77,7 +75,6 @@ function generateDesks() {
   correctDesk.id = playerID;
   correctDesk.state = "open";
   correctDesk.isTheAnswer = true;
-  console.log(randomIndexAnswer);
 
   //add desk with same id that is closed
   var randomIndex = getRandomInt(desks.length);
