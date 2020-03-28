@@ -81,6 +81,7 @@ function generateDesks() {
   correctDesk.id = stringID;
   correctDesk.state = "open";
   correctDesk.isTheAnswer = true;
+  desk.createDesk();
 
   for(var i = 0; i< desks.length; i++) {
     //check for every desks that is not the answer
@@ -93,15 +94,13 @@ function generateDesks() {
         desk.state = "open";
       }
 
-      console.log(desk);
-      desk.createDesk();
 
       //generate deskId
-      // var deskId = desk.childNodes[1];
-      // for(var j = 0; j < idLength; j++) {
-      //   desk.id[j] = playerId[getRandomInt(idLength)];
-      // }
-      // deskId.innerHTML = "" + deskId[0] + deskId[1] + deskId[2] + deskId[3] + deskId[4];
+      for(var j = 0; j < idLength; j++) {
+        desk.id[j] = playerId[getRandomInt(idLength)];
+      }
+
+      desk.createDesk();
     }
   }
 

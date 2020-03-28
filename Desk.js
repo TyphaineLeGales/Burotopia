@@ -8,9 +8,20 @@ class Desk{
 
   }
 
-  displayDeskId() {
-
+  createDeskId(divDesk) {
+    var deskId = document.createElement("p");
+    deskId.classList.add('deskId');
+    divDesk.appendChild(deskId);
+    deskId.innerHTML = ""+this.id[0] + this.id[1] + this.id[2] + this.id[3] + this.id[4] ;
   }
+
+  createDeskState(divDesk) {
+    var deskState = document.createElement("p");
+    deskState.classList.add('deskState');
+    divDesk.appendChild(deskState);
+    deskState.innerHTML = this.state;
+  }
+
 
   createDesk() {
     var divDesk = document.createElement("div");
@@ -19,13 +30,9 @@ class Desk{
       divDesk.classList.add("isTheAnswer");
     }
     deskContainer.appendChild(divDesk);
-    var deskId = document.createElement("p");
-    deskId.classList.add('deskId');
-    divDesk.appendChild(deskId);
-    var deskState = document.createElement("p");
-    deskState.classList.add('deskState');
-    divDesk.appendChild(deskState);
-    deskState.innerHTML = this.state;
+    this.createDeskId(divDesk);
+    this.createDeskState(divDesk);
+
     var divClickTarget = document.createElement("div");
     divClickTarget.classList.add('clickTarget');
     divDesk.appendChild(divClickTarget);
