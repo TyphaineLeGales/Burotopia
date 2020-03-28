@@ -5,9 +5,10 @@ var stringID = "";
 var counterIDs = [];
 var idLength = 5;
 var playerHasWon = false;
+var numberOfDesks = 16;
 var playerIDContainer = document.querySelector("#playerID");
 var deskContainer = document.querySelector("div.deskContainer");
-var desks = document.querySelectorAll("div.counterDesk");
+var desks = [];
 var clickText = document.querySelector("#clickText");
 var button = document.querySelector("button");
 button.style.cursor = "pointer";
@@ -27,7 +28,7 @@ function playGame() {
   generateDesks();
 
   //TO DO :
-  //Make a desk class
+  //Make a desk class : Create desks on html desks no the fly with a class method
   //Remaining guesses
   //Timer
   //Closing Doors animation
@@ -66,29 +67,37 @@ function generateCharacter() {
 }
 
 function generateDesks() {
+  //create array of empty desks
+  for(var i=0; i < numberOfDesks; i++) {
+    var desk = new Desk();
+    desks.push(desk);
+  }
   // pick a random desk that will be the answer
+  // var correctDesk = desks[getRandomInt(desks.length)];
+  // correctDesk.classList.add("isTheAnswer");
+  // correctDesk.childNodes[1].innerHTML = stringID;
+  // correctDesk.childNodes[3].innerHTML = "open";
   var correctDesk = desks[getRandomInt(desks.length)];
-  correctDesk.classList.add("isTheAnswer");
-  correctDesk.childNodes[1].innerHTML = stringID;
-  correctDesk.childNodes[3].innerHTML = "open";
+  correctDesk.id = stringID;
+  correctDesk.state = "open";
+  correctDesk.isTheAnswer = true;
 
   for(var i = 0; i< desks.length; i++) {
     //check for every desks that is not the answer
-    if(desks[i].classList[1] != "isTheAnswer") {
+    var desk = desks[i];
+    if(desk.isTheAnswer != true) {
 
-      // generate deskState
-      var deskState =  desks[i].childNodes[3];
       var randBinary = Math.round(Math.random());
       if(randBinary === 0) {
-        deskState.innerHTML = "closed";
+        desk.state = "closed";
       } else {
-        deskState.innerHTML = "open";
+        desk.state = "open";
       }
 
       //generate deskId
-      var deskId = desks[i].childNodes[1];
+      var deskId = desk.childNodes[1];
       for(var j = 0; j < idLength; j++) {
-        deskId[j] = playerId[getRandomInt(idLength)];
+        desk.id[j] = playerId[getRandomInt(idLength)];
       }
       deskId.innerHTML = "" + deskId[0] + deskId[1] + deskId[2] + deskId[3] + deskId[4];
     }
