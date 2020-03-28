@@ -27,6 +27,7 @@ function playGame() {
   generateDesks();
 
   //TO DO :
+  //Make a desk class
   //Remaining guesses
   //Timer
   //Closing Doors animation
@@ -34,6 +35,7 @@ function playGame() {
   //TextBox
   //Implement graphics => sprites logic
   //Animation on deskHover and on click (paper throwing)
+
 
 }
 
