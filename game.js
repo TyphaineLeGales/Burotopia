@@ -1,6 +1,6 @@
 var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var playerId = [];
-var stringID = "";
+var playerIdArray = [];
+var playerID = "";
 var counterIDs = [];
 var idLength = 5;
 var playerHasWon = false;
@@ -20,6 +20,7 @@ deskContainer.onclick = e => {
 
 function clickHandler() {
   playGame();
+  button.style.display= "none";
 }
 
 function playGame() {
@@ -45,10 +46,10 @@ function getRandomInt(max) {
 
 function generatePlayerId() {
   for(var i = 0; i < idLength; i++) {
-    playerId[i] = generateCharacter();
+    playerIdArray[i] = generateCharacter();
   }
-  stringID = playerId[0] + playerId[1] + playerId[2] + playerId[3] + playerId[4] ;
-  playerIDContainer.innerHTML = "your number is " + stringID;
+  playerID = playerIdArray[0] + playerIdArray[1] + playerIdArray[2] + playerIdArray[3] + playerIdArray[4] ;
+  playerIDContainer.innerHTML = "your number is " + playerID;
 }
 
 function generateCharacter() {
@@ -71,17 +72,29 @@ function generateDesks() {
     var desk = new Desk();
     desks.push(desk);
   }
-
-  var correctDesk = desks[getRandomInt(desks.length)];
-  correctDesk.id = stringID;
+  var randomIndexAnswer = getRandomInt(desks.length);
+  var correctDesk = desks[randomIndexAnswer];
+  correctDesk.id = playerID;
   correctDesk.state = "open";
   correctDesk.isTheAnswer = true;
+  console.log(randomIndexAnswer);
 
-  //add desk with same id that are closed
+  //add desk with same id that is closed
+  var randomIndex = getRandomInt(desks.length);
+
+  if(randomIndexAnswer === randomIndex) {
+    randomIndex = getRandomInt(desks.length);
+  }
+
+  var closedDeskSameId = desks[randomIndex];
+  closedDeskSameId.id = playerID;
+  closedDeskSameId.state = "closed";
+  closedDeskSameId.isTheAnswer = false;
+
 
   for(var i = 0; i< desks.length; i++) {
     var desk = desks[i];
-    if(desk.isTheAnswer != true) {
+    if(desk.id != playerID) {
       //Generate random state
       var randBinary = Math.round(Math.random());
       if(randBinary === 0) {
@@ -91,16 +104,11 @@ function generateDesks() {
       }
       //Generate random id with same character as players ID
       for(var j = 0; j < idLength; j++) {
-        desk.id[j] = playerId[getRandomInt(idLength)];
+        desk.id[j] = playerIdArray[getRandomInt(idLength)];
       }
     }
-
     desk.createDesk();
-
   }
-
-  console.log(desks);
-
 }
 
 function reset () {
@@ -111,6 +119,7 @@ function reset () {
   playerIDContainer.innerHTML = "";
   playerHasWon = false;
   clickText.innerHTML = "";
+  button.style.display = "block";
 }
 
 function checkForWin (e) {
