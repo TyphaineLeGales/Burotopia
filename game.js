@@ -64,6 +64,10 @@ function generateCharacter() {
   return idElement ;
 }
 
+function doorAnimation (desk) {
+  desk.moveDoors();
+}
+
 function generateDesks() {
   //create array of empty desks
   for(var i=0; i < numberOfDesks; i++) {
@@ -105,7 +109,8 @@ function generateDesks() {
       }
     }
     desk.createDesk();
-    console.log(desk);
+    doorAnimation(desk);
+
   }
 }
 

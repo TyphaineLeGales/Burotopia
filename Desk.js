@@ -8,6 +8,8 @@ class Desk{
     this.divDesk = document.createElement("div");
     this.divDoors = document.createElement("div");
     this.doorDelay = getRandomInt(1000);
+    this.leftDoor = document.createElement("div");
+    this.rightDoor = document.createElement("div");
 
   }
 
@@ -32,17 +34,16 @@ class Desk{
   }
 
   createDoors (divDesk) {
-    var leftDoor = document.createElement("div");
-    leftDoor.classList.add("deskDoorLeft");
-    leftDoor.classList.add("deskDoors");
-    divDesk.appendChild(leftDoor);
-    this.setDoors(leftDoor);
 
-    var rightDoor = document.createElement("div");
-    rightDoor.classList.add("deskDoorRight");
-    rightDoor.classList.add("deskDoors");
-    divDesk.appendChild(rightDoor);
-    this.setDoors(rightDoor);
+    this.leftDoor.classList.add("deskDoorLeft");
+    this.leftDoor.classList.add("deskDoors");
+    divDesk.appendChild(this.leftDoor);
+    this.setDoors(this.leftDoor);
+
+    this.rightDoor.classList.add("deskDoorRight");
+    this.rightDoor.classList.add("deskDoors");
+    divDesk.appendChild(this.rightDoor);
+    this.setDoors(this.rightDoor);
   }
 
   setDoors (door) {
@@ -71,19 +72,40 @@ class Desk{
     this.divDesk.remove();
   }
 
-  moveDoors (door) {
-    var widthPercentage = 0;
-    if(this.state === "open") {
-    setTimeout(closing, this.doorDelay);
-
+  moveDoors() {
+    if(this.state === "closed") {
+      this.openDoors(this.leftDoor);
+      this.openDoors(this.rightDoor);
+    } else if(this.state === "open") {
+      this.closeDoors(this.leftDoor);
+      this.closeDoors(this.rightDoor);
     }
+  }
 
+  openDoors (door) {
+    var widthPercentage = 45;
+    setTimeout(opening, this.doorDelay);
+    function opening () {
+      var id = setInterval(openingAnim, 10);
+      function openingAnim() {
+        if (widthPercentage === 0) {
+          clearInterval(id);
+        } else {
+          door.style.width = widthPercentage + '%';
+          widthPercentage--;
+        }
+      }
+    }
+  }
+
+  closeDoors (door) {
+    var widthPercentage = 0;
+    setTimeout(closing, this.doorDelay);
     function closing () {
       var id = setInterval(closingAnim, 10);
       function closingAnim() {
-        if (widthPercentage === 45) {
+        if (widthPercentage ===45) {
           clearInterval(id);
-          setTimeout(OpeningAnim, this.doorDelay);
         } else {
           door.style.width = widthPercentage + '%';
           widthPercentage++;
