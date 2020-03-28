@@ -22,6 +22,12 @@ class Desk{
     deskState.innerHTML = this.state;
   }
 
+  createClickTarget(divDesk) {
+    var divClickTarget = document.createElement("div");
+    divClickTarget.classList.add('clickTarget');
+    divDesk.appendChild(divClickTarget);
+  }
+
 
   createDesk() {
     var divDesk = document.createElement("div");
@@ -32,15 +38,8 @@ class Desk{
     deskContainer.appendChild(divDesk);
     this.createDeskId(divDesk);
     this.createDeskState(divDesk);
+    this.createClickTarget(divDesk);
 
-    var divClickTarget = document.createElement("div");
-    divClickTarget.classList.add('clickTarget');
-    divDesk.appendChild(divClickTarget);
-    //inside html desk container
-    //<div class="counterDesk">
-      //<p class="deskId"></p>
-      //<p class="deskState"></p>
-      //<div class="clickTarget"></div>
-   // </div>
   }
+
 }

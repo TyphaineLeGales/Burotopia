@@ -72,16 +72,12 @@ function generateDesks() {
     var desk = new Desk();
     desks.push(desk);
   }
-  // pick a random desk that will be the answer
-  // var correctDesk = desks[getRandomInt(desks.length)];
-  // correctDesk.classList.add("isTheAnswer");
-  // correctDesk.childNodes[1].innerHTML = stringID;
-  // correctDesk.childNodes[3].innerHTML = "open";
+
   var correctDesk = desks[getRandomInt(desks.length)];
+  console.log(getRandomInt(desks.length));
   correctDesk.id = stringID;
   correctDesk.state = "open";
   correctDesk.isTheAnswer = true;
-  desk.createDesk();
 
   for(var i = 0; i< desks.length; i++) {
     //check for every desks that is not the answer
@@ -94,14 +90,14 @@ function generateDesks() {
         desk.state = "open";
       }
 
-
       //generate deskId
       for(var j = 0; j < idLength; j++) {
         desk.id[j] = playerId[getRandomInt(idLength)];
       }
-
-      desk.createDesk();
     }
+
+    desk.createDesk();
+
   }
 
 }
