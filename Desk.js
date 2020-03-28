@@ -36,12 +36,21 @@ class Desk{
     leftDoor.classList.add("deskDoorLeft");
     leftDoor.classList.add("deskDoors");
     divDesk.appendChild(leftDoor);
-    this.moveDoors(leftDoor);
+    this.setDoors(leftDoor);
+
     var rightDoor = document.createElement("div");
     rightDoor.classList.add("deskDoorRight");
     rightDoor.classList.add("deskDoors");
     divDesk.appendChild(rightDoor);
-    this.moveDoors(rightDoor);
+    this.setDoors(rightDoor);
+  }
+
+  setDoors (door) {
+    if(this.state === "open") {
+      door.style.width = 0 + '%'
+    } else {
+      door.style.width = 45 + '%'
+    }
   }
 
   createDesk() {
@@ -64,28 +73,23 @@ class Desk{
 
   moveDoors (door) {
     var widthPercentage = 0;
-    setTimeout(startAnim, this.doorDelay);
-    function startAnim () {
-      var id = setInterval(doorToCenter, 10);
-      function doorToCenter() {
+    if(this.state === "open") {
+    setTimeout(closing, this.doorDelay);
+
+    }
+
+    function closing () {
+      var id = setInterval(closingAnim, 10);
+      function closingAnim() {
         if (widthPercentage === 45) {
           clearInterval(id);
+          setTimeout(OpeningAnim, this.doorDelay);
         } else {
           door.style.width = widthPercentage + '%';
           widthPercentage++;
         }
       }
     }
-    // function frame2() {
-    //   if (widthPercentage === 0) {
-    //     clearInterval(frame2, 10);
-    //     setInterval(frame, 10);
-    //   } else {
-    //     door.style.width = widthPercentage + '%';
-    //     widthPercentage--;
-    //   }
-    // }
-
   }
 
 }

@@ -105,6 +105,7 @@ function generateDesks() {
       }
     }
     desk.createDesk();
+    console.log(desk);
   }
 }
 
