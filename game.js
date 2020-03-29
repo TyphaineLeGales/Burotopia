@@ -3,7 +3,7 @@ var playerIdArray = [];
 var playerID = "";
 var idLength = 5;
 var playerHasWon = false;
-var numberOfDesks = 16;
+var numberOfDesks = 15;
 var playerIDContainer = document.querySelector("#playerID");
 var deskContainer = document.querySelector("div.deskContainer");
 var desks = [];
@@ -11,6 +11,7 @@ var clickText = document.querySelector("#clickText");
 var button = document.querySelector("button");
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
+// var timer = new Timer();
 
   //TO DO :
   //fix right id with changing state changes right answer desk
@@ -19,7 +20,6 @@ button.addEventListener("click", clickHandler, false);
   //Remaining guesses
   //Other Clients
   //TextBox => dialogues
-  //Implement graphics => sprites logic
   //animation when changin number type transition
   //Animation on deskHover and on click (paper throwing)
 
@@ -29,6 +29,7 @@ function clickHandler() {
 }
 
 function playGame() {
+  // timer.reset();
   generatePlayerId();
   generateDesks();
   deskContainer.onclick = e => {

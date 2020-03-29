@@ -32,7 +32,7 @@ button {
   margin-top:20%;
   display:flex;
   flex-direction: column;
-  width:33%;
+  width:30%;
 }
 #playerID {
   align-self:center;
@@ -44,26 +44,27 @@ button {
 }
 
 .deskContainer {
-  width:60%;
+  width:70%;
   display:flex;
   flex-wrap: wrap;
 }
 
 .counterDesk {
-  width:9.8em;
+  width:15em;
   height:6.5em;
   margin:1em;
   position:relative;
-  background-image: url(Assets/Graphics/deskBackground-02.png);
+  background-image: url(Assets/Graphics/deskBackground.png);
   background-size: contain;
+  background-position: 45%;
 }
 
 .clickTarget {
   position:absolute;
-  right:32%;
-  bottom:13%;
-  height:3em;
-  width:3.5em;
+  right:35%;
+  bottom:14%;
+  height:4em;
+  width:4.5em;
   background-size: contain;
 }
 
@@ -80,8 +81,8 @@ button {
 }
 
 .deskId {
-  right:23%;
-  top:-1em;
+  right:33%;
+  top:-0.8em;
   padding:0 0.5em;
   position:absolute;
   background-color:black;
