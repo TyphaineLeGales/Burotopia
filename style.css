@@ -5,6 +5,15 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'ds-digitalnormal';
+    src: url('digi.woff2') format('woff2'),
+         url('digi.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 body {
   font-family: silom;
   display:flex;
@@ -41,35 +50,45 @@ button {
 }
 
 .counterDesk {
-  border-style: solid;
-  border-color: black;
   width:10em;
-  height:7em;
+  height:6.5em;
   margin:1em;
   position:relative;
+  background-image: url(Assets/Graphics/deskBackground-02.png);
+  background-size: contain;
 }
 
 .clickTarget {
   position:absolute;
-  right:1em;
-  top:1em;
-  background-color:red;
-  border-radius: 50%;
-  height:2em;
-  width:2em;
+  right:35%;
+  bottom:13%;
+  height:3em;
+  width:3.5em;
+  background-image: url(Assets/Graphics/deskEmployee-02.png);
+  background-size: contain;
 }
 
 
 .deskState {
   left:1em;
-  top:2em;
+  bottom:5%;
   position:absolute;
+  background:white;
+  padding:0 0.2em;
+  border-radius:5px;
+  font-size:0.7em;
 }
 
 .deskId {
-  left:1em;
-  top:4em;
+  right:0;
+  top:-1em;
+  padding:0.5em 1em;
   position:absolute;
+  background-color:black;
+  color:white;
+  letter-spacing: 3px;
+  font-size:0.8;
+
 }
 
 .deskDoors {

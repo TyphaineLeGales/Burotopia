@@ -31,7 +31,6 @@ function playGame() {
   generateDesks();
   deskContainer.onclick = e => {
     checkForWin(e);
-    checkForLoosing(e);
   }
   window.setInterval(randomizeStateDesk, 3000);
 }
@@ -66,6 +65,7 @@ function randomizeStateDesk() {
   var changingDesk = desks[getRandomInt(desks.length)];
   doorAnimation(changingDesk);
 }
+
 function doorAnimation (desk) {
   if(desk.state === "open") {
     desk.closeDoors();
