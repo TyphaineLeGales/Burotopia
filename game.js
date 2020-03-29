@@ -9,12 +9,11 @@ var deskContainer = document.querySelector("div.deskContainer");
 var desks = [];
 var clickText = document.querySelector("#clickText");
 var button = document.querySelector("button");
-var playForTheFirstTime = true;
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
   //TO DO :
-  //Closing Doors animation + reshuflle id's and openDesk
+  //reshuflle id's and openDesk : Always one desk should be open with right id
   //Timer
   //Remaining guesses
   //Other Clients
@@ -32,6 +31,7 @@ function playGame() {
   generateDesks();
   deskContainer.onclick = e => {
     checkForWin(e);
+    checkForLoosing(e);
   }
   window.setInterval(randomizeStateDesk, 3000);
 }
@@ -137,11 +137,22 @@ function checkForWin (e) {
   if(e.target.classList[0] === "clickTarget") {
     if(e.target.parentNode.classList[1] === "isTheAnswer") {
       playerHasWon = true;
-      clickText.innerHTML = "Congratulations ! You won";
-      reset();
+      endGame();
     } else {
-      doorAnimation(desks[0]);
       clickText.innerHTML = "I'm afraid that's not the number I called, please wait for your turn";
     }
   }
+}
+
+function timer () {
+
+}
+
+function endGame() {
+  if(playerHasWon) {
+    clickText.innerHTML = "Congratulations ! You won";
+  } else {
+    clickText.innerHTML = "I'm afraid that's not the number I called, please wait for your turn";
+  }
+  reset();
 }
