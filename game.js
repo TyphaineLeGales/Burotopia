@@ -13,12 +13,14 @@ button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
   //TO DO :
+  //fix right id with changing state changes right answer desk
   //reshuflle id's and openDesk : Always one desk should be open with right id
   //Timer
   //Remaining guesses
   //Other Clients
-  //TextBox
+  //TextBox => dialogues
   //Implement graphics => sprites logic
+  //animation when changin number type transition
   //Animation on deskHover and on click (paper throwing)
 
 function clickHandler() {

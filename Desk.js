@@ -11,6 +11,7 @@ class Desk{
     this.doorDelay = getRandomInt(1000);
     this.leftDoor = document.createElement("div");
     this.rightDoor = document.createElement("div");
+    this.deskEmployee = document.createElement("div");
 
   }
 
@@ -31,10 +32,13 @@ class Desk{
     this.divDeskState.innerHTML = this.state;
   }
 
-  createClickTarget() {
-    var divClickTarget = document.createElement("div");
-    divClickTarget.classList.add('clickTarget');
-    this.divDesk.appendChild(divClickTarget);
+  createDeskEmployee() {
+    this.deskEmployee .classList.add('clickTarget');
+    this.divDesk.appendChild(this.deskEmployee);
+    // var randImg = getRandomInt(4);
+    // this.deskEmployee.style.backgroundImage = 'url(Assets/Graphics/DeskEmployee-'+ randImg +'.png)';
+    this.deskEmployee.style.backgroundImage = 'url(Assets/Graphics/DeskEmployee-0.png)';
+    //pick random sprite
   }
 
   createDoors () {
@@ -60,7 +64,7 @@ class Desk{
     deskContainer.appendChild(this.divDesk);
     this.createDeskId();
     this.createDeskState();
-    this.createClickTarget();
+    this.createDeskEmployee();
     this.createDoors();
 
   }
@@ -73,13 +77,13 @@ class Desk{
     if(this.state === "open") {
       door.style.width = 0 + '%'
     } else {
-      door.style.width = 45 + '%'
+      door.style.width = 49 + '%'
     }
   }
 
 
   openDoors () {
-    var widthPercentage = 45;
+    var widthPercentage = 49;
     var doorLeft = this.leftDoor;
     var doorRight = this.rightDoor;
     setTimeout(opening, 10);
@@ -105,7 +109,7 @@ class Desk{
     function closing () {
       var id = setInterval(closingAnim, 10);
       function closingAnim() {
-        if (widthPercentage ===45) {
+        if (widthPercentage === 50) {
           clearInterval(id);
         } else {
           doorRight.style.width = widthPercentage + '%';

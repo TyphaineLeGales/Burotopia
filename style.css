@@ -50,7 +50,7 @@ button {
 }
 
 .counterDesk {
-  width:10em;
+  width:9.8em;
   height:6.5em;
   margin:1em;
   position:relative;
@@ -60,29 +60,29 @@ button {
 
 .clickTarget {
   position:absolute;
-  right:35%;
+  right:32%;
   bottom:13%;
   height:3em;
   width:3.5em;
-  background-image: url(Assets/Graphics/deskEmployee-02.png);
   background-size: contain;
 }
 
 
 .deskState {
   left:1em;
-  bottom:5%;
+  bottom:0;
   position:absolute;
   background:white;
   padding:0 0.2em;
   border-radius:5px;
-  font-size:0.7em;
+  font-size:0.8em;
+  z-index:10;
 }
 
 .deskId {
-  right:0;
+  right:23%;
   top:-1em;
-  padding:0.5em 1em;
+  padding:0 0.5em;
   position:absolute;
   background-color:black;
   color:white;
@@ -92,7 +92,9 @@ button {
 }
 
 .deskDoors {
-  border-style:dotted;
+  background-color: white;
+  opacity:40%;
+  height:80%;
 }
 
 .deskDoorLeft {
