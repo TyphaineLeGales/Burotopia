@@ -42,10 +42,6 @@ function playGame() {
   window.setInterval(randomizeStateDesk, 3000);
 }
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
-}
-
 function generatePlayerId() {
   for(var i = 0; i < idLength; i++) {
     playerIdArray[i] = generateCharacter();
@@ -81,11 +77,11 @@ function doorAnimation (desk) {
   if(desk.state === "open") {
     desk.closeDoors();
     desk.state= "closed";
-    desk.setDeskState();
+    desk.setState();
   } else if (desk.state === "closed") {
     desk.openDoors();
     desk.state ="open";
-    desk.setDeskState();
+    desk.setState();
   }
 }
 
@@ -163,10 +159,6 @@ function endGame() {
     setTimeout(reset, 3000);
   }
 
-}
-
-function goBackToMap () {
-  window.location.href = "../index.html";
 }
 
 function reset () {

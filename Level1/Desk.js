@@ -12,50 +12,47 @@ class Desk{
     this.doorDelay = getRandomInt(1000);
     this.leftDoor = document.createElement("div");
     this.rightDoor = document.createElement("div");
-    this.deskEmployee = document.createElement("div");
-    this.textEmployee =document.createElement("p");
+    this.employee = document.createElement("div");
   }
 
 
-  createDeskId() {
+  createId() {
     var deskId = document.createElement("p");
     deskId.classList.add('deskId');
     this.divDesk.appendChild(deskId);
     deskId.innerHTML = ""+this.id[0] + this.id[1] + this.id[2] + this.id[3] + this.id[4] ;
   }
 
-  createDeskState() {
+  createState() {
     this.divDeskState.classList.add('deskState');
     this.divDesk.appendChild(this.divDeskState);
-    this.setDeskState();
+    this.setState();
   }
 
-  setDeskState() {
+  setState() {
     this.divDeskState.innerHTML = this.state;
   }
 
-  createDeskEmployee() {
-    this.deskEmployee.classList.add('clickTarget');
-    this.divDesk.appendChild(this.deskEmployee);
+  createEmployee() {
+    this.employee.classList.add('clickTarget');
+    this.divDesk.appendChild(this.employee);
     var randImg = getRandomInt(7);
-    this.deskEmployee.style.backgroundImage = 'url(../Assets/Graphics/DeskEmployee-'+ randImg +'.png)';
+    this.employee.style.backgroundImage = 'url(../Assets/Graphics/DeskEmployee-'+ randImg +'.png)';
     // this.deskEmployee.style.backgroundImage = 'url(Assets/Graphics/DeskEmployee-0.png)';
-    this.deskEmployee.addEventListener("click", this.displayTextEmployee );
+    var textEmployee =document.createElement("p");
+    textEmployee.classList.add('textEmployee');
+    this.employee.appendChild(textEmployee);
+    this.employee.addEventListener("click", this.displayTextEmployee(textEmployee));
+
   }
 
 
-  createTextEmployee() {
-    console.log("function is being called");
-    this.textEmployee.classList.add('textEmployee');
-    this.divDesk.appendChild(this.textEmployee);
-  }
-
-  displayTextEmployee() {
-    this.textEmployee.innerHTML = "I'm afraid that's not the number I called, please wait for your turn";
-    this.textEmployee.style.display = "block";
+  displayTextEmployee(textEmployee) {
+    textEmployee.style.display = "block";
+    textEmployee.innerHTML = "I'm afraid that's not the number I called, please wait for your turn";
     setTimeout(1000, removeTextEmployee);
     function removeTextEmployee () {
-       this.textEmployee.style.display = "none";
+       textEmployee.style.display = "none";
     }
   }
 
@@ -79,9 +76,9 @@ class Desk{
       this.divDesk.classList.add("isTheAnswer");
     }
     deskContainer.appendChild(this.divDesk);
-    this.createDeskId();
-    this.createDeskState();
-    this.createDeskEmployee();
+    this.createId();
+    this.createState();
+    this.createEmployee();
     this.createDoors();
 
   }
