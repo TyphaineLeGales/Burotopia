@@ -1,4 +1,5 @@
 var deskContainer = document.querySelector("div.deskContainer");
+var employeeText1 = "I'm afraid that's not the number I called, please wait for your turn";
 
 class Desk{
   constructor() {
@@ -14,7 +15,6 @@ class Desk{
     this.rightDoor = document.createElement("div");
     this.employee = document.createElement("div");
   }
-
 
   createId() {
     var deskId = document.createElement("p");
@@ -38,29 +38,24 @@ class Desk{
     this.divDesk.appendChild(this.employee);
     var randImg = getRandomInt(7);
     this.employee.style.backgroundImage = 'url(../Assets/Graphics/DeskEmployee-'+ randImg +'.png)';
-    // this.deskEmployee.style.backgroundImage = 'url(Assets/Graphics/DeskEmployee-0.png)';
+
     var textEmployee =document.createElement("p");
     textEmployee.classList.add('textEmployee');
     this.divDesk.appendChild(textEmployee);
-    this.employee.onclick = e => {this.displayTextEmployee(textEmployee)};
-
+    this.employee.onclick = e => {this.displayTextEmployee(textEmployee, employeeText1)};
   }
 
-
-  displayTextEmployee(textEmployee) {
+  displayTextEmployee(textEmployee, text) {
+    //if remaining guesses === 3 : Get Out of here => lost
     if(this.isTheAnswer != true) {
       textEmployee.style.display = "block";
-      textEmployee.innerHTML = "I'm afraid that's not the number I called, please wait for your turn";
+      textEmployee.innerHTML = text ;
     }
-
-    setTimeout(1000, removeTextEmployee);
+    setTimeout(removeTextEmployee,2000);
     function removeTextEmployee () {
        textEmployee.style.display = "none";
-       console.log("removeTextEmployee is being called");
     }
   }
-
-
 
   createDoors () {
     this.leftDoor.classList.add("deskDoorLeft");

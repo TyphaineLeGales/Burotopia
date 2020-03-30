@@ -11,8 +11,12 @@ body {
 }
 
 .levelTitle {
-  font-size: 5em;
+
   text-decoration: none;
+}
+
+li {
+  font-size: 5em;
 }
 
 a:link {

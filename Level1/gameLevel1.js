@@ -4,25 +4,26 @@ var playerID = "";
 var idLength = 5;
 var playerHasWon = false;
 var maxNumberOfGuess = 3;
-var numberOfGuessesRemaining = maxNumberOfGuess;
+var remainingGuessesNum = maxNumberOfGuess;
 var guessesContainer = document.querySelector("#guesses");
-var numberOfDesks = 15;
+var numberOfDesks = 20;
 var playerIDContainer = document.querySelector("#playerID");
 var deskContainer = document.querySelector("div.deskContainer");
 var desks = [];
-var clickText = document.querySelector("#clickText");
 var endGameMsg =  document.querySelector("#endGameMsg");
+var timeAmount = 60;
+var timer = document.querySelector("#timer");
 var button = document.querySelector("button");
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 // var timer = new Timer();
 
   //TO DO :
-  //dialogues according to remaining guesses : pending
+  //change dialogues according to remaining guesses
   //Timer
   //fix right id with changing state changes right answer desk
   //reshuflle id's and openDesk : Always one desk should be open with right id
-  //animation when changing number type transition
+  //animation when changing number type transition //check requestAnimationFrame
   //Other Clients
   //Animation on deskHover and on click (paper throwing)
 
@@ -32,7 +33,6 @@ function clickHandler() {
 }
 
 function playGame() {
-  // timer.reset();
   generatePlayerId();
   generateDesks();
   displayNumberOfGuesses();
@@ -70,7 +70,7 @@ function randomizeStateDesk() {
 }
 
 function displayNumberOfGuesses () {
-  guessesContainer.innerHTML ="You have" + numberOfGuessesRemaining + "guesses Left";
+  guessesContainer.innerHTML ="You have" + remainingGuessesNum + "guesses Left";
 }
 
 function doorAnimation (desk) {
@@ -134,20 +134,24 @@ function checkForWin (e) {
     if(e.target.parentNode.classList[1] === "isTheAnswer") {
       playerHasWon = true;
       endGame();
-    } else {
+    } else if(remainingGuessesNum > 0){
       var clickedDesk = e.target.parentNode;
-      numberOfGuessesRemaining -=1;
+      remainingGuessesNum -=1;
       displayNumberOfGuesses();
-      if(numberOfGuessesRemaining === 0) {
+      } else if(remainingGuessesNum === 0) {
         endGame();
-      }
     }
   }
 }
 
 function timer () {
-
+  //if timeLeft < 0
+  // endGame(); "We are closing"
+  console.log(timer);
+  timeAmount --;
+  timer.innerHTML = "" + timeAmount;
 }
+
 
 function endGame() {
   endGameMsg.style.display="block";
@@ -158,7 +162,6 @@ function endGame() {
     endGameMsg.innerHTML = "You lost";
     setTimeout(reset, 3000);
   }
-
 }
 
 function reset () {
@@ -170,7 +173,6 @@ function reset () {
   numberOfGuessesRemaining = maxNumberOfGuess;
   playerIDContainer.innerHTML = "";
   playerHasWon = false;
-  clickText.innerHTML = "";
   endGameMsg.innerHTML = "";
   button.style.display = "block";
 }

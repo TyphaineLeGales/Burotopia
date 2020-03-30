@@ -30,10 +30,6 @@ button {
   font-size:2em;
 }
 
-#clickText {
-
-}
-
 .textEmployee {
   background-color:white;
   display:none;
@@ -44,6 +40,8 @@ button {
   font-size:0.6em;
   z-index:40;
   text-align:center;
+  animation-duration: 0.5s;
+  animation-name: employeeText;
 }
 
 #endGameMsg {
@@ -66,7 +64,6 @@ button {
 .counterDesk {
   width:15em;
   height:6.5em;
-  margin:1em;
   position:relative;
   background-image: url(../Assets/Graphics/deskBackground.png);
   background-size: contain;
@@ -129,5 +126,17 @@ button {
   width:0;
 }
 
+ @keyframes employeeText {
+  from {
+    opacity:0;
+    bottom:-10%;
+
+  }
+
+  to {
+    opacity:1;
+    bottom:0;
+  }
+}
 
 
