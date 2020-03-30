@@ -35,8 +35,15 @@ button {
 }
 
 .textEmployee {
-  background-color:red;
+  background-color:white;
   display:none;
+  position:absolute;
+  bottom:0;
+  left:1em;
+  width:90%;
+  font-size:0.6em;
+  z-index:40;
+  text-align:center;
 }
 
 #endGameMsg {
@@ -65,6 +72,7 @@ button {
   background-size: contain;
   background-position: 45%;
 }
+
 
 .clickTarget {
   position:absolute;

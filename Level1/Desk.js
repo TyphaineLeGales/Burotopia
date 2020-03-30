@@ -41,18 +41,20 @@ class Desk{
     // this.deskEmployee.style.backgroundImage = 'url(Assets/Graphics/DeskEmployee-0.png)';
     var textEmployee =document.createElement("p");
     textEmployee.classList.add('textEmployee');
-    this.employee.appendChild(textEmployee);
+    this.divDesk.appendChild(textEmployee);
     this.employee.addEventListener("click", this.displayTextEmployee(textEmployee));
 
   }
 
 
   displayTextEmployee(textEmployee) {
+    console.log("onclick employee is being called");
     textEmployee.style.display = "block";
     textEmployee.innerHTML = "I'm afraid that's not the number I called, please wait for your turn";
     setTimeout(1000, removeTextEmployee);
     function removeTextEmployee () {
        textEmployee.style.display = "none";
+       console.log("removeTextEmployee is being called");
     }
   }
 
