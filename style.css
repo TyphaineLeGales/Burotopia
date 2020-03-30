@@ -4,126 +4,42 @@
     font-weight: normal;
     font-style: normal;
 }
-
-@font-face {
-    font-family: 'ds-digitalnormal';
-    src: url('digi.woff2') format('woff2'),
-         url('digi.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
 body {
   font-family: silom;
   display:flex;
   background-color:none;
 }
 
-button {
-  align-self:center;
-  font-family : silom;
-  font-size:3em;
+
+.levelTitle {
+  font-size: 5em;
+   text-decoration: none;
+}
+
+a:link {
   text-decoration: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-.ui {
-  margin-top:20%;
-  display:flex;
-  flex-direction: column;
-  width:30%;
-}
-#playerID {
-  align-self:center;
-  font-size:2em;
+  color: black;
+  border:none;
+  background-color:transparent;
+  outline:none;
 }
 
-#clickText {
-
+a:visited {
+  text-decoration: none;
+  color:black;
+  border:none;
+  background-color:transparent;
+  outline:none;
 }
 
-#endGameMsg {
-  position:fixed;
-  margin-left:40%;
-  padding:1em;
-  top:20%;
-  font-size:5em;
-  z-index:20;
-  background-color:white;
-  display:none;
+a:hover {
+  outline:none;
+  font-size:6em;
 }
 
-.deskContainer {
-  width:70%;
-  display:flex;
-  flex-wrap: wrap;
+a:active {
+  text-decoration: none;
+  border:none;
+  background-color:transparent;
+  outline:none;
 }
-
-.counterDesk {
-  width:15em;
-  height:6.5em;
-  margin:1em;
-  position:relative;
-  background-image: url(Assets/Graphics/deskBackground.png);
-  background-size: contain;
-  background-position: 45%;
-}
-
-.clickTarget {
-  position:absolute;
-  right:35%;
-  bottom:14%;
-  height:4em;
-  width:4.5em;
-  background-size: contain;
-}
-
-
-.deskState {
-  left:1em;
-  bottom:0;
-  position:absolute;
-  background:white;
-  padding:0 0.2em;
-  border-radius:5px;
-  font-size:0.8em;
-  z-index:10;
-}
-
-.deskId {
-  right:33%;
-  top:-0.8em;
-  padding:0 0.5em;
-  position:absolute;
-  background-color:black;
-  color:white;
-  letter-spacing: 3px;
-  font-size:0.8;
-
-}
-
-.deskDoors {
-  background-color: white;
-  opacity:40%;
-  height:80%;
-}
-
-.deskDoorLeft {
-  position:absolute;
-  left:0;
-  top:0;
-  height:95%;
-  width:0;
-}
-
-.deskDoorRight {
-  position:absolute;
-  right:0;
-  top:0;
-  height:95%;
-  width:0;
-}
-
-
-

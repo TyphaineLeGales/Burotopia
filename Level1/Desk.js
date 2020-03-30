@@ -36,7 +36,7 @@ class Desk{
     this.deskEmployee .classList.add('clickTarget');
     this.divDesk.appendChild(this.deskEmployee);
     var randImg = getRandomInt(7);
-    this.deskEmployee.style.backgroundImage = 'url(Assets/Graphics/DeskEmployee-'+ randImg +'.png)';
+    this.deskEmployee.style.backgroundImage = 'url(../Assets/Graphics/DeskEmployee-'+ randImg +'.png)';
     // this.deskEmployee.style.backgroundImage = 'url(Assets/Graphics/DeskEmployee-0.png)';
     //pick random sprite
   }
