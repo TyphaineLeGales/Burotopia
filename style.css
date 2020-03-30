@@ -43,6 +43,17 @@ button {
 
 }
 
+#endGameMsg {
+  position:fixed;
+  margin-left:40%;
+  padding:1em;
+  top:20%;
+  font-size:5em;
+  z-index:20;
+  background-color:white;
+  display:none;
+}
+
 .deskContainer {
   width:70%;
   display:flex;

@@ -3,11 +3,15 @@ var playerIdArray = [];
 var playerID = "";
 var idLength = 5;
 var playerHasWon = false;
+var maxNumberOfGuess = 3;
+var numberOfGuessesRemaining = maxNumberOfGuess;
+var guessesContainer = document.querySelector("#guesses");
 var numberOfDesks = 15;
 var playerIDContainer = document.querySelector("#playerID");
 var deskContainer = document.querySelector("div.deskContainer");
 var desks = [];
 var clickText = document.querySelector("#clickText");
+var endGameMsg =  document.querySelector("#endGameMsg");
 var button = document.querySelector("button");
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
@@ -32,6 +36,7 @@ function playGame() {
   // timer.reset();
   generatePlayerId();
   generateDesks();
+  displayNumberOfGuesses();
   deskContainer.onclick = e => {
     checkForWin(e);
   }
@@ -67,6 +72,10 @@ function generateCharacter() {
 function randomizeStateDesk() {
   var changingDesk = desks[getRandomInt(desks.length)];
   doorAnimation(changingDesk);
+}
+
+function displayNumberOfGuesses () {
+  guessesContainer.innerHTML ="You have" + numberOfGuessesRemaining + "guesses Left";
 }
 
 function doorAnimation (desk) {
@@ -125,16 +134,6 @@ function generateDesks() {
   }
 }
 
-function reset () {
-  for(var i=0; i < numberOfDesks; i++) {
-    desks[i].destroyDesk();
-  }
-  desks = [];
-  playerIDContainer.innerHTML = "";
-  playerHasWon = false;
-  clickText.innerHTML = "";
-  button.style.display = "block";
-}
 
 function checkForWin (e) {
   if(e.target.classList[0] === "clickTarget") {
@@ -142,7 +141,12 @@ function checkForWin (e) {
       playerHasWon = true;
       endGame();
     } else {
-      clickText.innerHTML = "I'm afraid that's not the number I called, please wait for your turn";
+      clickMsg();
+      numberOfGuessesRemaining -=1;
+      displayNumberOfGuesses();
+      if(numberOfGuessesRemaining === 0) {
+        endGame();
+      }
     }
   }
 }
@@ -151,11 +155,32 @@ function timer () {
 
 }
 
+function clickMsg () {
+  clickText.innerHTML = "I'm afraid that's not the number I called, please wait for your turn";
+}
+
 function endGame() {
+  endGameMsg.style.display="block";
   if(playerHasWon) {
-    clickText.innerHTML = "Congratulations ! You won";
+    endGameMsg.innerHTML = "Congratulations ! You won";
+    // go back to map
   } else {
-    clickText.innerHTML = "I'm afraid that's not the number I called, please wait for your turn";
+    endGameMsg.innerHTML = "You lost";
+    setTimeout(reset, 3000);
   }
-  reset();
+
+}
+
+function reset () {
+  for(var i=0; i < numberOfDesks; i++) {
+    desks[i].destroyDesk();
+  }
+  desks = [];
+  endGameMsg.style.display="none";
+  numberOfGuessesRemaining = maxNumberOfGuess;
+  playerIDContainer.innerHTML = "";
+  playerHasWon = false;
+  clickText.innerHTML = "";
+  endGameMsg.innerHTML = "";
+  button.style.display = "block";
 }

@@ -42,12 +42,10 @@ class Desk{
   }
 
   createDoors () {
-
     this.leftDoor.classList.add("deskDoorLeft");
     this.leftDoor.classList.add("deskDoors");
     this.divDesk.appendChild(this.leftDoor);
     this.setDoors(this.leftDoor);
-
     this.rightDoor.classList.add("deskDoorRight");
     this.rightDoor.classList.add("deskDoors");
     this.divDesk.appendChild(this.rightDoor);
@@ -66,7 +64,6 @@ class Desk{
     this.createDeskState();
     this.createDeskEmployee();
     this.createDoors();
-
   }
 
   destroyDesk() {
@@ -80,7 +77,6 @@ class Desk{
       door.style.width = 49 + '%'
     }
   }
-
 
   openDoors () {
     var widthPercentage = 49;
