@@ -42,15 +42,17 @@ class Desk{
     var textEmployee =document.createElement("p");
     textEmployee.classList.add('textEmployee');
     this.divDesk.appendChild(textEmployee);
-    this.employee.addEventListener("click", this.displayTextEmployee(textEmployee));
+    this.employee.onclick = e => {this.displayTextEmployee(textEmployee)};
 
   }
 
 
   displayTextEmployee(textEmployee) {
-    console.log("onclick employee is being called");
-    textEmployee.style.display = "block";
-    textEmployee.innerHTML = "I'm afraid that's not the number I called, please wait for your turn";
+    if(this.isTheAnswer != true) {
+      textEmployee.style.display = "block";
+      textEmployee.innerHTML = "I'm afraid that's not the number I called, please wait for your turn";
+    }
+
     setTimeout(1000, removeTextEmployee);
     function removeTextEmployee () {
        textEmployee.style.display = "none";
@@ -64,11 +66,11 @@ class Desk{
     this.leftDoor.classList.add("deskDoorLeft");
     this.leftDoor.classList.add("deskDoors");
     this.divDesk.appendChild(this.leftDoor);
-    this.setDoors(this.leftDoor);
+    this.initDoors(this.leftDoor);
     this.rightDoor.classList.add("deskDoorRight");
     this.rightDoor.classList.add("deskDoors");
     this.divDesk.appendChild(this.rightDoor);
-    this.setDoors(this.rightDoor);
+    this.initDoors(this.rightDoor);
   }
 
   createDesk() {
@@ -93,7 +95,7 @@ class Desk{
     this.index = index;
   }
 
-  setDoors (door) {
+  initDoors (door) {
     if(this.state === "open") {
       door.style.width = 0 + '%'
     } else {

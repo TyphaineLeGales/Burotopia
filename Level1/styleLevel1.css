@@ -52,7 +52,7 @@ button {
   padding:1em;
   top:20%;
   font-size:5em;
-  z-index:20;
+  z-index:100;
   background-color:white;
   display:none;
 }
