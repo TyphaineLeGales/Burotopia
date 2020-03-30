@@ -14,7 +14,6 @@ class Desk{
     this.rightDoor = document.createElement("div");
     this.deskEmployee = document.createElement("div");
     this.textEmployee =document.createElement("p");
-
   }
 
 
@@ -41,10 +40,12 @@ class Desk{
     var randImg = getRandomInt(7);
     this.deskEmployee.style.backgroundImage = 'url(../Assets/Graphics/DeskEmployee-'+ randImg +'.png)';
     // this.deskEmployee.style.backgroundImage = 'url(Assets/Graphics/DeskEmployee-0.png)';
-    //pick random sprite
+    this.deskEmployee.addEventListener("click", this.displayTextEmployee );
   }
 
+
   createTextEmployee() {
+    console.log("function is being called");
     this.textEmployee.classList.add('textEmployee');
     this.divDesk.appendChild(this.textEmployee);
   }
@@ -82,6 +83,7 @@ class Desk{
     this.createDeskState();
     this.createDeskEmployee();
     this.createDoors();
+
   }
 
   destroyDesk() {

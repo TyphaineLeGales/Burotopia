@@ -140,9 +140,6 @@ function checkForWin (e) {
       endGame();
     } else {
       var clickedDesk = e.target.parentNode;
-      // //find index in desk array
-      // console.log(clickedDesk);
-      // desks[clickedDesk.index].displayTextEmployee();
       numberOfGuessesRemaining -=1;
       displayNumberOfGuesses();
       if(numberOfGuessesRemaining === 0) {
@@ -154,10 +151,6 @@ function checkForWin (e) {
 
 function timer () {
 
-}
-
-function clickMsg () {
-  clickText.innerHTML = "I'm afraid that's not the number I called, please wait for your turn";
 }
 
 function endGame() {
@@ -174,7 +167,6 @@ function endGame() {
 
 function goBackToMap () {
   window.location.href = "../index.html";
-
 }
 
 function reset () {
