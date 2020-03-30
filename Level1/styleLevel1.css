@@ -5,15 +5,6 @@
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'ds-digitalnormal';
-    src: url('digi.woff2') format('woff2'),
-         url('digi.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
 body {
   font-family: silom;
   display:flex;
@@ -41,6 +32,11 @@ button {
 
 #clickText {
 
+}
+
+.textEmployee {
+  background-color:red;
+  display:none;
 }
 
 #endGameMsg {

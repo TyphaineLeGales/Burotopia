@@ -10,10 +10,9 @@ body {
   background-color:none;
 }
 
-
 .levelTitle {
   font-size: 5em;
-   text-decoration: none;
+  text-decoration: none;
 }
 
 a:link {
@@ -34,7 +33,6 @@ a:visited {
 
 a:hover {
   outline:none;
-  font-size:6em;
 }
 
 a:active {

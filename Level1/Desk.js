@@ -2,6 +2,7 @@ var deskContainer = document.querySelector("div.deskContainer");
 
 class Desk{
   constructor() {
+    this.index = null;
     this.id = [];
     this.state = "closed";
     this.isTheAnswer = false;
@@ -12,8 +13,10 @@ class Desk{
     this.leftDoor = document.createElement("div");
     this.rightDoor = document.createElement("div");
     this.deskEmployee = document.createElement("div");
+    this.textEmployee =document.createElement("p");
 
   }
+
 
   createDeskId() {
     var deskId = document.createElement("p");
@@ -33,13 +36,29 @@ class Desk{
   }
 
   createDeskEmployee() {
-    this.deskEmployee .classList.add('clickTarget');
+    this.deskEmployee.classList.add('clickTarget');
     this.divDesk.appendChild(this.deskEmployee);
     var randImg = getRandomInt(7);
     this.deskEmployee.style.backgroundImage = 'url(../Assets/Graphics/DeskEmployee-'+ randImg +'.png)';
     // this.deskEmployee.style.backgroundImage = 'url(Assets/Graphics/DeskEmployee-0.png)';
     //pick random sprite
   }
+
+  createTextEmployee() {
+    this.textEmployee.classList.add('textEmployee');
+    this.divDesk.appendChild(this.textEmployee);
+  }
+
+  displayTextEmployee() {
+    this.textEmployee.innerHTML = "I'm afraid that's not the number I called, please wait for your turn";
+    this.textEmployee.style.display = "block";
+    setTimeout(1000, removeTextEmployee);
+    function removeTextEmployee () {
+       this.textEmployee.style.display = "none";
+    }
+  }
+
+
 
   createDoors () {
     this.leftDoor.classList.add("deskDoorLeft");
@@ -51,7 +70,6 @@ class Desk{
     this.divDesk.appendChild(this.rightDoor);
     this.setDoors(this.rightDoor);
   }
-
 
   createDesk() {
     this.divDesk = document.createElement("div");
@@ -68,6 +86,10 @@ class Desk{
 
   destroyDesk() {
     this.divDesk.remove();
+  }
+
+  setIndex(index) {
+    this.index = index;
   }
 
   setDoors (door) {

@@ -18,13 +18,12 @@ button.addEventListener("click", clickHandler, false);
 // var timer = new Timer();
 
   //TO DO :
+  //dialogues according to remaining guesses : pending
+  //Timer
   //fix right id with changing state changes right answer desk
   //reshuflle id's and openDesk : Always one desk should be open with right id
-  //Timer
-  //Remaining guesses
+  //animation when changing number type transition
   //Other Clients
-  //TextBox => dialogues
-  //animation when changin number type transition
   //Animation on deskHover and on click (paper throwing)
 
 function clickHandler() {
@@ -98,25 +97,24 @@ function generateDesks() {
   }
   var randomIndexAnswer = getRandomInt(desks.length);
   var correctDesk = desks[randomIndexAnswer];
+  correctDesk.index = randomIndexAnswer;
   correctDesk.id = playerID;
   correctDesk.state = "open";
   correctDesk.isTheAnswer = true;
 
   //add desk with same id that is closed
   var randomIndex = getRandomInt(desks.length);
-
   if(randomIndexAnswer === randomIndex) {
     randomIndex = getRandomInt(desks.length);
   }
-
   var closedDeskSameId = desks[randomIndex];
+  closedDeskSameId.index = randomIndex;
   closedDeskSameId.id = playerID;
   closedDeskSameId.state = "closed";
   closedDeskSameId.isTheAnswer = false;
-
-
   for(var i = 0; i< desks.length; i++) {
     var desk = desks[i];
+    desk.index = i;
     if(desk.id != playerID) {
       //Generate random state
       var randBinary = Math.round(Math.random());
@@ -141,7 +139,10 @@ function checkForWin (e) {
       playerHasWon = true;
       endGame();
     } else {
-      clickMsg();
+      var clickedDesk = e.target.parentNode;
+      // //find index in desk array
+      // console.log(clickedDesk);
+      // desks[clickedDesk.index].displayTextEmployee();
       numberOfGuessesRemaining -=1;
       displayNumberOfGuesses();
       if(numberOfGuessesRemaining === 0) {
@@ -163,11 +164,16 @@ function endGame() {
   endGameMsg.style.display="block";
   if(playerHasWon) {
     endGameMsg.innerHTML = "Congratulations ! You won";
-    // go back to map
+    setTimeout(goBackToMap, 3000);
   } else {
     endGameMsg.innerHTML = "You lost";
     setTimeout(reset, 3000);
   }
+
+}
+
+function goBackToMap () {
+  window.location.href = "../index.html";
 
 }
 
