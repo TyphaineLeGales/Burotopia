@@ -13,8 +13,8 @@ var desks = [];
 var endGameMsg =  document.querySelector("#endGameMsg");
 var timeAmount = 60;
 var timer = document.querySelector("#timer");
+var startUI = document.querySelector(".introLevel");
 var button = document.querySelector("button");
-var startGraphics = document.querySelector("startLevelGraphics");
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 // var timer = new Timer();
@@ -30,7 +30,7 @@ button.addEventListener("click", clickHandler, false);
 
 function clickHandler() {
   playGame();
-  button.style.display= "none";
+  startUI.style.display= "none";
 }
 
 function playGame() {
@@ -151,12 +151,17 @@ function timer () {
   timer.innerHTML = "" + timeAmount;
 }
 
+function hasWonScreen() {
+  deskContainer.style.display="none";
+  endGameMsg.innerHTML = "Congratulations ! You won";
+  setTimeout(goBackToMap, 3000);
+}
+
 
 function endGame() {
   endGameMsg.style.display="block";
   if(playerHasWon) {
-    endGameMsg.innerHTML = "Congratulations ! You won";
-    setTimeout(goBackToMap, 3000);
+    hasWonScreen();
   } else {
     endGameMsg.innerHTML = "You lost";
     //Take a new number transition page
@@ -174,5 +179,5 @@ function reset () {
   playerIDContainer.innerHTML = "";
   playerHasWon = false;
   endGameMsg.innerHTML = "";
-  button.style.display = "block";
+  startUI.style.display = "block";
 }
