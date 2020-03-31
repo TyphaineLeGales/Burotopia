@@ -12,7 +12,7 @@ body {
 }
 
 button {
-  align-self:center;
+  margin-left:22%;
   font-family : silom;
   font-size:3em;
   text-decoration: none;
@@ -25,6 +25,18 @@ button {
   flex-direction: column;
   width:30%;
 }
+
+.introLevel{
+  position:fixed;
+  top:25%;
+  left:20%;
+}
+
+#startLevelGraphics {
+  margin-left:15%;
+}
+
+
 #playerID {
   align-self:center;
   font-size:2em;

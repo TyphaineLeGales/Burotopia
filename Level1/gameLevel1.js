@@ -6,7 +6,7 @@ var playerHasWon = false;
 var maxNumberOfGuess = 3;
 var remainingGuessesNum = maxNumberOfGuess;
 var guessesContainer = document.querySelector("#guesses");
-var numberOfDesks = 20;
+var numberOfDesks = 24;
 var playerIDContainer = document.querySelector("#playerID");
 var deskContainer = document.querySelector("div.deskContainer");
 var desks = [];
@@ -14,6 +14,7 @@ var endGameMsg =  document.querySelector("#endGameMsg");
 var timeAmount = 60;
 var timer = document.querySelector("#timer");
 var button = document.querySelector("button");
+var startGraphics = document.querySelector("startLevelGraphics");
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 // var timer = new Timer();
@@ -35,7 +36,6 @@ function clickHandler() {
 function playGame() {
   generatePlayerId();
   generateDesks();
-  displayNumberOfGuesses();
   deskContainer.onclick = e => {
     checkForWin(e);
   }
@@ -137,7 +137,6 @@ function checkForWin (e) {
     } else if(remainingGuessesNum > 0){
       var clickedDesk = e.target.parentNode;
       remainingGuessesNum -=1;
-      displayNumberOfGuesses();
       } else if(remainingGuessesNum === 0) {
         endGame();
     }
@@ -160,6 +159,7 @@ function endGame() {
     setTimeout(goBackToMap, 3000);
   } else {
     endGameMsg.innerHTML = "You lost";
+    //Take a new number transition page
     setTimeout(reset, 3000);
   }
 }
@@ -170,7 +170,7 @@ function reset () {
   }
   desks = [];
   endGameMsg.style.display="none";
-  numberOfGuessesRemaining = maxNumberOfGuess;
+  remainingGuessesNum= maxNumberOfGuess;
   playerIDContainer.innerHTML = "";
   playerHasWon = false;
   endGameMsg.innerHTML = "";
