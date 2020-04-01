@@ -151,21 +151,25 @@ function timer () {
   timer.innerHTML = "" + timeAmount;
 }
 
-function hasWonScreen() {
-  deskContainer.style.display="none";
+function win() {
   endGameMsg.innerHTML = "Congratulations ! You won";
   setTimeout(goBackToMap, 3000);
+}
+
+function playerHasLost() {
+  endGameMsg.innerHTML = "You lost";
+  setTimeout(reset, 3000);
 }
 
 
 function endGame() {
   endGameMsg.style.display="block";
+  deskContainer.style.display="none";
   if(playerHasWon) {
-    hasWonScreen();
+    win();
   } else {
-    endGameMsg.innerHTML = "You lost";
     //Take a new number transition page
-    setTimeout(reset, 3000);
+    playerHasLost();
   }
 }
 
@@ -179,5 +183,7 @@ function reset () {
   playerIDContainer.innerHTML = "";
   playerHasWon = false;
   endGameMsg.innerHTML = "";
-  startUI.style.display = "block";
+  deskContainer.style.display="flex";
+  playGame();
+  // startUI.style.display = "block";
 }
