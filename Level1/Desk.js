@@ -15,6 +15,7 @@ class Desk{
     this.employee = document.createElement("div");
     this.hasACustomer = false;
     this.customer = document.createElement("div");
+    this.customerLife = getRandomInt(8000);
   }
 
   createId() {
@@ -83,6 +84,21 @@ class Desk{
     this.divDesk.appendChild(this.customer);
   }
 
+  customerPopUp () {
+    var bottomOffset = 30;
+    if(this.hasACustomer === true) {
+      this.customer.style.display = "block";
+      console.log(this.customerLife);
+      setTimeout(customerGoesAway(this.customer, this.hasACustomer), this.customerLife);
+      function customerGoesAway (customer, bool) {
+      //   console.log("function is being called");
+        customer.style.display = "none";
+      //   bool = false;
+        console.log(customer, bool);
+      }
+    }
+  }
+
   createDesk() {
     this.divDesk = document.createElement("div");
     this.divDesk.classList.add('counterDesk');
@@ -118,17 +134,14 @@ class Desk{
     var widthPercentage = 49;
     var doorLeft = this.leftDoor;
     var doorRight = this.rightDoor;
-    setTimeout(opening, 10);
-    function opening () {
-      var id = setInterval(openingAnim, 10);
-      function openingAnim() {
-        if (widthPercentage === 0) {
-          clearInterval(id);
-        } else {
-          doorRight.style.width = widthPercentage + '%';
-          doorLeft.style.width = widthPercentage + '%';
-          widthPercentage--;
-        }
+    var id = setInterval(openingAnim, 10);
+    function openingAnim() {
+      if (widthPercentage === 0) {
+        clearInterval(id);
+      } else {
+        doorRight.style.width = widthPercentage + '%';
+        doorLeft.style.width = widthPercentage + '%';
+        widthPercentage--;
       }
     }
   }
@@ -137,17 +150,14 @@ class Desk{
     var widthPercentage = 0;
     var doorLeft = this.leftDoor;
     var doorRight = this.rightDoor;
-    setTimeout(closing, 10);
-    function closing () {
-      var id = setInterval(closingAnim, 10);
-      function closingAnim() {
-        if (widthPercentage === 50) {
-          clearInterval(id);
-        } else {
-          doorRight.style.width = widthPercentage + '%';
-          doorLeft.style.width = widthPercentage + '%';
-          widthPercentage++;
-        }
+    var id = setInterval(closingAnim, 10);
+    function closingAnim() {
+      if (widthPercentage === 50) {
+        clearInterval(id);
+      } else {
+        doorRight.style.width = widthPercentage + '%';
+        doorLeft.style.width = widthPercentage + '%';
+        widthPercentage++;
       }
     }
   }

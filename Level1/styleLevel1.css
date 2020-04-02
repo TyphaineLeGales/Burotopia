@@ -145,6 +145,7 @@ button {
   width:50%;
   background-color: red;
   left:30%;
+  display:none;
 }
 
  @keyframes employeeText {

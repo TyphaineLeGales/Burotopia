@@ -12,7 +12,7 @@ var deskContainer = document.querySelector("div.deskContainer");
 var desks = [];
 var randomizeDeskTimer = 3;
 var endGameMsg =  document.querySelector("#endGameMsg");
-var maxTime = 600 //timer is called every second;
+var maxTime = 60 //timer is called every second;
 var timeLeft = maxTime;
 var timerId;
 var timerContainer = document.querySelector("#timer");
@@ -69,6 +69,12 @@ function generateCharacter() {
 function randomizeStateDesk() {
   var changingDesk = desks[getRandomInt(desks.length)];
   doorAnimation(changingDesk);
+}
+
+function randDeskCustomer() {
+  var changingDesk = desks[getRandomInt(desks.length)];
+  changingDesk.hasACustomer = true;
+  changingDesk.customerPopUp();
 }
 
 function displayNumberOfGuesses () {
@@ -156,6 +162,8 @@ function updateIsTheAnswer() {
    }
 }
 
+
+
 function countdown () {
   //if timeLeft < 0
   //"We are closing"
@@ -164,6 +172,7 @@ function countdown () {
   if(timeLeft%randomizeDeskTimer===0) {
     randomizeStateDesk();
     updateIsTheAnswer();
+    randDeskCustomer();
   }
   if(timeLeft === 0) {
     clearInterval(timerId);
