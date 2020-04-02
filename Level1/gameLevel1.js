@@ -23,7 +23,6 @@ button.addEventListener("click", clickHandler, false);
 
   //TO DO :
   //dialogues : change error msg according to remaining guesses + different loosing cases
-  //fix right id with changing state changes right answer desk
   //reshuflle id's and openDesk : Always one desk should be open with right id
   //animation when changing number type transition //check requestAnimationFrame
   //Other Clients

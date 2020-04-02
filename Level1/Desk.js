@@ -13,6 +13,8 @@ class Desk{
     this.leftDoor = document.createElement("div");
     this.rightDoor = document.createElement("div");
     this.employee = document.createElement("div");
+    this.hasACustomer = false;
+    this.customer = document.createElement("div");
   }
 
   createId() {
@@ -76,6 +78,11 @@ class Desk{
     this.initDoors(this.rightDoor);
   }
 
+  createCustomer () {
+    this.customer.classList.add("customer");
+    this.divDesk.appendChild(this.customer);
+  }
+
   createDesk() {
     this.divDesk = document.createElement("div");
     this.divDesk.classList.add('counterDesk');
@@ -87,6 +94,7 @@ class Desk{
     this.createState();
     this.createEmployee();
     this.createDoors();
+    this.createCustomer();
 
   }
 
