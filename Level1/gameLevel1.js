@@ -10,9 +10,11 @@ var numberOfDesks = 24;
 var playerIDContainer = document.querySelector("#playerID");
 var deskContainer = document.querySelector("div.deskContainer");
 var desks = [];
+var randomizeDeskTimer = 3;
 var endGameMsg =  document.querySelector("#endGameMsg");
-var timeAmount = 60;
-var timer = document.querySelector("#timer");
+var maxTime = 60;
+var timer = maxTime;
+var timerContainer = document.querySelector("#timer");
 var startUI = document.querySelector(".introLevel");
 var button = document.querySelector("button");
 button.style.cursor = "pointer";
@@ -21,7 +23,7 @@ button.addEventListener("click", clickHandler, false);
 
   //TO DO :
   //change dialogues according to remaining guesses
-  //Timer
+  //Timer => trigger randomize state desk according to timer with a counter in timer setInterval
   //fix right id with changing state changes right answer desk
   //reshuflle id's and openDesk : Always one desk should be open with right id
   //animation when changing number type transition //check requestAnimationFrame
@@ -39,7 +41,8 @@ function playGame() {
   deskContainer.onclick = e => {
     checkForWin(e);
   }
-  window.setInterval(randomizeStateDesk, 3000);
+  // window.setInterval(randomizeStateDesk, 3000);
+  window.setInterval(countdown, 1000);
 }
 
 function generatePlayerId() {
@@ -143,12 +146,15 @@ function checkForWin (e) {
   }
 }
 
-function timer () {
+function countdown () {
   //if timeLeft < 0
   // endGame(); "We are closing"
-  console.log(timer);
-  timeAmount --;
-  timer.innerHTML = "" + timeAmount;
+  timer --;
+  timerContainer.innerHTML = "" + maxTime;
+  if(timer === 0) {
+    clearInterval();
+    endGame();
+  }
 }
 
 function win() {
@@ -177,6 +183,7 @@ function reset () {
   for(var i=0; i < numberOfDesks; i++) {
     desks[i].destroyDesk();
   }
+  timer = timeAmount;
   desks = [];
   endGameMsg.style.display="none";
   remainingGuessesNum= maxNumberOfGuess;
