@@ -20,11 +20,9 @@ var startUI = document.querySelector(".introLevel");
 var button = document.querySelector("button");
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
-// var timer = new Timer();
 
   //TO DO :
-  //change dialogues according to remaining guesses
-  //Timer => trigger randomize state desk according to timer with a counter in timer setInterval
+  //dialogues : change error msg according to remaining guesses + different loosing cases
   //fix right id with changing state changes right answer desk
   //reshuflle id's and openDesk : Always one desk should be open with right id
   //animation when changing number type transition //check requestAnimationFrame
@@ -149,7 +147,7 @@ function checkForWin (e) {
 
 function countdown () {
   //if timeLeft < 0
-  // endGame(); "We are closing"
+  //"We are closing"
   timeLeft -= 1;
   timerContainer.innerHTML = "" + timeLeft;
   if(timeLeft%randomizeDeskTimer===0) {
@@ -197,5 +195,4 @@ function reset () {
   endGameMsg.innerHTML = "";
   deskContainer.style.display="flex";
   playGame();
-  // startUI.style.display = "block";
 }

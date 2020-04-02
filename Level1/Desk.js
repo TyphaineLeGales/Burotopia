@@ -10,7 +10,6 @@ class Desk{
     this.divDesk = document.createElement("div");
     this.divDeskState = document.createElement("p");
     this.divDoors = document.createElement("div");
-    this.doorDelay = getRandomInt(1000);
     this.leftDoor = document.createElement("div");
     this.rightDoor = document.createElement("div");
     this.employee = document.createElement("div");
@@ -121,7 +120,7 @@ class Desk{
     var widthPercentage = 0;
     var doorLeft = this.leftDoor;
     var doorRight = this.rightDoor;
-    setTimeout(closing, this.doorDelay);
+    setTimeout(closing, 10);
     function closing () {
       var id = setInterval(closingAnim, 10);
       function closingAnim() {
