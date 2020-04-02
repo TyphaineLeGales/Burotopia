@@ -12,8 +12,9 @@ var deskContainer = document.querySelector("div.deskContainer");
 var desks = [];
 var randomizeDeskTimer = 3;
 var endGameMsg =  document.querySelector("#endGameMsg");
-var maxTime = 60;
-var timer = maxTime;
+var maxTime = 60 //timer is called every second;
+var timeLeft = maxTime;
+var timerId;
 var timerContainer = document.querySelector("#timer");
 var startUI = document.querySelector(".introLevel");
 var button = document.querySelector("button");
@@ -42,7 +43,7 @@ function playGame() {
     checkForWin(e);
   }
   // window.setInterval(randomizeStateDesk, 3000);
-  window.setInterval(countdown, 1000);
+  timerId = window.setInterval(countdown, 1000);
 }
 
 function generatePlayerId() {
@@ -149,10 +150,10 @@ function checkForWin (e) {
 function countdown () {
   //if timeLeft < 0
   // endGame(); "We are closing"
-  timer --;
-  timerContainer.innerHTML = "" + maxTime;
-  if(timer === 0) {
-    clearInterval();
+  timeLeft -= 1;
+  timerContainer.innerHTML = "" + timeLeft;
+  if(timeLeft === 0) {
+    clearInterval(timerId);
     endGame();
   }
 }
@@ -169,6 +170,7 @@ function playerHasLost() {
 
 
 function endGame() {
+  clearInterval();
   endGameMsg.style.display="block";
   deskContainer.style.display="none";
   if(playerHasWon) {
@@ -183,7 +185,7 @@ function reset () {
   for(var i=0; i < numberOfDesks; i++) {
     desks[i].destroyDesk();
   }
-  timer = timeAmount;
+  timeLeft = maxTime;
   desks = [];
   endGameMsg.style.display="none";
   remainingGuessesNum= maxNumberOfGuess;
