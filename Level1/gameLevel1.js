@@ -152,6 +152,9 @@ function countdown () {
   // endGame(); "We are closing"
   timeLeft -= 1;
   timerContainer.innerHTML = "" + timeLeft;
+  if(timeLeft%randomizeDeskTimer===0) {
+    randomizeStateDesk();
+  }
   if(timeLeft === 0) {
     clearInterval(timerId);
     endGame();
