@@ -32,6 +32,15 @@ class Desk{
     this.divDeskState.innerHTML = this.state;
   }
 
+  setIsTheAnswer(bool) {
+    this.isTheAnswer = bool;
+    if(this.isTheAnswer === true) {
+      this.divDesk.classList.add("isTheAnswer");
+    } else {
+       this.divDesk.classList.remove("isTheAnswer");
+    }
+  }
+
   createEmployee() {
     this.employee.classList.add('clickTarget');
     this.divDesk.appendChild(this.employee);

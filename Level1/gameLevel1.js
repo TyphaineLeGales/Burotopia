@@ -12,7 +12,7 @@ var deskContainer = document.querySelector("div.deskContainer");
 var desks = [];
 var randomizeDeskTimer = 3;
 var endGameMsg =  document.querySelector("#endGameMsg");
-var maxTime = 60 //timer is called every second;
+var maxTime = 600 //timer is called every second;
 var timeLeft = maxTime;
 var timerId;
 var timerContainer = document.querySelector("#timer");
@@ -28,6 +28,7 @@ button.addEventListener("click", clickHandler, false);
   //animation when changing number type transition //check requestAnimationFrame
   //Other Clients
   //Animation on deskHover and on click (paper throwing)
+  //if time clean open/closing into one mooveDoor function
 
 function clickHandler() {
   playGame();
@@ -145,6 +146,17 @@ function checkForWin (e) {
   }
 }
 
+function updateIsTheAnswer() {
+   for(var i=0; i < numberOfDesks; i++) {
+     if(desks[i].id ===  playerID && desks[i].state === "open") {
+        desks[i].setIsTheAnswer(true);
+     } else {
+        desks[i].setIsTheAnswer(false);
+     }
+
+   }
+}
+
 function countdown () {
   //if timeLeft < 0
   //"We are closing"
@@ -152,6 +164,7 @@ function countdown () {
   timerContainer.innerHTML = "" + timeLeft;
   if(timeLeft%randomizeDeskTimer===0) {
     randomizeStateDesk();
+    updateIsTheAnswer();
   }
   if(timeLeft === 0) {
     clearInterval(timerId);
