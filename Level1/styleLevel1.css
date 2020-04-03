@@ -146,6 +146,33 @@ button {
   width:40%;
   display:none;
   background-size: contain;
+  animation-name:customerPopUp;
+  animation-duration:0.5s;
+}
+
+.customerPopOut {
+  animation-name: customerPopOut;
+  animation-duration:0.5s;
+}
+
+@keyframes customerPopOut {
+  from {
+    bottom:0%;
+  }
+
+  to {
+    bottom:-80%;
+  }
+}
+
+@keyframes customerPopUp {
+  from {
+    bottom:-10%;
+  }
+
+  to {
+    bottom:0;
+  }
 }
 
  @keyframes employeeText {

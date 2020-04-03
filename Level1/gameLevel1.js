@@ -22,7 +22,7 @@ button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
   //TO DO :
-  //Finish Clients logic + graphics
+  //customer animation
   //dialogues : change error msg according to remaining guesses + different loosing cases
   //reshuflle id's and openDesk : Always one desk should be open with right id
   //animation when changing number type transition //check requestAnimationFrame
@@ -116,12 +116,19 @@ function randomizeStateDesk() {
 
 function randDeskCustomer() {
   var changingDesk = desks[getRandomInt(desks.length)];
+  var timeAtDesk = changingDesk.customerLife+3000;
   changingDesk.hasACustomer = true;
   changingDesk.customerUpdate();
-  setTimeout(customerIsRemoved, changingDesk.customerLife+3000);
-  function customerIsRemoved() {
+  setTimeout(customerGoesOutDesk, timeAtDesk);
+  function customerGoesOutDesk() {
+    changingDesk.customer.classList.add('customerPopOut');
+  }
+  setTimeout(customerIsRemoved, timeAtDesk + 450);
+  function customerIsRemoved () {
     changingDesk.hasACustomer = false;
+    console.log(changingDesk.hasACustomer);
     changingDesk.customerUpdate();
+    changingDesk.customer.classList.remove('customerPopOut');
   }
 }
 
