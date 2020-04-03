@@ -22,8 +22,7 @@ button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
   //TO DO :
-  //dialogues : change error msg according to remaining guesses + different loosing cases
-  //reshuflle id's and openDesk : Always one desk should be open with right id
+  //reshuflle id => next Please
   //animation when changing number type transition //check requestAnimationFrame
   //Animation on deskHover and on click (paper throwing)
 
@@ -131,8 +130,13 @@ function randDeskCustomer() {
   }
 }
 
-function randomizeId (desk) {
-  desk.id =
+function randomizeId () {
+  var changingDesk = desks[getRandomInt(desks.length)];
+  for(var j = 0; j < idLength; j++) {
+        changingDesk.id[j] = playerIdArray[getRandomInt(idLength)];
+      }
+  changingDesk.setId();
+  changingDesk.displayTextEmployee(changingDesk.textEmployee, "Next Please !");
 }
 
 
@@ -156,6 +160,10 @@ function doorAnimation (desk) {
 function countdown () {
   timeLeft -= 1;
   timerContainer.innerHTML = "" + timeLeft;
+
+  if(timeLeft%1 ===0) {
+    randomizeId();
+  }
   if(timeLeft%randomizeDeskTimer===0) {
     randomizeStateDesk();
     updateIsTheAnswer();

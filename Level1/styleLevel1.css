@@ -47,9 +47,10 @@ button {
   display:none;
   position:absolute;
   bottom:0;
-  left:1em;
-  width:90%;
-  font-size:0.6em;
+  right:0;
+  text-align:center;
+  width:100%;
+  font-size:0.8em;
   z-index:40;
   text-align:center;
   animation-duration: 0.5s;

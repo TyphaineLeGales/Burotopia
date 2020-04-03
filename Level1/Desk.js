@@ -16,13 +16,18 @@ class Desk{
     this.hasACustomer = false;
     this.customer = document.createElement("div");
     this.customerLife = getRandomInt(6000);
+    this.deskId =document.createElement("p");
+    this.textEmployee = document.createElement("p");
   }
 
   createId() {
-    var deskId = document.createElement("p");
-    deskId.classList.add('deskId');
-    this.divDesk.appendChild(deskId);
-    deskId.innerHTML = ""+this.id[0] + this.id[1] + this.id[2] + this.id[3] + this.id[4] ;
+    this.deskId.classList.add('deskId');
+    this.divDesk.appendChild(this.deskId);
+    this.deskId.innerHTML = ""+this.id[0] + this.id[1] + this.id[2] + this.id[3] + this.id[4] ;
+  }
+
+  setId() {
+    this.deskId.innerHTML = ""+this.id[0] + this.id[1] + this.id[2] + this.id[3] + this.id[4] ; ;
   }
 
   createState() {
@@ -50,14 +55,12 @@ class Desk{
     var randImg = getRandomInt(8);
     this.employee.style.backgroundImage = 'url(../Assets/Graphics/DeskEmployee-'+ randImg +'.png)';
 
-    var textEmployee =document.createElement("p");
-    textEmployee.classList.add('textEmployee');
-    this.divDesk.appendChild(textEmployee);
-    this.employee.onclick = e => {this.displayTextEmployee(textEmployee, employeeText1)};
+    this.textEmployee.classList.add('textEmployee');
+    this.divDesk.appendChild(this.textEmployee);
+    this.employee.onclick = e => {this.displayTextEmployee(this.textEmployee, employeeText1)};
   }
 
   displayTextEmployee(textEmployee, text) {
-    //if remaining guesses === 3 : Get Out of here => lost
     if(this.isTheAnswer != true) {
       textEmployee.style.display = "block";
       textEmployee.innerHTML = text ;
