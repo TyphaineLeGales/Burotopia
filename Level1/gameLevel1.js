@@ -22,8 +22,9 @@ button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
   //TO DO :
-  //reshuflle id => next Please
-  //animation when changing number type transition //check requestAnimationFrame
+  //Text box
+  // closed Desk can't change number id= "empty thread"
+  //animation when changing number type transition
   //Animation on deskHover and on click (paper throwing)
 
 function clickHandler() {

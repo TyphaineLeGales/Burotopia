@@ -61,7 +61,7 @@ button {
   position:fixed;
   margin-left:40%;
   padding:1em;
-  top:20%;
+  top:0;
   font-size:5em;
   z-index:100;
   background-color:white;
@@ -80,15 +80,16 @@ button {
   height:6.5em;
   position:relative;
   background-image: url(../Assets/Graphics/deskBackground.png);
-  background-size: contain;
-  background-position: 45%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*background-position: 45%;*/
 }
 
 
 .clickTarget {
   position:absolute;
   right:35%;
-  bottom:14%;
+  bottom:0;
   height:4em;
   width:4.5em;
   background-size: contain;
@@ -143,7 +144,7 @@ button {
 .customer {
   position:absolute;
   bottom:0;
-  right:20%;
+  right:30%;
   height:80%;
   width:40%;
   display:none;
