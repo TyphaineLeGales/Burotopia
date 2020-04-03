@@ -118,7 +118,7 @@ function randDeskCustomer() {
   var changingDesk = desks[getRandomInt(desks.length)];
   changingDesk.hasACustomer = true;
   changingDesk.customerUpdate();
-  setTimeout(customerIsRemoved, changingDesk.customerLife);
+  setTimeout(customerIsRemoved, changingDesk.customerLife+3000);
   function customerIsRemoved() {
     changingDesk.hasACustomer = false;
     changingDesk.customerUpdate();

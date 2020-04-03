@@ -141,11 +141,11 @@ button {
 .customer {
   position:absolute;
   bottom:0;
-  height:50%;
-  width:50%;
-  background-color: red;
-  left:30%;
+  right:20%;
+  height:80%;
+  width:40%;
   display:none;
+  background-size: contain;
 }
 
  @keyframes employeeText {
