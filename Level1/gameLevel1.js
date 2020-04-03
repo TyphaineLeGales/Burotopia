@@ -136,8 +136,11 @@ function randomizeId () {
   for(var j = 0; j < idLength; j++) {
         changingDesk.id[j] = playerIdArray[getRandomInt(idLength)];
       }
-  changingDesk.setId();
-  changingDesk.displayTextEmployee(changingDesk.textEmployee, "Next Please !");
+  if(changingDesk.state === "open") {
+    changingDesk.setId();
+    changingDesk.displayTextEmployee(changingDesk.textEmployee, "Next Please !");
+
+  }
 }
 
 
