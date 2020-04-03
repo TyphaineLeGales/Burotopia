@@ -89,8 +89,10 @@ class Desk{
   customerUpdate() {
      if(this.hasACustomer === true) {
       this.customer.style.display = "block";
+      this.divDesk.classList.add('hasACustomer');
      } else {
       this.customer.style.display = "none";
+      this.divDesk.classList.remove('hasACustomer');
      }
   }
 

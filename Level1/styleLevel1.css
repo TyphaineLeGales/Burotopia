@@ -71,6 +71,7 @@ button {
   width:70%;
   display:flex;
   flex-wrap: wrap;
+  overflow:hidden;
 }
 
 .counterDesk {

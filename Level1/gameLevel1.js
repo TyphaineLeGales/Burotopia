@@ -12,7 +12,7 @@ var deskContainer = document.querySelector("div.deskContainer");
 var desks = [];
 var randomizeDeskTimer = 3;
 var endGameMsg =  document.querySelector("#endGameMsg");
-var maxTime = 60 //timer is called every second;
+var maxTime = 600 //timer is called every second;
 var timeLeft = maxTime;
 var timerId;
 var timerContainer = document.querySelector("#timer");
@@ -22,7 +22,7 @@ button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
   //TO DO :
-  //customer animation
+  //customer => can't c
   //dialogues : change error msg according to remaining guesses + different loosing cases
   //reshuflle id's and openDesk : Always one desk should be open with right id
   //animation when changing number type transition //check requestAnimationFrame
@@ -126,7 +126,6 @@ function randDeskCustomer() {
   setTimeout(customerIsRemoved, timeAtDesk + 450);
   function customerIsRemoved () {
     changingDesk.hasACustomer = false;
-    console.log(changingDesk.hasACustomer);
     changingDesk.customerUpdate();
     changingDesk.customer.classList.remove('customerPopOut');
   }
@@ -169,11 +168,11 @@ function countdown () {
 
 function checkForWin (e) {
   if(e.target.classList[0] === "clickTarget") {
+      var clickedDesk = e.target.parentNode;
     if(e.target.parentNode.classList[1] === "isTheAnswer") {
       playerHasWon = true;
       endGame();
     } else if(remainingGuessesNum > 0){
-      var clickedDesk = e.target.parentNode;
       remainingGuessesNum -=1;
       } else if(remainingGuessesNum === 0) {
         endGame();
