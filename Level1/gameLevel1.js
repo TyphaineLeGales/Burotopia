@@ -22,10 +22,10 @@ button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
   //TO DO :
+  //Finish Clients logic + graphics
   //dialogues : change error msg according to remaining guesses + different loosing cases
   //reshuflle id's and openDesk : Always one desk should be open with right id
   //animation when changing number type transition //check requestAnimationFrame
-  //Other Clients
   //Animation on deskHover and on click (paper throwing)
   //if time clean open/closing into one mooveDoor function
 
@@ -64,33 +64,6 @@ function generateCharacter() {
   }
 
   return idElement ;
-}
-
-function randomizeStateDesk() {
-  var changingDesk = desks[getRandomInt(desks.length)];
-  doorAnimation(changingDesk);
-}
-
-function randDeskCustomer() {
-  var changingDesk = desks[getRandomInt(desks.length)];
-  changingDesk.hasACustomer = true;
-  changingDesk.customerPopUp();
-}
-
-function displayNumberOfGuesses () {
-  guessesContainer.innerHTML ="You have" + remainingGuessesNum + "guesses Left";
-}
-
-function doorAnimation (desk) {
-  if(desk.state === "open") {
-    desk.closeDoors();
-    desk.state= "closed";
-    desk.setState();
-  } else if (desk.state === "closed") {
-    desk.openDoors();
-    desk.state ="open";
-    desk.setState();
-  }
 }
 
 function generateDesks() {
@@ -136,6 +109,57 @@ function generateDesks() {
   }
 }
 
+function randomizeStateDesk() {
+  var changingDesk = desks[getRandomInt(desks.length)];
+  doorAnimation(changingDesk);
+}
+
+function randDeskCustomer() {
+  var changingDesk = desks[getRandomInt(desks.length)];
+  changingDesk.hasACustomer = true;
+  changingDesk.customerUpdate();
+  console.log(changingDesk);
+  setTimeout(customerIsRemoved, changingDesk.customerLife);
+  function customerIsRemoved() {
+    changingDesk.hasACustomer = false;
+    changingDesk.customerUpdate();
+  }
+}
+
+
+function displayNumberOfGuesses () {
+  guessesContainer.innerHTML ="You have" + remainingGuessesNum + "guesses Left";
+}
+
+function doorAnimation (desk) {
+  if(desk.state === "open") {
+    desk.closeDoors();
+    desk.state= "closed";
+    desk.setState();
+  } else if (desk.state === "closed") {
+    desk.openDoors();
+    desk.state ="open";
+    desk.setState();
+  }
+}
+
+
+function countdown () {
+  //"We are closing"
+  //"you're number has already been called pick another and pay attention this time"
+  timeLeft -= 1;
+  timerContainer.innerHTML = "" + timeLeft;
+  if(timeLeft%randomizeDeskTimer===0) {
+    randomizeStateDesk();
+    updateIsTheAnswer();
+    randDeskCustomer();
+  }
+  if(timeLeft === 0) {
+    clearInterval(timerId);
+    endGame();
+  }
+}
+
 
 function checkForWin (e) {
   if(e.target.classList[0] === "clickTarget") {
@@ -160,24 +184,6 @@ function updateIsTheAnswer() {
      }
 
    }
-}
-
-
-
-function countdown () {
-  //if timeLeft < 0
-  //"We are closing"
-  timeLeft -= 1;
-  timerContainer.innerHTML = "" + timeLeft;
-  if(timeLeft%randomizeDeskTimer===0) {
-    randomizeStateDesk();
-    updateIsTheAnswer();
-    randDeskCustomer();
-  }
-  if(timeLeft === 0) {
-    clearInterval(timerId);
-    endGame();
-  }
 }
 
 function win() {

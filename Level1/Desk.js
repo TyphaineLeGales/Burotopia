@@ -15,7 +15,7 @@ class Desk{
     this.employee = document.createElement("div");
     this.hasACustomer = false;
     this.customer = document.createElement("div");
-    this.customerLife = getRandomInt(8000);
+    this.customerLife = getRandomInt(6000);
   }
 
   createId() {
@@ -84,19 +84,12 @@ class Desk{
     this.divDesk.appendChild(this.customer);
   }
 
-  customerPopUp () {
-    var bottomOffset = 30;
-    if(this.hasACustomer === true) {
+  customerUpdate() {
+     if(this.hasACustomer === true) {
       this.customer.style.display = "block";
-      console.log(this.customerLife);
-      setTimeout(customerGoesAway(this.customer, this.hasACustomer), this.customerLife);
-      function customerGoesAway (customer, bool) {
-      //   console.log("function is being called");
-        customer.style.display = "none";
-      //   bool = false;
-        console.log(customer, bool);
-      }
-    }
+     } else {
+      this.customer.style.display = "none";
+     }
   }
 
   createDesk() {
