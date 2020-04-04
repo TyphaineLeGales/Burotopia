@@ -56,11 +56,10 @@ function movePlayerGraphicsAlongMouse () {
 
 function throwingAnimation (e) {
   console.log(e.clientY);
-  var mousePosX = e.clientX;
-  var mousePosY = e.clientY;
-  var translate3dValue = "translate3d(0," + mousePosY + "px, 0)";
-  testProjectile.style.transform = translate3dValue;
-  console.log(testProjectile.style.transform);
+  console.log(testProjectile);
+  // var mousePosX = e.clientX;
+  var yPos = e.clientY - playerGraphicsContainer.getBoundingClientRect().top - (testProjectile.clientHeight / 2);;
+  testProjectile.style.top = yPos + "px";
 }
 
 function generatePlayerId() {

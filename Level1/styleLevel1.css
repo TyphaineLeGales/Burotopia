@@ -118,8 +118,10 @@ button {
 }
 
 #testProjectile {
+  position:absolute;
   width:10%;
   height:8%;
+  top:0;
   background-color:red;
   z-index:100;
   border-radius:50%;
