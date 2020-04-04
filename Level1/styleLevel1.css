@@ -100,6 +100,45 @@ button {
   margin-left:15%;
 }
 
+#playerGraphics {
+  align-self:bottom;
+  position:relative;
+  height:50%;
+  width:50%;
+}
+
+#formGraphics {
+  position:absolute;
+  top:0;
+  left:0;
+  opacity:1;
+  height:100%;
+  width:100%;
+  background-image:url(../Assets/Graphics/playerGraphics-21.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hand {
+  position:absolute;
+  bottom:0;
+  height:50%;
+  width:100%;
+}
+
+#handLeft {
+  left:-7em;
+  background-image:url(../Assets/Graphics/playerGraphics-19.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#handRight {
+  right:-6em;
+  background-image:url(../Assets/Graphics/playerGraphics-20.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 #playerID {
   align-self:center;

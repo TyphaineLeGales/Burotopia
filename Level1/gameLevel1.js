@@ -27,7 +27,6 @@ button.addEventListener("click", clickHandler, false);
   //Animation on click (paper throwing) + player graphics
   //animation when changing number type transition
   //Text box => hit customer text
-  //door icon go back to map
 
 function clickHandler() {
   playGame();
