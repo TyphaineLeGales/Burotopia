@@ -125,6 +125,8 @@ button {
   background-color:red;
   z-index:100;
   border-radius:50%;
+  transition: left .5s cubic-bezier(.42,-0.3,.78,1.25),
+      top .5s cubic-bezier(.42,-0.3,.78,1.25);
 }
 
 #formGraphics {
