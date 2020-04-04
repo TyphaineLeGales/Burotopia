@@ -24,10 +24,10 @@ button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
   //TO DO :
-  //Implement Right Id after 15s of playing
-  //Animation on deskHover and on click (paper throwing) + player graphics
+  //Animation on click (paper throwing) + player graphics
   //animation when changing number type transition
   //Text box => hit customer text
+  //door icon go back to map
 
 function clickHandler() {
   playGame();
@@ -138,7 +138,6 @@ function randomizeId () {
 }
 
 function introduceAnswerDesk() {
-  console.log("introduce answer");
   var randIndex = getRandomInt(desks.length);
   var changingDesk = desks[randIndex];
   changingDesk.index = randIndex;
@@ -148,8 +147,8 @@ function introduceAnswerDesk() {
   changingDesk.state = "open";
   changingDesk.setState();
   changingDesk.openDoors();
-  changingDesk.isTheAnswer = true;
-  changingDesk.setIsTheAnswer();
+  changingDesk.hasACustomer = true;
+  changingDesk.customerUpdate();
 
 }
 
