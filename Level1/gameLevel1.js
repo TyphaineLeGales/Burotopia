@@ -19,13 +19,14 @@ var timeLeft = maxTime;
 var timerId;
 var timerContainer = document.querySelector("#timer");
 var playerGraphicsContainer = document.querySelector("#playerGraphicsContainer");
+var testProjectile = document.querySelector("#testProjectile");
 var startUI = document.querySelector(".introLevel");
 var button = document.querySelector("button");
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
   //TO DO :
-  //Animation on click (paper throwing) + player graphics
+  //Animation on click (paper throwing)
   //animation when changing number type transition
   //Text box => hit customer text
 
@@ -40,6 +41,7 @@ function playGame() {
   movePlayerGraphicsAlongMouse();
   deskContainer.onclick = e => {
     checkForWin(e);
+    throwingAnimation(e);
   }
   // window.setInterval(randomizeStateDesk, 3000);
   timerId = window.setInterval(countdown, 1000);
@@ -50,6 +52,15 @@ function movePlayerGraphicsAlongMouse () {
   window.addEventListener('mousemove', e => {
     playerGraphicsContainer.style.left = e.clientX + "px";
   });
+}
+
+function throwingAnimation (e) {
+  console.log(e.clientY);
+  var mousePosX = e.clientX;
+  var mousePosY = e.clientY;
+  var translate3dValue = "translate3d(0," + mousePosY + "px, 0)";
+  testProjectile.style.transform = translate3dValue;
+  console.log(testProjectile.style.transform);
 }
 
 function generatePlayerId() {
