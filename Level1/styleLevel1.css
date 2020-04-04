@@ -116,6 +116,8 @@ button {
   color:white;
   letter-spacing: 3px;
   font-size:0.8;
+  animation-name: fadeIn;
+  animation-duration:1s;
 
 }
 
@@ -192,3 +194,12 @@ button {
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity:0;
+  }
+
+  to {
+    opacity:1;
+  }
+}

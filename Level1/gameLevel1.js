@@ -4,6 +4,7 @@ var playerID = "";
 var idLength = 5;
 var playerHasWon = false;
 var maxNumberOfGuess = 3;
+const introduceAnswerDelay = 10;
 var remainingGuessesNum = maxNumberOfGuess;
 var guessesContainer = document.querySelector("#guesses");
 var numberOfDesks = 24;
@@ -18,14 +19,15 @@ var timerId;
 var timerContainer = document.querySelector("#timer");
 var startUI = document.querySelector(".introLevel");
 var button = document.querySelector("button");
+var answerDeskHasBeenCreated = false;
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
   //TO DO :
-  //Text box
-  // closed Desk can't change number id= "empty thread"
+  //Implement Right Id after 15s of playing
+  //Animation on deskHover and on click (paper throwing) + player graphics
   //animation when changing number type transition
-  //Animation on deskHover and on click (paper throwing)
+  //Text box => hit customer text
 
 function clickHandler() {
   playGame();
@@ -70,18 +72,10 @@ function generateDesks() {
     var desk = new Desk();
     desks.push(desk);
   }
-  var randomIndexAnswer = getRandomInt(desks.length);
-  var correctDesk = desks[randomIndexAnswer];
-  correctDesk.index = randomIndexAnswer;
-  correctDesk.id = playerID;
-  correctDesk.state = "open";
-  correctDesk.isTheAnswer = true;
 
   //add desk with same id that is closed
   var randomIndex = getRandomInt(desks.length);
-  if(randomIndexAnswer === randomIndex) {
-    randomIndex = getRandomInt(desks.length);
-  }
+
   var closedDeskSameId = desks[randomIndex];
   closedDeskSameId.index = randomIndex;
   closedDeskSameId.id = playerID;
@@ -133,16 +127,31 @@ function randDeskCustomer() {
 
 function randomizeId () {
   var changingDesk = desks[getRandomInt(desks.length)];
-  for(var j = 0; j < idLength; j++) {
-        changingDesk.id[j] = playerIdArray[getRandomInt(idLength)];
-      }
   if(changingDesk.state === "open") {
+    for(var j = 0; j < idLength; j++) {
+      changingDesk.id[j] = playerIdArray[getRandomInt(idLength)];
+    }
     changingDesk.setId();
     changingDesk.displayTextEmployee(changingDesk.textEmployee, "Next Please !");
 
   }
 }
 
+function introduceAnswerDesk() {
+  console.log("introduce answer");
+  var randIndex = getRandomInt(desks.length);
+  var changingDesk = desks[randIndex];
+  changingDesk.index = randIndex;
+  changingDesk.setIndex();
+  changingDesk.id = playerID;
+  changingDesk.setId();
+  changingDesk.state = "open";
+  changingDesk.setState();
+  changingDesk.openDoors();
+  changingDesk.isTheAnswer = true;
+  changingDesk.setIsTheAnswer();
+
+}
 
 function displayNumberOfGuesses () {
   guessesContainer.innerHTML ="You have" + remainingGuessesNum + "guesses Left";
@@ -172,6 +181,11 @@ function countdown () {
     randomizeStateDesk();
     updateIsTheAnswer();
     randDeskCustomer();
+  }
+
+  if(timeLeft > introduceAnswerDelay && answerDeskHasBeenCreated != true) {
+    setTimeout(introduceAnswerDesk, getRandomInt(20000));
+    answerDeskHasBeenCreated = true;
   }
   if(timeLeft === 0) {
     clearInterval(timerId);
