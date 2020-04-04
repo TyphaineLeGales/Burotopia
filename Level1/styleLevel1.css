@@ -106,6 +106,7 @@ button {
   width:50%;
   height:50%;
   z-index:50;
+  display:none;
 }
 
 #playerGraphics {
@@ -205,6 +206,7 @@ button {
   height:4em;
   width:4.5em;
   background-size: contain;
+  cursor:crosshair;
 }
 
 

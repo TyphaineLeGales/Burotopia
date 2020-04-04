@@ -46,6 +46,7 @@ function playGame() {
 }
 
 function movePlayerGraphicsAlongMouse () {
+  playerGraphicsContainer.style.display ="block";
   window.addEventListener('mousemove', e => {
     playerGraphicsContainer.style.left = e.clientX + "px";
   });

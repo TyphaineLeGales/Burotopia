@@ -1,5 +1,6 @@
 var deskContainer = document.querySelector("div.deskContainer");
-var employeeText1 = "I'm afraid that's not the number I called, please wait for your turn";
+var employeeTextWrongNumber = "I'm afraid that's not the number I called, please wait for your turn";
+var employeeTextClosed = "Can't you see I'm on a break ?!";
 
 class Desk{
   constructor() {
@@ -57,7 +58,13 @@ class Desk{
 
     this.textEmployee.classList.add('textEmployee');
     this.divDesk.appendChild(this.textEmployee);
-    this.employee.onclick = e => {this.displayTextEmployee(this.textEmployee, employeeText1)};
+    this.employee.onclick = e => {
+      if(this.state === "closed") {
+         this.displayTextEmployee(this.textEmployee, employeeTextClosed);
+      } else {
+        this.displayTextEmployee(this.textEmployee, employeeTextWrongNumber);
+      }
+    };
   }
 
   displayTextEmployee(textEmployee, text) {
