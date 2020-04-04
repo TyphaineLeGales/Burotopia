@@ -8,6 +8,7 @@ const introduceAnswerDelay = 10;
 var remainingGuessesNum = maxNumberOfGuess;
 var guessesContainer = document.querySelector("#guesses");
 var numberOfDesks = 24;
+var answerDeskHasBeenCreated = false;
 var playerIDContainer = document.querySelector("#playerID");
 var deskContainer = document.querySelector("div.deskContainer");
 var desks = [];
@@ -17,9 +18,9 @@ var maxTime = 60 //timer is called every second;
 var timeLeft = maxTime;
 var timerId;
 var timerContainer = document.querySelector("#timer");
+var playerGraphicsContainer = document.querySelector("#playerGraphicsContainer");
 var startUI = document.querySelector(".introLevel");
 var button = document.querySelector("button");
-var answerDeskHasBeenCreated = false;
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
@@ -36,11 +37,18 @@ function clickHandler() {
 function playGame() {
   generatePlayerId();
   generateDesks();
+  movePlayerGraphicsAlongMouse();
   deskContainer.onclick = e => {
     checkForWin(e);
   }
   // window.setInterval(randomizeStateDesk, 3000);
   timerId = window.setInterval(countdown, 1000);
+}
+
+function movePlayerGraphicsAlongMouse () {
+  window.addEventListener('mousemove', e => {
+    playerGraphicsContainer.style.left = e.clientX + "px";
+  });
 }
 
 function generatePlayerId() {
