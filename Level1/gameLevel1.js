@@ -38,10 +38,10 @@ function clickHandler() {
 function playGame() {
   generatePlayerId();
   generateDesks();
-  movePlayerGraphicsAlongMouse();
+  // movePlayerGraphicsAlongMouse();
   deskContainer.onclick = e => {
     checkForWin(e);
-    throwingAnimation(e);
+    // throwingAnimation(e);
   }
   // window.setInterval(randomizeStateDesk, 3000);
   timerId = window.setInterval(countdown, 1000);
