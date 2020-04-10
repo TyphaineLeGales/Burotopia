@@ -23,6 +23,25 @@ body {
   width:45%;
 }
 
+.backgroundSite {
+  display:flex;
+  justify-content:center;
+  flex-direction: column;
+  background-color: red;
+  height:92%;
+  width:100%;
+}
+.inputFields {
+  height:10%;
+  padding:0.75em 0.5em;
+  background-color: #EDEDED;
+  border-radius:10px;
+  margin-left:1em;
+  width:50%;
+  margin-bottom:5%;
+
+}
+
 .topBarSite {
   position:relative;
   background-color: #AAB0B5;
