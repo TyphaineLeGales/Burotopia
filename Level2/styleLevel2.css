@@ -31,15 +31,16 @@ body {
   height:92%;
   width:100%;
 }
-.inputFields {
+input {
+  font-family: silom;
+  font-size:1.2em;
   height:10%;
-  padding:0.75em 0.5em;
+  padding:1em 0.5em;
   background-color: #EDEDED;
-  border-radius:10px;
+  border-radius:15px;
   margin-left:1em;
   width:50%;
-  margin-bottom:5%;
-
+  margin-bottom:1%;
 }
 
 .topBarSite {
