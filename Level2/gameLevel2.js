@@ -6,9 +6,18 @@ button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
 // TO DO :
-// - implement taskList logic click => triggers popUp website
 // - implement reset link logic
 // - design layout + websites content
+  //generate listOfTasks
+  //generate an email
+  //several emails ?
+  //if user name is empty => userInput = userName
+  //generate the pages on a random position;
+  //on taskItemClick => create corresponding website
+  //in the beginning => player doesn't know his email => needs to check the emailIcon + the player hasn't enter any password => need to click I forgot my password
+  //if userName & passWord
+  //add tasks as the player goes along
+  //possibility to drag and drop windows
 
 function clickHandler() {
   gameContainer.style.display = "flex";
@@ -17,16 +26,24 @@ function clickHandler() {
 }
 
 function playGame() {
-  //generate listOfTasks
-  //generate an email
-  //several emails ?
-  //on taskItemClick => create corresponding website
-  //in the beginning => player doesn't know his email => needs to check the emailIcon + the player hasn't enter any password => need to click I forgot my password
-  //if userName & passWord
-  //add tasks as the player goes along
-  //possibility to drag and drop windows
   generateTasks();
+  // taskContainer.onclick = e => {
+  //   testFunction(e);
+  //   var siteWindow = new Website();
+  //   siteWindow.create();
+  //   // throwingAnimation(e);
+  // }
+  returnIndexOfTask();
 
+}
+
+//need to create html divs for each task task class ?
+function returnIndexOfTask () {
+  for(var i = 0; i < tasks.length; i++) {
+    tasks[i].onclick() = function () {
+      console.log()
+    }
+  }
 }
 
 function generateTasks () {
@@ -37,6 +54,10 @@ function generateTasks () {
     taskContainer.appendChild(listElement);
 
   }
+}
+
+function testFunction (e) {
+  console.log(e.target.childNodes[0]);
 }
 
 function endGame() {

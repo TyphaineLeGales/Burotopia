@@ -5,7 +5,7 @@ class Website{
     this.username = "";
     this.password = "";
     this.service ="";
-    this.task = null;
+    this.taskIndex = null;
     this.resetLink = null;
   }
 
