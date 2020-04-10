@@ -5,4 +5,23 @@ class Website{
     this.task = null;
     this.resetLink = null;
   }
+
+  setUsername () {
+
+  }
+
+  setPassword () {
+
+  }
+
+  setTast () {
+
+  }
+
+  sendResetLink () {
+
+  }
+
+
 }
+

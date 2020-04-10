@@ -3,3 +3,55 @@ body {
   display:flex;
   background-color:none;
 }
+
+.gameContainer {
+  width:100vw;
+  height:90vh;
+  border-style: solid;
+  display:flex;
+}
+.webpagesContainer {
+  width:85%;
+  height:85%;
+  border-style: dotted;
+}
+
+.websiteDiv{
+  border-style:solid;
+  background-color: white;
+  height:30%;
+  width:45%;
+}
+
+.topBarSite {
+  position:relative;
+  background-color: #AAB0B5;
+  width:100%;
+  height:8%;
+}
+.topBarSquare {
+  height:60%;
+  background-color: #EDEDED;
+  position : absolute;
+  top:20%;
+}
+
+.crossIcon {
+  left:1%;
+  width:3%;
+}
+
+.minusIcon {
+  left: 5%;
+  width:3%;
+}
+
+.plusIcon {
+  left:9%;
+  width:3%;
+}
+
+.urlBar {
+  left:15%;
+  width:80%;
+}
