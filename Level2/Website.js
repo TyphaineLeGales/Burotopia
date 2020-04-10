@@ -9,7 +9,6 @@ class Website{
     this.resetLink = null;
   }
 
-
   create () {
     var websiteDiv =  document.createElement("div");
     websiteDiv.classList.add("websiteDiv");

@@ -83,3 +83,30 @@ input {
   border-style:dotted;
   text-align:center;
 }
+
+#mailIcon {
+  height:10%;
+  width:20%;
+  background-image: url(../Assets/Graphics/Level2/EmailIcon.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position:fixed;
+  bottom:10%;
+  left:35%;
+}
+
+.mailNotification {
+  background-color:#C95431 ;
+  margin-top:-2em;
+  margin-left:-2em;
+  height:70%;
+  width:40%;
+  border-radius:50%;
+  border-style:solid;
+}
+
+.mailNotification p {
+  text-align:center;
+  font-size:2em;
+  color:white;
+}
