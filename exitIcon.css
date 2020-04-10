@@ -48,18 +48,18 @@
   position:relative;
 }
 
-#doorExitBackground {
-  background-color:black;
-  height:150%;
-  width:100%;
+.doorIcon {
+  height:150px;
+  width:80px;
   position: absolute;
   top:5em;
 }
 
+#doorExitBackground {
+  background-color:black;
+
+}
+
 #doorExit {
   background-color:grey;
-  height:150%;
-  width:100%;
-  position: absolute;
-  top:5em;
 }
