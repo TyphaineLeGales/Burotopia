@@ -9,6 +9,7 @@ body {
   height:90vh;
   border-style: solid;
   display:flex;
+  flex-direction: row;
 }
 .webpagesContainer {
   width:85%;
@@ -74,4 +75,11 @@ input {
 .urlBar {
   left:15%;
   width:80%;
+}
+
+#taskSection {
+  height:100%;
+  width:20%;
+  border-style:dotted;
+  text-align:center;
 }
