@@ -1,4 +1,10 @@
 const container = document.querySelector("div.webpagesContainer");
+const exitDiv = document.querySelector("div.exitIcon");
+
+
+  function randomInRange(min, max) {
+    return(Math.floor((Math.random() * (max - min) + 1) + min));
+}
 
 class Website{
   constructor() {
@@ -7,6 +13,7 @@ class Website{
     this.service ="";
     this.taskIndex = null;
     this.resetLink = null;
+    this.create();
   }
 
   create () {
@@ -65,6 +72,16 @@ class Website{
     websiteDiv.appendChild(background);
 
     container.appendChild(websiteDiv);
+
+    this.generateRandPos(container, websiteDiv);
+
+  }
+
+  generateRandPos (container, div) {
+    //generate rand pos within container
+    console.log(container.clientWidth);
+    div.style.left = randomInRange(0, container.offsetWidth - exitDiv.offsetWidth) + "px";
+    div.style.top = randomInRange(0, container.offsetHeight) + "px";
 
   }
 

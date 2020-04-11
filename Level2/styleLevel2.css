@@ -23,6 +23,8 @@ body {
   height:30%;
   width:45%;
   position:fixed;
+  top:0px;
+  left:0px;
 }
 
 .backgroundSite {

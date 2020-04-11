@@ -12,12 +12,11 @@ button.addEventListener("click", clickHandler, false);
   //generate an email
   //several emails ?
   //if user name is empty => userInput = userName
-  //generate the pages on a random position;
+  //generate the pages on a random position
   //on taskItemClick => create corresponding website
   //in the beginning => player doesn't know his email => needs to check the emailIcon + the player hasn't enter any password => need to click I forgot my password
   //if userName & passWord
   //add tasks as the player goes along
-  //possibility to drag and drop windows
 
 function clickHandler() {
   gameContainer.style.display = "flex";
@@ -27,13 +26,11 @@ function clickHandler() {
 
 function playGame() {
   generateTasks();
-  // taskContainer.onclick = e => {
-  //   testFunction(e);
-  //   var siteWindow = new Website();
-  //   siteWindow.create();
-  //   // throwingAnimation(e);
-  // }
-  returnIndexOfTask();
+  taskContainer.onclick = e => {
+    testFunction(e);
+    var siteWindow = new Website();
+  }
+  // returnIndexOfTask();
 
 }
 
