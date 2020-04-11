@@ -1,22 +1,26 @@
-var tasks = ["bank", "phoneContract", "streaming", "socialMedia"];
+var tasks = ["bank", "phoneCompany", "streaming", "socialMedia", "news", "shopping", "socialSecurity", "getFood" ];
 var taskContainer = document.querySelector("#tasksList");
+var openedWindows = [];
+var siteIsAlreadyOpened = false;
 var button = document.querySelector("button");
 var gameContainer =  document.querySelector("div.gameContainer");
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
 // TO DO :
+
+//can open windows only once
+//enter button to check username/password
+//if user name is empty => userInput = userName
+//in the beginning => player doesn't know his email => needs to check the emailIcon + the player hasn't enter any password => need to click I forgot my password
+//if userName & passWord
+
 // - implement reset link logic
 // - design layout + websites content
-  //generate listOfTasks
-  //generate an email
-  //several emails ?
-  //if user name is empty => userInput = userName
-  //generate the pages on a random position
-  //on taskItemClick => create corresponding website
-  //in the beginning => player doesn't know his email => needs to check the emailIcon + the player hasn't enter any password => need to click I forgot my password
-  //if userName & passWord
-  //add tasks as the player goes along
+//generate listOfTasks
+//generate an email
+//several emails ?
+//add tasks as the player goes along
 
 function clickHandler() {
   gameContainer.style.display = "flex";
@@ -53,10 +57,20 @@ function generateTasks () {
   }
 }
 
+
 function createWindow (e) {
-  if(e.target.tagName.toLowerCase() === 'p' ) {
-     var siteWindow = new Website(e.target.textContent);
-  }
+  // if(e.target.tagName.toLowerCase() === 'p' ) {
+  //   for(var i = 0; i < openedWindows.length; i++) {
+  //     if(openedWindows[i] === e.target.textContent){
+  //       siteIsAlreadyOpened = true;
+  //     }
+  //   }
+
+  //   if(siteIsAlreadyOpened != true) {
+  //     var siteWindow = new Website(e.target.textContent);
+  //     openedWindows.push(siteWindow);
+  //   }
+  // }
 }
 
 function endGame() {

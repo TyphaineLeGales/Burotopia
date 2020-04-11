@@ -65,8 +65,12 @@ class Website{
     input_1.appendChild(inputUsername);
     input_2.appendChild(inputPassword);
 
+    var taskName = document.createElement("h1");
+    taskName.innerHTML = this.task;
+
     background.appendChild(input_1);
     background.appendChild(input_2);
+    background.appendChild(taskName);
 
     websiteDiv.appendChild(topBar);
     websiteDiv.appendChild(background);

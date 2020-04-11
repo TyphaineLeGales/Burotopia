@@ -7,14 +7,14 @@ body {
 .gameContainer {
   width:100vw;
   height:90vh;
-  border-style: solid;
+ /* border-style: solid;*/
   flex-direction: row;
   display:none;
 }
 .webpagesContainer {
   width:85%;
   height:85%;
-  border-style: dotted;
+ /* border-style: dotted;*/
 }
 
 .websiteDiv{
@@ -86,7 +86,7 @@ input {
 #taskSection {
   height:100%;
   width:20%;
-  border-style:dotted;
+/*  border-style:dotted;*/
   text-align:center;
   z-index:50;
 }
@@ -94,6 +94,7 @@ input {
 #taskSection ul {
   text-align:left;
   list-style: none;
+  background-color:white;
 }
 #taskSection li {
   margin-bottom:1em;
