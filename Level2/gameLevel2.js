@@ -27,8 +27,7 @@ function clickHandler() {
 function playGame() {
   generateTasks();
   taskContainer.onclick = e => {
-    testFunction(e);
-    var siteWindow = new Website();
+    createWindow(e);
   }
   // returnIndexOfTask();
 
@@ -48,14 +47,16 @@ function generateTasks () {
     var task = tasks[i];
     var listElement = document.createElement("li");
     listElement.style.position ="relative";
-    listElement.innerHTML = `<div class="checkboxDiv"></div> ${task}`;
+    listElement.innerHTML = `<div class="checkboxDiv"></div> <p>${task} </p>`;
     taskContainer.appendChild(listElement);
 
   }
 }
 
-function testFunction (e) {
-  console.log(e.target.childNodes[0]);
+function createWindow (e) {
+  if(e.target.tagName.toLowerCase() === 'p' ) {
+     var siteWindow = new Website(e.target.textContent);
+  }
 }
 
 function endGame() {

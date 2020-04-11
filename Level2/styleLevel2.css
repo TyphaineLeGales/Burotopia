@@ -31,9 +31,10 @@ body {
   display:flex;
   justify-content:center;
   flex-direction: column;
-  background-image: url(../Assets/Graphics/Level2/backgroundBank.png);
+   background-color: white;
+ /* background-image: url(../Assets/Graphics/Level2/backgroundBank.png);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 100% 100%;*/
   height:92%;
   width:100%;
 }
@@ -97,8 +98,9 @@ input {
 #taskSection li {
   margin-bottom:1em;
 }
-#taskSection li:hover {
+#taskSection p:hover {
   cursor:crosshair;
+  color:red;
 }
 
 .checkboxDiv {
@@ -111,8 +113,8 @@ input {
 }
 
 #mailIcon {
-  height:10%;
-  width:20%;
+  height:10vw;
+  width:20vw;
   background-image: url(../Assets/Graphics/Level2/EmailIcon.png);
   background-repeat: no-repeat;
   background-size: contain;
@@ -125,14 +127,15 @@ input {
   background-color:#C95431 ;
   margin-top:-2em;
   margin-left:-2em;
-  height:100px;
-  width:100px;
+  height:6vw;
+  width:6vw;
   border-radius:50%;
   border-style:solid;
 }
 
 .mailNotification p {
+  margin-top:0;
   text-align:center;
-  font-size:2em;
+  font-size:4vw;
   color:white;
 }

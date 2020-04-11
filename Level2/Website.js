@@ -7,11 +7,11 @@ const exitDiv = document.querySelector("div.exitIcon");
 }
 
 class Website{
-  constructor() {
+  constructor(task) {
     this.username = "";
     this.password = "";
     this.service ="";
-    this.taskIndex = null;
+    this.task = task;
     this.resetLink = null;
     this.create();
   }
@@ -78,8 +78,6 @@ class Website{
   }
 
   generateRandPos (container, div) {
-    //generate rand pos within container
-    console.log(container.clientWidth);
     div.style.left = randomInRange(0, container.offsetWidth - exitDiv.offsetWidth) + "px";
     div.style.top = randomInRange(0, container.offsetHeight) + "px";
 
