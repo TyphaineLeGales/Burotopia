@@ -3,6 +3,7 @@
   height:100px;
   margin-left:1em;
   width:100px;
+  z-index:50;
 }
 
 .exitIcon:hover  {

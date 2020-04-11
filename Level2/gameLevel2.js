@@ -47,7 +47,8 @@ function generateTasks () {
   for(var i = 0; i < tasks.length; i++) {
     var task = tasks[i];
     var listElement = document.createElement("li");
-    listElement.innerHTML = task;
+    listElement.style.position ="relative";
+    listElement.innerHTML = `<div class="checkboxDiv"></div> ${task}`;
     taskContainer.appendChild(listElement);
 
   }

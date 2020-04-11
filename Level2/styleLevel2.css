@@ -20,8 +20,8 @@ body {
 .websiteDiv{
   border-style:solid;
   background-color: white;
-  height:30%;
-  width:45%;
+  height:20vw;
+  width:35vw;
   position:fixed;
   top:0px;
   left:0px;
@@ -87,10 +87,27 @@ input {
   width:20%;
   border-style:dotted;
   text-align:center;
+  z-index:50;
 }
 
 #taskSection ul {
   text-align:left;
+  list-style: none;
+}
+#taskSection li {
+  margin-bottom:1em;
+}
+#taskSection li:hover {
+  cursor:crosshair;
+}
+
+.checkboxDiv {
+  height:1em;
+  width:1em;
+  border-style:solid;
+  left:-2em;
+  bottom:0;
+  position:absolute;
 }
 
 #mailIcon {
