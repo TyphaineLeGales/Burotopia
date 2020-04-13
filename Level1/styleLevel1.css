@@ -19,11 +19,11 @@ button {
   -webkit-appearance: none;
   -moz-appearance: none;
 }
-.ui {
+/*.ui {
   display:flex;
   flex-direction: column;
   width:30%;
-}
+}*/
 
 .introLevel{
   position:fixed;
@@ -53,56 +53,24 @@ button {
   width:30%;
 }
 
-#testProjectile {
-  position:absolute;
-  width:10%;
-  height:8%;
-  top:0;
-  background-color:red;
-  z-index:100;
-  border-radius:50%;
-  transition: left .5s cubic-bezier(.42,-0.3,.78,1.25),
-      top .5s cubic-bezier(.42,-0.3,.78,1.25);
-}
-
-#formGraphics {
-  position:absolute;
-  top:0;
-  left:0;
-  opacity:1;
-  height:100%;
-  width:100%;
-  background-image:url(../Assets/Graphics/Form.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.hand {
-  position:absolute;
-  bottom:0;
-  height:50%;
-  width:100%;
-}
-
-#handLeft {
-  left:-9em;
-  background-image:url(../Assets/Graphics/handLeft.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#handRight {
-  right:-8em;
-  background-image:url(../Assets/Graphics/handRight.png);
-  background-repeat: no-repeat;
-  background-size: cover;
+#timer {
+  position:fixed;
+  bottom:10vh;
+  left:45vw;
+  font-size:2em;
+  display:none;
 }
 
 #playerID {
   position:fixed;
   bottom:5vh;
-  left:45vw;
+  left:35vw;
   font-size:2em;
+}
+
+.idCard {
+  border-style:solid;
+  padding:0.25em 0.5em;
 }
 
 .textEmployee {
@@ -136,6 +104,7 @@ button {
   display:flex;
   flex-wrap: wrap;
   overflow:hidden;
+  margin:0 5vw;
 }
 
 .counterDesk {

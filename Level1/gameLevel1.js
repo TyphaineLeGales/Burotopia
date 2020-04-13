@@ -26,8 +26,7 @@ button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
   //TO DO :
-  //Animation on click (paper throwing)
-  //animation when changing number type transition
+  //responsive layout + number of desk
   //Text box => hit customer text
 
 function clickHandler() {
@@ -38,28 +37,10 @@ function clickHandler() {
 function playGame() {
   generatePlayerId();
   generateDesks();
-  // movePlayerGraphicsAlongMouse();
   deskContainer.onclick = e => {
     checkForWin(e);
-    // throwingAnimation(e);
   }
-  // window.setInterval(randomizeStateDesk, 3000);
   timerId = window.setInterval(countdown, 1000);
-}
-
-function movePlayerGraphicsAlongMouse () {
-  playerGraphicsContainer.style.display ="block";
-  window.addEventListener('mousemove', e => {
-    playerGraphicsContainer.style.left = e.clientX + "px";
-  });
-}
-
-function throwingAnimation (e) {
-  console.log(e.clientY);
-  console.log(testProjectile);
-  // var mousePosX = e.clientX;
-  var yPos = e.clientY - playerGraphicsContainer.getBoundingClientRect().top - (testProjectile.clientHeight / 2);;
-  testProjectile.style.top = yPos + "px";
 }
 
 function generatePlayerId() {
@@ -67,7 +48,7 @@ function generatePlayerId() {
     playerIdArray[i] = generateCharacter();
   }
   playerID = playerIdArray[0] + playerIdArray[1] + playerIdArray[2] + playerIdArray[3] + playerIdArray[4] ;
-  playerIDContainer.innerHTML = "your number is " + playerID;
+  playerIDContainer.innerHTML = 'your number is <span class="idCard">' + playerID + "</span>";
 }
 
 function generateCharacter() {
