@@ -99,7 +99,9 @@ button {
 }
 
 #playerID {
-  align-self:center;
+  position:fixed;
+  bottom:5vh;
+  left:45vw;
   font-size:2em;
 }
 
