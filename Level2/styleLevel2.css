@@ -79,6 +79,8 @@ input {
 .crossIcon {
   left:1%;
   width:3%;
+  background-image: url(../Assets/Graphics/Level2/Cross.png);
+  background-size: contain;
 }
 
 .minusIcon {

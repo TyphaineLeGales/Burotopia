@@ -8,6 +8,7 @@ const exitDiv = document.querySelector("div.exitIcon");
 
 class Website{
   constructor(task) {
+    this.websiteDiv = document.createElement("div");
     this.username = "";
     this.password = "";
     this.service ="";
@@ -27,8 +28,7 @@ class Website{
   }
 
   create () {
-    var websiteDiv =  document.createElement("div");
-    websiteDiv.classList.add("websiteDiv");
+    this.websiteDiv.classList.add("websiteDiv");
     // websiteDiv.classList.add("drag");
 
     var topBar = document.createElement("div");
@@ -37,6 +37,10 @@ class Website{
     var crossIcon = document.createElement("div");
     crossIcon.classList.add("crossIcon");
     crossIcon.classList.add("topBarSquare");
+    crossIcon.onclick = e => {
+      this.delete();
+      //need to delete from openedWindows
+    }
 
 
     var minusIcon = document.createElement("div");
@@ -74,12 +78,12 @@ class Website{
     background.appendChild(this.taskDiv);
     background.appendChild(this.taskCheckBox);
 
-    websiteDiv.appendChild(topBar);
-    websiteDiv.appendChild(background);
+    this.websiteDiv.appendChild(topBar);
+    this.websiteDiv.appendChild(background);
 
-    container.appendChild(websiteDiv);
+    container.appendChild(this.websiteDiv);
 
-    this.generateRandPos(container, websiteDiv);
+    this.generateRandPos(container, this.websiteDiv);
 
     var inputValidity = this.inputPassword.checkValidity();
 
@@ -139,6 +143,10 @@ class Website{
 
   sendResetLink () {
 
+  }
+
+  delete() {
+    container.removeChild(this.websiteDiv);
   }
 
 

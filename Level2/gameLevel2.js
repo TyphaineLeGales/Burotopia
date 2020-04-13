@@ -34,7 +34,6 @@ function playGame() {
   generateTasks();
   taskContainer.onclick = e => {
     createSitePopUp(e);
-    console.log(openedWindows);
   }
   // returnIndexOfTask();
 
@@ -64,7 +63,8 @@ function checkValidityOfForm () {
   //
 }
 
-function () {
+function completeTask() {
+  //
   //is taskIsDone = true => site.delete + taskInTasklist.classList.add('isDone');
 }
 
