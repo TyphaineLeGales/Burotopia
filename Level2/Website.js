@@ -19,6 +19,7 @@ class Website{
   create () {
     var websiteDiv =  document.createElement("div");
     websiteDiv.classList.add("websiteDiv");
+    websiteDiv.classList.add("drag");
 
     var topBar = document.createElement("div");
     topBar.classList.add("topBarSite");
