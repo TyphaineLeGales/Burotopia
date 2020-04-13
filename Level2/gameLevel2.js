@@ -9,12 +9,12 @@ button.addEventListener("click", clickHandler, false);
 
 // TO DO :
 
-//enter button to check username/password
-//if user name is empty => userInput = userName
-//in the beginning => player doesn't know his email => needs to check the emailIcon + the player hasn't enter any password => need to click I forgot my password
-//if userName & passWord
-//can open windows only once
+//implement password security requirement : number of character + combinaison
+// check that password is different than your other password
+// is first time => store password if not compare
+// if password check succesful => can tick a box and mark task as done in to do list
 
+//drag and drop compatible with user input
 // - implement reset link logic
 // - design layout + websites content
 //generate listOfTasks

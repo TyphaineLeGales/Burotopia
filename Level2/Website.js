@@ -54,22 +54,27 @@ class Website{
     var background = document.createElement("div");
     background.classList.add("backgroundSite");
 
+    var form = document.createElement("form");
+
     this.inputUsername.setAttribute("type", "text");
     this.inputUsername.setAttribute("placeholder", "Username");
 
     this.inputPassword.setAttribute("type", "text");
     this.inputPassword.setAttribute("placeholder", "Password");
+    this.inputPassword.setAttribute("minLength", "14");
 
-    this.loginBtn.setAttribute("type", "submit");
+    this.loginBtn.setAttribute("type", "button");
     this.loginBtn.innerHTML = "Login";
     this.loginBtn.classList.add("submitButton");
 
     var taskName = document.createElement("h1");
     taskName.innerHTML = this.task;
 
-    background.appendChild(this.inputUsername);
-    background.appendChild(this.inputPassword);
-    background.appendChild(this.loginBtn);
+    form.appendChild(this.inputUsername);
+    form.appendChild(this.inputPassword);
+     form.appendChild(this.loginBtn);
+
+    background.appendChild(form);
     // background.appendChild(taskName);
 
     websiteDiv.appendChild(topBar);
@@ -79,10 +84,13 @@ class Website{
 
     this.generateRandPos(container, websiteDiv);
 
-      this.loginBtn.onclick = e => {
-        this.setUsername();
-        this.setPassword();
+    var inputValidity = this.inputPassword.checkValidity();
 
+      this.loginBtn.onclick = e => {
+        if(this.inputPassword.validity.valid === true) {
+          this.setUsername();
+          this.setPassword();
+        }
     }
 
   }
