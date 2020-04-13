@@ -84,7 +84,7 @@ class Website{
     var inputValidity = this.inputPassword.checkValidity();
 
       this.loginBtn.onclick = e => {
-        if(this.inputPassword.validity.valid === true) {
+        if(this.inputPassword.validity.valid === true && this.inputPassword) {
           console.log("login onclick");
           this.setUsername();
           this.setPassword();

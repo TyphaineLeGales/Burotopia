@@ -1,5 +1,6 @@
 var tasks = ["bank", "phoneCompany", "streaming", "socialMedia", "news", "shopping", "socialSecurity", "getFood" ];
 var taskContainer = document.querySelector("#tasksList");
+var taskList = [];
 var openedWindows = [];
 var button = document.querySelector("button");
 var gameContainer =  document.querySelector("div.gameContainer");
@@ -8,10 +9,10 @@ button.addEventListener("click", clickHandler, false);
 
 // TO DO :
 
-//when delete a site delete it from openedWindows;
 // if password check succesful => can tick a box and mark task as done in to do list
 //when completed a task => restore to form
 //on creation button = create => other time button = login
+//can't login if null
 
 // check that password is different than your other password
 // is first time => store password if not compare
@@ -49,21 +50,25 @@ function generateTasks () {
   }
 }
 
-function deletePopUp(site) {
+function deletePopUp(popUp) {
     for(var i = 0; i< openedWindows.length; i++) {
-      if(site.task === openedWindows[i].task) {
+      if(popUp.task === openedWindows[i].task) {
         console.log("condition works");
         openedWindows.splice(i, 1);
       }
     }
-    site.delete();
+    popUp.delete();
 }
 
-function completeTask() {
-  //is taskIsDone = true =>
-  //fin the clicked checkBox and its corresponding task
-  // taskInTasklist.classList.add('isDone');
-  //site.delete + taskInTasklist.classList.add('isDone');
+function completeTask(popUp) {
+  var taskList = document.querySelectorAll('li');
+  for(var i = 0; i< taskList.length; i++) {
+    var taskName = taskList[i].childNodes[2].innerHTML;
+    console.log(taskName);
+      if(popUp.task === taskName) {
+        taskList[i].childNodes[2].classList.add("isDone");
+      }
+    }
 }
 
 function createSitePopUp (e) {
@@ -82,6 +87,9 @@ function createSitePopUp (e) {
       openedWindows.push(siteWindow);
       siteWindow.crossIcon.onclick = e => {
         deletePopUp(siteWindow);
+      }
+      siteWindow.taskCheckBox.onclick = e => {
+        completeTask(siteWindow);
       }
     } else {
       //check password
