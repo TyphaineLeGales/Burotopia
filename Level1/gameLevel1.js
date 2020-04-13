@@ -1,25 +1,22 @@
-var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var playerIdArray = [];
 var playerID = "";
-var idLength = 5;
-var playerHasWon = false;
-var maxNumberOfGuess = 3;
-const introduceAnswerDelay = 10;
-var remainingGuessesNum = maxNumberOfGuess;
-var guessesContainer = document.querySelector("#guesses");
+var _idLength = 5;
+var _playerHasWon = false;
+var _maxNumberOfGuess = 3;
+const _introduceAnswerDelay = 10;
+var _remainingGuessesNum = _maxNumberOfGuess;
 var numberOfDesks = 24;
-var answerDeskHasBeenCreated = false;
+var _answerDeskHasBeenCreated = false;
+var desks = [];
+var _randomizeDeskTimer = 2;
+var _maxTime = 60 //timer is called every second;
+var timeLeft = _maxTime;
+var _timerId;
 var playerIDContainer = document.querySelector("#playerID");
 var deskContainer = document.querySelector("div.deskContainer");
-var desks = [];
-var randomizeDeskTimer = 2;
-var endGameMsg =  document.querySelector("#endGameMsg");
-var maxTime = 60 //timer is called every second;
-var timeLeft = maxTime;
-var timerId;
 var timerContainer = document.querySelector("#timer");
-var playerGraphicsContainer = document.querySelector("#playerGraphicsContainer");
-var testProjectile = document.querySelector("#testProjectile");
+var endGameMsg =  document.querySelector("#endGameMsg");
 var startUI = document.querySelector(".introLevel");
 var button = document.querySelector("button");
 button.style.cursor = "pointer";
@@ -40,11 +37,11 @@ function playGame() {
   deskContainer.onclick = e => {
     checkForWin(e);
   }
-  timerId = window.setInterval(countdown, 1000);
+  _timerId = window.setInterval(countdown, 1000);
 }
 
 function generatePlayerId() {
-  for(var i = 0; i < idLength; i++) {
+  for(var i = 0; i < _idLength; i++) {
     playerIdArray[i] = generateCharacter();
   }
   playerID = playerIdArray[0] + playerIdArray[1] + playerIdArray[2] + playerIdArray[3] + playerIdArray[4] ;
@@ -92,8 +89,8 @@ function generateDesks() {
         desk.state = "open";
       }
       //Generate random id with same character as players ID
-      for(var j = 0; j < idLength; j++) {
-        desk.id[j] = playerIdArray[getRandomInt(idLength)];
+      for(var j = 0; j < _idLength; j++) {
+        desk.id[j] = playerIdArray[getRandomInt(_idLength)];
       }
     }
     desk.createDesk();
@@ -127,8 +124,8 @@ function randDeskCustomer() {
 function randomizeId () {
   var changingDesk = desks[getRandomInt(desks.length)];
   if(changingDesk.state === "open") {
-    for(var j = 0; j < idLength; j++) {
-      changingDesk.id[j] = playerIdArray[getRandomInt(idLength)];
+    for(var j = 0; j < _idLength; j++) {
+      changingDesk.id[j] = playerIdArray[getRandomInt(_idLength)];
     }
     changingDesk.setId();
     changingDesk.displayTextEmployee(changingDesk.textEmployee, "Next Please !");
@@ -152,7 +149,7 @@ function introduceAnswerDesk() {
 }
 
 function displayNumberOfGuesses () {
-  guessesContainer.innerHTML ="You have" + remainingGuessesNum + "guesses Left";
+  guessesContainer.innerHTML ="You have" + _remainingGuessesNum + "guesses Left";
 }
 
 function doorAnimation (desk) {
@@ -175,18 +172,18 @@ function countdown () {
   if(timeLeft%1 ===0) {
     randomizeId();
   }
-  if(timeLeft%randomizeDeskTimer===0) {
+  if(timeLeft%_randomizeDeskTimer===0) {
     randomizeStateDesk();
     updateIsTheAnswer();
     randDeskCustomer();
   }
 
-  if(timeLeft > introduceAnswerDelay && answerDeskHasBeenCreated != true) {
+  if(timeLeft > _introduceAnswerDelay && _answerDeskHasBeenCreated != true) {
     setTimeout(introduceAnswerDesk, getRandomInt(20000));
-    answerDeskHasBeenCreated = true;
+    _answerDeskHasBeenCreated = true;
   }
   if(timeLeft === 0) {
-    clearInterval(timerId);
+    clearInterval(_timerId);
     endGameMsg.innerHTML = "you're number has already been called pick another and pay attention this time";
     endGame();
   }
@@ -196,13 +193,13 @@ function checkForWin (e) {
   if(e.target.classList[0] === "clickTarget") {
       var clickedDesk = e.target.parentNode;
     if(e.target.parentNode.classList[1] === "isTheAnswer") {
-      playerHasWon = true;
+      _playerHasWon = true;
       endGame();
-    } else if(remainingGuessesNum > 0){
-      remainingGuessesNum -=1;
+    } else if(_remainingGuessesNum > 0){
+      _remainingGuessesNum -=1;
       //employeeText
-      } else if(remainingGuessesNum === 0) {
-        clearInterval(timerId);
+      } else if(_remainingGuessesNum === 0) {
+        clearInterval(_timerId);
         endGameMsg.innerHTML ="If you can't wait for your number to be called I'll have to ask you to leave now !!! It's been 3 times"
         endGame();
     }
@@ -234,7 +231,7 @@ function endGame() {
   clearInterval();
   endGameMsg.style.display="block";
   deskContainer.style.display="none";
-  if(playerHasWon) {
+  if(_playerHasWon) {
     win();
   } else {
     //Take a new number transition page
@@ -246,12 +243,12 @@ function reset () {
   for(var i=0; i < numberOfDesks; i++) {
     desks[i].destroyDesk();
   }
-  timeLeft = maxTime;
+  timeLeft = _maxTime;
   desks = [];
   endGameMsg.style.display="none";
-  remainingGuessesNum= maxNumberOfGuess;
+  _remainingGuessesNum= _maxNumberOfGuess;
   playerIDContainer.innerHTML = "";
-  playerHasWon = false;
+  _playerHasWon = false;
   endGameMsg.innerHTML = "";
   deskContainer.style.display="flex";
   playGame();

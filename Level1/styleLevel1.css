@@ -90,8 +90,9 @@ button {
 
 #endGameMsg {
   position:fixed;
-  margin-left:40%;
   padding:1em;
+  width:80%;
+  height:100%;
   top:0;
   font-size:5em;
   z-index:100;
