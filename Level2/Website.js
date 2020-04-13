@@ -13,6 +13,7 @@ class Website{
     this.service ="";
     this.task = task;
     this.taskDiv = document.createElement("h1");
+    this.taskIsDone = false;
     this.resetLink = null;
     this.loginBtn = document.createElement("button");
     this.formInput =document.createElement("form");
@@ -63,6 +64,9 @@ class Website{
     this.taskDiv.style.display = "none";
 
     this.taskCheckBox.classList.add('popUpCheckbox');
+    this.taskCheckBox.onclick = e => {
+      this.taskIsDone = true;
+    }
 
     this.createForm();
 
@@ -115,8 +119,6 @@ class Website{
     this.taskDiv.style.display = "block";
     this.taskCheckBox.style.display="block";
   }
-
-
 
   generateRandPos (container, div) {
     div.style.left = randomInRange(0, container.offsetWidth - exitDiv.offsetWidth) + "px";

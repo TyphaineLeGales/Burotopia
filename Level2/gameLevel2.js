@@ -8,11 +8,12 @@ button.addEventListener("click", clickHandler, false);
 
 // TO DO :
 
+// if password check succesful => can tick a box and mark task as done in to do list
+
 //on creation button = create => other time button = login
 
 // check that password is different than your other password
 // is first time => store password if not compare
-// if password check succesful => can tick a box and mark task as done in to do list
 
 //drag and drop compatible with user input
 // - implement reset link logic
@@ -61,6 +62,10 @@ function generateTasks () {
 function checkValidityOfForm () {
   //if form is invalid (password doesn't fit criteria or password has already been used)
   //
+}
+
+function () {
+  //is taskIsDone = true => site.delete + taskInTasklist.classList.add('isDone');
 }
 
 function createSitePopUp (e) {

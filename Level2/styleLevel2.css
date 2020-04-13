@@ -133,6 +133,15 @@ input {
   width:10%;
   border-style: solid;
 }
+
+.popUpCheckbox:hover {
+  cursor:crosshair;
+  transform:scale(1.2);
+}
+
+.isDone {
+  color:red;
+}
 #mailIcon {
   height:10vw;
   width:20vw;
