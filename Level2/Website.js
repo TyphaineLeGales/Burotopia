@@ -48,29 +48,29 @@ class Website{
     var background = document.createElement("div");
     background.classList.add("backgroundSite");
 
-    var input_1 = document.createElement("div");
-    input_1.classList.add("inputFields");
+    var form = document.createElement("form");
 
     var inputUsername = document.createElement("input");
     inputUsername.setAttribute("type", "text");
     inputUsername.setAttribute("placeholder", "Username");
 
-    var input_2 = document.createElement("div");
-    input_2.classList.add("inputFields");
-
     var inputPassword = document.createElement("input");
     inputPassword.setAttribute("type", "text");
     inputPassword.setAttribute("placeholder", "Password");
 
-    input_1.appendChild(inputUsername);
-    input_2.appendChild(inputPassword);
+    var enterButton = document.createElement("button");
+    enterButton.setAttribute("type", "submit");
+    enterButton.innerHTML = "Login";
+    enterButton.classList.add("submitButton");
+
 
     var taskName = document.createElement("h1");
     taskName.innerHTML = this.task;
 
-    background.appendChild(input_1);
-    background.appendChild(input_2);
-    background.appendChild(taskName);
+    background.appendChild(inputUsername);
+    background.appendChild(inputPassword);
+    background.appendChild(enterButton);
+    // background.appendChild(taskName);
 
     websiteDiv.appendChild(topBar);
     websiteDiv.appendChild(background);

@@ -32,7 +32,7 @@ body {
   justify-content:center;
   flex-direction: column;
    background-color: white;
- /* background-image: url(../Assets/Graphics/Level2/backgroundBank.png);
+/*  background-image: url(../Assets/Graphics/Level2/backgroundBank.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;*/
   height:92%;
@@ -40,7 +40,7 @@ body {
 }
 input {
   font-family: silom;
-  font-size:1.2em;
+  font-size:1em;
   height:10%;
   padding:1em 0.5em;
   background-color: #EDEDED;
@@ -48,8 +48,21 @@ input {
   margin-left:1em;
   width:50%;
   margin-bottom:1%;
+  padding:1em 0.5em;
 }
 
+.submitButton {
+  font-family: silom;
+  align-self: flex-end;
+  text-align:left;
+  margin-right:1em;
+  font-size:2em;
+  border-radius:15px;
+  padding:0.25em 1em;
+  background-color:#C95431 ;
+  color:white;
+
+}
 .topBarSite {
   position:relative;
   background-color: #AAB0B5;
@@ -82,6 +95,7 @@ input {
   left:15%;
   width:80%;
 }
+
 
 #taskSection {
   height:100%;

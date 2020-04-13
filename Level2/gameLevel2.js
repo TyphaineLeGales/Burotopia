@@ -21,6 +21,7 @@ button.addEventListener("click", clickHandler, false);
 //generate an email
 //several emails ?
 //add tasks as the player goes along
+//animation loging button pulsing
 
 function clickHandler() {
   gameContainer.style.display = "flex";
@@ -59,18 +60,18 @@ function generateTasks () {
 
 
 function createWindow (e) {
-  // if(e.target.tagName.toLowerCase() === 'p' ) {
-  //   for(var i = 0; i < openedWindows.length; i++) {
-  //     if(openedWindows[i] === e.target.textContent){
-  //       siteIsAlreadyOpened = true;
-  //     }
-  //   }
+  if(e.target.tagName.toLowerCase() === 'p' ) {
+    for(var i = 0; i < openedWindows.length; i++) {
+      if(openedWindows[i] === e.target.textContent){
+        siteIsAlreadyOpened = true;
+      }
+    }
 
-  //   if(siteIsAlreadyOpened != true) {
-  //     var siteWindow = new Website(e.target.textContent);
-  //     openedWindows.push(siteWindow);
-  //   }
-  // }
+    if(siteIsAlreadyOpened != true) {
+      var siteWindow = new Website(e.target.textContent);
+      openedWindows.push(siteWindow);
+    }
+  }
 }
 
 function endGame() {
