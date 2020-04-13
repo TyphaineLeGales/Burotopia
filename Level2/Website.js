@@ -13,13 +13,18 @@ class Website{
     this.service ="";
     this.task = task;
     this.resetLink = null;
+    this.loginBtn = document.createElement("button");
+    this.inputUsername = document.createElement("input");
+    this.inputPassword = document.createElement("input");
+
+
     this.create();
   }
 
   create () {
     var websiteDiv =  document.createElement("div");
     websiteDiv.classList.add("websiteDiv");
-    websiteDiv.classList.add("drag");
+    // websiteDiv.classList.add("drag");
 
     var topBar = document.createElement("div");
     topBar.classList.add("topBarSite");
@@ -49,28 +54,22 @@ class Website{
     var background = document.createElement("div");
     background.classList.add("backgroundSite");
 
-    var form = document.createElement("form");
+    this.inputUsername.setAttribute("type", "text");
+    this.inputUsername.setAttribute("placeholder", "Username");
 
-    var inputUsername = document.createElement("input");
-    inputUsername.setAttribute("type", "text");
-    inputUsername.setAttribute("placeholder", "Username");
+    this.inputPassword.setAttribute("type", "text");
+    this.inputPassword.setAttribute("placeholder", "Password");
 
-    var inputPassword = document.createElement("input");
-    inputPassword.setAttribute("type", "text");
-    inputPassword.setAttribute("placeholder", "Password");
-
-    var enterButton = document.createElement("button");
-    enterButton.setAttribute("type", "submit");
-    enterButton.innerHTML = "Login";
-    enterButton.classList.add("submitButton");
-
+    this.loginBtn.setAttribute("type", "submit");
+    this.loginBtn.innerHTML = "Login";
+    this.loginBtn.classList.add("submitButton");
 
     var taskName = document.createElement("h1");
     taskName.innerHTML = this.task;
 
-    background.appendChild(inputUsername);
-    background.appendChild(inputPassword);
-    background.appendChild(enterButton);
+    background.appendChild(this.inputUsername);
+    background.appendChild(this.inputPassword);
+    background.appendChild(this.loginBtn);
     // background.appendChild(taskName);
 
     websiteDiv.appendChild(topBar);
@@ -79,6 +78,12 @@ class Website{
     container.appendChild(websiteDiv);
 
     this.generateRandPos(container, websiteDiv);
+
+      this.loginBtn.onclick = e => {
+        this.setUsername();
+        this.setPassword();
+
+    }
 
   }
 
@@ -89,11 +94,11 @@ class Website{
   }
 
   setUsername () {
-
+    this.username = this.inputUsername.value;
   }
 
   setPassword () {
-
+    this.password = this.inputPassword.value;
   }
 
   setTask() {

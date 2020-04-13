@@ -9,11 +9,11 @@ button.addEventListener("click", clickHandler, false);
 
 // TO DO :
 
-//can open windows only once
 //enter button to check username/password
 //if user name is empty => userInput = userName
 //in the beginning => player doesn't know his email => needs to check the emailIcon + the player hasn't enter any password => need to click I forgot my password
 //if userName & passWord
+//can open windows only once
 
 // - implement reset link logic
 // - design layout + websites content
@@ -42,7 +42,6 @@ function playGame() {
 function returnIndexOfTask () {
   for(var i = 0; i < tasks.length; i++) {
     tasks[i].onclick() = function () {
-      console.log()
     }
   }
 }
@@ -61,16 +60,8 @@ function generateTasks () {
 
 function createWindow (e) {
   if(e.target.tagName.toLowerCase() === 'p' ) {
-    for(var i = 0; i < openedWindows.length; i++) {
-      if(openedWindows[i] === e.target.textContent){
-        siteIsAlreadyOpened = true;
-      }
-    }
-
-    if(siteIsAlreadyOpened != true) {
       var siteWindow = new Website(e.target.textContent);
       openedWindows.push(siteWindow);
-    }
   }
 }
 
