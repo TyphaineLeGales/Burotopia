@@ -8,8 +8,9 @@ button.addEventListener("click", clickHandler, false);
 
 // TO DO :
 
+//when delete a site delete it from openedWindows;
 // if password check succesful => can tick a box and mark task as done in to do list
-
+//when completed a task => restore to form
 //on creation button = create => other time button = login
 
 // check that password is different than your other password
@@ -35,16 +36,6 @@ function playGame() {
   taskContainer.onclick = e => {
     createSitePopUp(e);
   }
-  // returnIndexOfTask();
-
-}
-
-//need to create html divs for each task task class ?
-function returnIndexOfTask () {
-  for(var i = 0; i < tasks.length; i++) {
-    tasks[i].onclick() = function () {
-    }
-  }
 }
 
 function generateTasks () {
@@ -58,14 +49,21 @@ function generateTasks () {
   }
 }
 
-function checkValidityOfForm () {
-  //if form is invalid (password doesn't fit criteria or password has already been used)
-  //
+function deletePopUp(site) {
+    for(var i = 0; i< openedWindows.length; i++) {
+      if(site.task === openedWindows[i].task) {
+        console.log("condition works");
+        openedWindows.splice(i, 1);
+      }
+    }
+    site.delete();
 }
 
 function completeTask() {
-  //
-  //is taskIsDone = true => site.delete + taskInTasklist.classList.add('isDone');
+  //is taskIsDone = true =>
+  //fin the clicked checkBox and its corresponding task
+  // taskInTasklist.classList.add('isDone');
+  //site.delete + taskInTasklist.classList.add('isDone');
 }
 
 function createSitePopUp (e) {
@@ -82,6 +80,9 @@ function createSitePopUp (e) {
     if(isAlreadyOpened === false) {
       var siteWindow = new Website(e.target.textContent);
       openedWindows.push(siteWindow);
+      siteWindow.crossIcon.onclick = e => {
+        deletePopUp(siteWindow);
+      }
     } else {
       //check password
     }

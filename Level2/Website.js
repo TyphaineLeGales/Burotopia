@@ -9,6 +9,7 @@ const exitDiv = document.querySelector("div.exitIcon");
 class Website{
   constructor(task) {
     this.websiteDiv = document.createElement("div");
+    this.crossIcon = document.createElement("div");
     this.username = "";
     this.password = "";
     this.service ="";
@@ -34,13 +35,8 @@ class Website{
     var topBar = document.createElement("div");
     topBar.classList.add("topBarSite");
 
-    var crossIcon = document.createElement("div");
-    crossIcon.classList.add("crossIcon");
-    crossIcon.classList.add("topBarSquare");
-    crossIcon.onclick = e => {
-      this.delete();
-      //need to delete from openedWindows
-    }
+    this.crossIcon.classList.add("crossIcon");
+    this.crossIcon.classList.add("topBarSquare");
 
 
     var minusIcon = document.createElement("div");
@@ -55,7 +51,7 @@ class Website{
     urlBar.classList.add("urlBar");
     urlBar.classList.add("topBarSquare");
 
-    topBar.appendChild(crossIcon);
+    topBar.appendChild(this.crossIcon);
     topBar.appendChild(minusIcon);
     topBar.appendChild(plusIcon);
     topBar.appendChild(urlBar);
