@@ -1,7 +1,6 @@
 var tasks = ["bank", "phoneCompany", "streaming", "socialMedia", "news", "shopping", "socialSecurity", "getFood" ];
 var taskContainer = document.querySelector("#tasksList");
 var openedWindows = [];
-var siteIsAlreadyOpened = false;
 var button = document.querySelector("button");
 var gameContainer =  document.querySelector("div.gameContainer");
 button.style.cursor = "pointer";
@@ -9,7 +8,8 @@ button.addEventListener("click", clickHandler, false);
 
 // TO DO :
 
-//implement password security requirement : number of character + combinaison
+//on creation button = create => other time button = login
+
 // check that password is different than your other password
 // is first time => store password if not compare
 // if password check succesful => can tick a box and mark task as done in to do list
@@ -32,7 +32,8 @@ function clickHandler() {
 function playGame() {
   generateTasks();
   taskContainer.onclick = e => {
-    createWindow(e);
+    createSitePopUp(e);
+    console.log(openedWindows);
   }
   // returnIndexOfTask();
 
@@ -57,11 +58,28 @@ function generateTasks () {
   }
 }
 
+function checkValidityOfForm () {
+  //if form is invalid (password doesn't fit criteria or password has already been used)
+  //
+}
 
-function createWindow (e) {
+function createSitePopUp (e) {
+  var isAlreadyOpened = false;
   if(e.target.tagName.toLowerCase() === 'p' ) {
+    // check that the task has not a popUp window opened already
+    for(var i = 0; i < openedWindows.length; i++) {
+      var task = openedWindows[i].task;
+      if(e.target.textContent === task) {
+        isAlreadyOpened = true;
+      }
+    }
+
+    if(isAlreadyOpened === false) {
       var siteWindow = new Website(e.target.textContent);
       openedWindows.push(siteWindow);
+    } else {
+      //check password
+    }
   }
 }
 

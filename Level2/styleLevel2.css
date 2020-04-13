@@ -127,6 +127,12 @@ input {
   position:absolute;
 }
 
+.popUpCheckbox {
+  display:none;
+  height:10%;
+  width:10%;
+  border-style: solid;
+}
 #mailIcon {
   height:10vw;
   width:20vw;
