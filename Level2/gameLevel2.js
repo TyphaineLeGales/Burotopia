@@ -8,15 +8,16 @@ button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
 // TO DO :
-//Placeholder userName
-// tick box when task is done +  animation before restart
-//drag and drop compatible with user input
 
-//on creation button = create => other time button = login
-//can't login if null
-
+//
 // check that password is different than your other password
 // is first time => store password if not compare
+//onclick increase z-index => inFocus class with high z-index
+// tick box when task is done +  animation before restart
+
+//increase gamification : points ?
+//on creation button = create => other time button = login
+//can't login if null
 
 // implement reset link logic
 // design layout + websites content
@@ -70,6 +71,12 @@ function completeTask(popUp) {
   popUp.reset();
 }
 
+function popUpOutOfFocus () {
+  for(var i = 0; i< openedWindows.length; i++) {
+    openedWindows[i].classList.remove("foreground");
+  }
+}
+
 function createSitePopUp (e) {
   var isAlreadyOpened = false;
   if(e.target.tagName.toLowerCase() === 'p' ) {
@@ -85,6 +92,7 @@ function createSitePopUp (e) {
       var siteWindow = new Website(e.target.textContent);
       siteWindow.setBackgroundImg(e.target.textContent);
       openedWindows.push(siteWindow);
+
       siteWindow.crossIcon.onclick = e => {
         deletePopUp(siteWindow);
       }

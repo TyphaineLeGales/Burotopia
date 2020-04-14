@@ -149,6 +149,10 @@ input {
 .isDone {
   color:red;
 }
+
+.foreground {
+  z-index:100;
+}
 #mailIcon {
   height:10vw;
   width:20vw;

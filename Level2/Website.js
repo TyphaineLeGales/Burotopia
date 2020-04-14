@@ -60,6 +60,7 @@ class Website{
       this.loginBtn.onclick = e => {
         if(this.inputPassword.validity.valid === true && this.inputPassword) {
           console.log("login onclick");
+          console.log(this.password);
           this.setUsername();
           this.setPassword();
           this.showTask();
@@ -141,6 +142,7 @@ class Website{
 
   reset() {
     this.formInput.style.display = "flex";
+    this.inputPassword.value = "";
     this.taskDiv.style.display = "none";
     this.taskCheckBox.style.display="none";
   }
@@ -151,6 +153,10 @@ class Website{
 
   delete() {
     container.removeChild(this.websiteDiv);
+  }
+
+  onFocus () {
+    this.websiteDiv.classList.add('foreground');
   }
 
 

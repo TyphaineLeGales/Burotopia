@@ -23,7 +23,9 @@ function dragElement(elmnt) {
     pos4 = e.clientY;
     document.onmouseup = closeDragElement;
     // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
+    if(e.target.tagName.toLowerCase() != "input") {
+      document.onmousemove = elementDrag;
+    }
   }
 
   function elementDrag(e) {

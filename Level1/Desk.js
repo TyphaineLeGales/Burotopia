@@ -54,7 +54,7 @@ class Desk{
     this.employee.classList.add('clickTarget');
     this.divDesk.appendChild(this.employee);
     var randImg = getRandomInt(8);
-    this.employee.style.backgroundImage = 'url(../Assets/Graphics/DeskEmployee-'+ randImg +'.png)';
+    this.employee.style.backgroundImage = 'url(../Assets/Graphics/Level1/DeskEmployee-'+ randImg +'.png)';
 
     this.textEmployee.classList.add('textEmployee');
     this.divDesk.appendChild(this.textEmployee);
@@ -93,7 +93,7 @@ class Desk{
     this.customer.classList.add("customer");
     this.divDesk.appendChild(this.customer);
     var randImgCustomer = getRandomInt(8);
-    this.customer.style.backgroundImage = 'url(../Assets/Graphics/customer-'+ randImgCustomer +'.png)';
+    this.customer.style.backgroundImage = 'url(../Assets/Graphics/Level1/customer-'+ randImgCustomer +'.png)';
   }
 
   customerUpdate() {
