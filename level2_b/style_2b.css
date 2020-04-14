@@ -26,7 +26,7 @@ button {
 
 .cell {
   height:10vw;
-  width:20vw;
+  width:15vw;
   margin: 1em;
 }
 
@@ -53,10 +53,11 @@ button {
 
 .cardBack {
   transform: rotateY(180deg);
+   background-color:blue;
 }
 
 .cardFront {
-  background-color:blue;
+  background-color:#E7E7E7;
 }
 
 .cardBack, .cardFront {
@@ -73,7 +74,7 @@ button {
 }
 
 .service {
-  color:yellow;
+
 }
 
 .serviceGraphics {

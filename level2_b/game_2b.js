@@ -12,11 +12,11 @@ var cells = [];
 var services = [];
 var passwords = [];
 var sitesNames = ["bank", "foodDelivery", "mail", "phoneCompany", "streaming"];
-var _numberOfPairs = sitesNames.length;
+var _numberOfPairs = 10;
 var _numberOfCards = 2* _numberOfPairs;
+var playerHasWon = false;
 
 //TO DO :
-//can only have two cards flipped at the same time => triggers check winning if lost flip back
 //winning Condition
 //count tries
 //timer
@@ -92,7 +92,6 @@ function fillGridRand() {
        flip(e);
     }
 
-
     var randInt = getRandomInt(cells.length);
     cells[randInt].appendChild(pair.serviceCard);
     cells.splice(randInt,1);
@@ -104,6 +103,7 @@ function fillGridRand() {
 }
 
 function flip(e) {
+
   var innerCardContainer = e.target.parentElement;
   var flipedCards = document.querySelectorAll("div.fliped");
 
@@ -111,10 +111,10 @@ function flip(e) {
      innerCardContainer.classList.add('fliped');
   } else if (innerCardContainer.classList[1] != "fliped" && flipedCards.length === 1 ) {
     innerCardContainer.classList.add('fliped');
-    checkForWin(e);
+    checkForWin(e, innerCardContainer);
     setTimeout(flipBackAll, 1000);
   } else{
-     innerCardContainer.classList.remove('fliped');
+    innerCardContainer.classList.remove('fliped');
   }
 }
 
@@ -125,6 +125,22 @@ function flip(e) {
 
 function checkForWin(e) {
   console.log("checkForVictory");
+  var flipedCards = document.querySelectorAll("div.fliped");
+  var idFlipedCards = [];
+  flipedCards.forEach(function(card) {
+    var id = card.lastChild.childNodes[0].innerHTML;
+    idFlipedCards.push(id);
+  });
+
+  if(idFlipedCards[0] === idFlipedCards[1]) {
+    console.log(idFlipedCards[0]);
+    console.log(idFlipedCards[1]);
+    console.log("you win");
+  } else {
+    console.log(idFlipedCards[0]);
+    console.log(idFlipedCards[1]);
+    console.log("you loose");
+  }
 }
 
 

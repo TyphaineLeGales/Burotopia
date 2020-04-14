@@ -32,7 +32,6 @@ class Pair {
     this.serviceCard.classList.add('card');
     this.serviceCard.classList.add('service');
 
-
     this.serviceCardInner.classList.add('cardInner');
     this.serviceCard.appendChild( this.serviceCardInner);
 
@@ -43,16 +42,17 @@ class Pair {
     var cardFront = document.createElement("div");
     cardFront.classList.add('cardFront');
 
-    var debugId = document.createElement("p");
-    debugId.innerHTML = this.id;
-    cardBack.appendChild(debugId);
+    var idHidden = document.createElement("p");
+    idHidden.innerHTML = this.id;
+    idHidden.style.display = "none";
+    cardFront.appendChild(idHidden);
 
     this.serviceCardInner.appendChild(cardFront);
 
     container.appendChild(this.serviceCard);
 
-    cardBack.style.backgroundImage = 'url(../Assets/Graphics/Level2/'+ this.name.trim() +'.png)';
-    cardBack.classList.add('serviceGraphics');
+    // cardBack.style.backgroundImage = 'url(../Assets/Graphics/Level2/'+ this.name.trim() +'.png)';
+    // cardBack.classList.add('serviceGraphics');
   }
 
   createPasswordCard() {
@@ -69,10 +69,10 @@ class Pair {
     var cardFront = document.createElement("div");
     cardFront.classList.add('cardFront');
 
-    var debugId = document.createElement("p");
-    debugId.innerHTML = this.id;
-    cardBack.appendChild(debugId);
-
+     var idHidden = document.createElement("p");
+    idHidden.innerHTML = this.id;
+    idHidden.style.display = "none";
+    cardFront.appendChild(idHidden);
 
     var passwordDiv = document.createElement("p");
     passwordDiv.innerHTML = this.password;
