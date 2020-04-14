@@ -6,17 +6,19 @@ const cardContainer = document.querySelector("div.cardContainer");
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
-var _numberOfCards = 20;
 var _passwordLength = 10;
-var _guess =[];
+var _guesses =[];
 var cells = [];
 var services = [];
 var passwords = [];
+var sitesNames = ["bank", "foodDelivery", "mail", "phoneCompany", "streaming"];
+var _numberOfPairs = sitesNames.length;
+var _numberOfCards = 2* _numberOfPairs;
 
 //TO DO :
+//can only have two cards flipped at the same time => triggers check winning if lost flip back
 //winning Condition
 //addSiteGraphics
-//flip card onclick
 //count tries
 //timer
 //ajouter un post it manuscrit avec noter chaque password pour chaque site
@@ -35,7 +37,7 @@ function playGame() {
 }
 
 function generateCardGrid() {
-  for(var i=0; i<_numberOfCards*2; i++) {
+  for(var i=0; i<_numberOfCards; i++) {
     var cell = document.createElement("div")
     cell.classList.add("cell");
     cardContainer.appendChild(cell);
@@ -75,9 +77,10 @@ function generateCharacter() {
 }
 
 function fillGridRand() {
-   for(var i=0; i<_numberOfCards; i++) {
+   for(var i=0; i<_numberOfPairs; i++) {
     var pair = new Pair(i);
     pair.password = generatePassword();
+    pair.name = sitesNames[i];
     pair.create();
     services.push(pair.serviceCard);
     passwords.push(pair.passwordCard);
