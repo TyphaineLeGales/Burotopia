@@ -18,7 +18,6 @@ var _numberOfCards = 2* _numberOfPairs;
 //TO DO :
 //can only have two cards flipped at the same time => triggers check winning if lost flip back
 //winning Condition
-//addSiteGraphics
 //count tries
 //timer
 //ajouter un post it manuscrit avec noter chaque password pour chaque site
@@ -106,13 +105,29 @@ function fillGridRand() {
 
 function flip(e) {
   var innerCardContainer = e.target.parentElement;
-  if(innerCardContainer.classList[1] != "fliped") {
+  var flipedCards = document.querySelectorAll("div.fliped");
+
+  if(innerCardContainer.classList[1] != "fliped" && flipedCards.length < 1 ) {
      innerCardContainer.classList.add('fliped');
-  } else {
+  } else if (innerCardContainer.classList[1] != "fliped" && flipedCards.length === 1 ) {
+    innerCardContainer.classList.add('fliped');
+    checkForWin(e);
+    setTimeout(flipBackAll, 1000);
+  } else{
      innerCardContainer.classList.remove('fliped');
   }
-
 }
+
+  function flipBackAll () {
+    var flipedCards = document.querySelectorAll("div.fliped");
+    flipedCards.forEach(card => card.classList.remove('fliped'));
+  }
+
+function checkForWin(e) {
+  console.log("checkForVictory");
+}
+
+
 
  //if card is not flipped && guesses.length < 2 => flip card
  //if card is flipped && guess
