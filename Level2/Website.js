@@ -116,11 +116,7 @@ class Website{
   }
 
   setBackgroundImg(img) {
-    console.log(img);
-
-    console.log('url(../Assets/Graphics/Level2/'+ img +'.png)');
     this.backgroundDiv.style.backgroundImage = 'url(../Assets/Graphics/Level2/'+ img.trim() +'.png)';
-    console.log(this.backgroundDiv.style.backgroundImage);
   }
 
   showTask() {
@@ -143,7 +139,7 @@ class Website{
   }
 
   reset() {
-    this.formInput.style.display = "block";
+    this.formInput.style.display = "flex";
     this.taskDiv.style.display = "none";
     this.taskCheckBox.style.display="none";
   }
