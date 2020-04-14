@@ -4,10 +4,13 @@ class Pair {
   constructor (id) {
     this.name = null;
     this.serviceCard = document.createElement("div");
+    this.serviceCardInner = document.createElement("div");
     this.passwordCard = document.createElement("div");
+    this.passwordCardInner = document.createElement("div");
     this.graphics = null;
-    this.password = null;
+    this.password = "";
     this.id = id;
+    this.isFlipped = false;
   }
 
   create() {
@@ -20,10 +23,6 @@ class Pair {
     //after 3 failed trials
   }
 
-  flipCard () {
-    //onclick
-  }
-
   setPassword(password) {
     this.password = password;
   }
@@ -32,13 +31,13 @@ class Pair {
     this.serviceCard.classList.add('card');
     this.serviceCard.classList.add('service');
 
-    var cardInner = document.createElement("div");
-    cardInner.classList.add('cardInner');
-    this.serviceCard.appendChild(cardInner);
+
+    this.serviceCardInner.classList.add('cardInner');
+    this.serviceCard.appendChild( this.serviceCardInner);
 
     var cardBack = document.createElement("div");
     cardBack.classList.add('cardBack');
-    cardInner.appendChild(cardBack);
+     this.serviceCardInner.appendChild(cardBack);
 
     var cardFront = document.createElement("div");
     cardFront.classList.add('cardFront');
@@ -51,7 +50,7 @@ class Pair {
     cardBack.appendChild(debugId);
 
 
-    cardInner.appendChild(cardFront);
+     this.serviceCardInner.appendChild(cardFront);
 
     container.appendChild(this.serviceCard);
 
@@ -61,13 +60,12 @@ class Pair {
     this.passwordCard.classList.add('card');
     this.passwordCard.classList.add('password');
 
-    var cardInner = document.createElement("div");
-    cardInner.classList.add('cardInner');
-    this.passwordCard.appendChild(cardInner);
+    this.passwordCardInner.classList.add('cardInner');
+    this.passwordCard.appendChild( this.passwordCardInner);
 
     var cardBack = document.createElement("div");
     cardBack.classList.add('cardBack');
-    cardInner.appendChild(cardBack);
+     this.passwordCardInner.appendChild(cardBack);
 
     var cardFront = document.createElement("div");
     cardFront.classList.add('cardFront');
@@ -78,7 +76,7 @@ class Pair {
     debugId.innerHTML = this.id;
     cardBack.appendChild(debugId);
 
-    cardInner.appendChild(cardFront);
+     this.passwordCardInner.appendChild(cardFront);
 
     container.appendChild(this.passwordCard);
   }

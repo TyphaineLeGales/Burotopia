@@ -8,12 +8,13 @@ button.addEventListener("click", clickHandler, false);
 
 var _numberOfCards = 10;
 var _passwordLength = 14;
+var _guess =[];
 var cells = [];
 var services = [];
 var passwords = [];
 
 //TO DO :
-//generatePassword
+//winning Condition
 //addSiteGraphics
 //flip card onclick
 //count tries
@@ -47,7 +48,7 @@ function generatePassword() {
   for(var i = 0; i < _passwordLength; i++) {
     password = ""+password+ generateCharacter();
   }
-  console.log(password);
+  return password;
 }
 
 function generateCharacter() {
@@ -81,6 +82,16 @@ function fillGridRand() {
     services.push(pair.serviceCard);
     passwords.push(pair.passwordCard);
 
+    pair.serviceCard.onclick = e => {
+      flip(e);
+    }
+
+    pair.passwordCard.onclick = e => {
+       flip(e);
+    }
+
+    pair.password = generatePassword();
+
     var randInt = getRandomInt(cells.length);
     cells[randInt].appendChild(pair.serviceCard);
     cells.splice(randInt,1);
@@ -90,3 +101,17 @@ function fillGridRand() {
     cells.splice(randInt_2,1);
   }
 }
+
+function flip(e) {
+  console.log(e.target.parentElement);
+  var innerCardContainer = e.target.parentElement;
+  if(innerCardContainer.classList[1] != "fliped") {
+     innerCardContainer.classList.add('fliped');
+  } else {
+     innerCardContainer.classList.remove('fliped');
+  }
+
+}
+
+ //if card is not flipped && guesses.length < 2 => flip card
+ //if card is flipped && guess

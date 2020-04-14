@@ -38,9 +38,10 @@ button {
   width:100%;
 }
 
-.card:hover .cardInner {
+.fliped {
   transform: rotateY(180deg);
 }
+
 
 .cardInner {
   position: relative;
