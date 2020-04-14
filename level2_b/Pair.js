@@ -45,6 +45,7 @@ class Pair {
     var debugName = document.createElement("p");
     debugName.innerHTML = "service";
     cardBack.appendChild(debugName);
+
     var debugId = document.createElement("p");
     debugId.innerHTML = this.id;
     cardBack.appendChild(debugId);
@@ -69,14 +70,17 @@ class Pair {
 
     var cardFront = document.createElement("div");
     cardFront.classList.add('cardFront');
-    var debugName = document.createElement("p");
-    debugName.innerHTML = "password";
-    cardBack.appendChild(debugName);
+
     var debugId = document.createElement("p");
     debugId.innerHTML = this.id;
     cardBack.appendChild(debugId);
 
-     this.passwordCardInner.appendChild(cardFront);
+
+    var passwordDiv = document.createElement("p");
+    passwordDiv.innerHTML = this.password;
+    cardBack.appendChild(passwordDiv);
+
+    this.passwordCardInner.appendChild(cardFront);
 
     container.appendChild(this.passwordCard);
   }

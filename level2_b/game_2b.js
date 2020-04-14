@@ -6,8 +6,8 @@ const cardContainer = document.querySelector("div.cardContainer");
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
-var _numberOfCards = 10;
-var _passwordLength = 14;
+var _numberOfCards = 20;
+var _passwordLength = 10;
 var _guess =[];
 var cells = [];
 var services = [];
@@ -75,9 +75,9 @@ function generateCharacter() {
 }
 
 function fillGridRand() {
-  console.log(cells);
    for(var i=0; i<_numberOfCards; i++) {
     var pair = new Pair(i);
+    pair.password = generatePassword();
     pair.create();
     services.push(pair.serviceCard);
     passwords.push(pair.passwordCard);
@@ -90,7 +90,6 @@ function fillGridRand() {
        flip(e);
     }
 
-    pair.password = generatePassword();
 
     var randInt = getRandomInt(cells.length);
     cells[randInt].appendChild(pair.serviceCard);
@@ -103,7 +102,6 @@ function fillGridRand() {
 }
 
 function flip(e) {
-  console.log(e.target.parentElement);
   var innerCardContainer = e.target.parentElement;
   if(innerCardContainer.classList[1] != "fliped") {
      innerCardContainer.classList.add('fliped');
