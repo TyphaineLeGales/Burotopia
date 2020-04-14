@@ -6,8 +6,8 @@
 }
 body {
   font-family: silom;
-  display:flex;
   background-color:none;
+
 }
 
 .levelTitle {
@@ -15,8 +15,19 @@ body {
   text-decoration: none;
 }
 
-li {
-  font-size: 5em;
+ul {
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  list-style-type: none;
+}
+
+img{
+
+  transform:scale(0.5);
+  list-style: none;
+  text-decoration: none;
 }
 
 a:link {
