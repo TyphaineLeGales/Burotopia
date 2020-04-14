@@ -24,12 +24,19 @@ button {
 
 }
 
+.cell {
+    height:10%;
+  width:10%;
+  margin: 1em;
+  border-style:solid;
+}
+
 .card {
   /*background-color:red;*/
   background-color: transparent;
   perspective: 1000px;
-  height:10%;
-  width:10%;
+  height:100%;
+  width:100%;
   margin: 1em;
 }
 
