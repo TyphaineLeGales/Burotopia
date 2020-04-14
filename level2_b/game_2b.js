@@ -1,3 +1,6 @@
+const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+const numbers = ["0","1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const symbols = [];
 var button = document.querySelector("button");
 var gameContainer =  document.querySelector("div.gameContainer");
 const cardContainer = document.querySelector("div.cardContainer");
@@ -10,8 +13,8 @@ var services = [];
 var passwords = [];
 
 //TO DO :
-
-//randomly sample the arrays to fill grid
+//generatePassword
+//addSiteGraphics
 //flip card onclick
 //count tries
 //timer
@@ -25,20 +28,8 @@ function clickHandler() {
 }
 
 function playGame() {
-  // generatePairs();
   generateCardGrid();
   fillGridRand();
-
-}
-
-function generatePairs() {
-  console.log("function is called ");
-  for(var i=0; i<_numberOfCards; i++) {
-    var pair = new Pair(i);
-    pair.create();
-    services.push(pair.serviceCard);
-    passwords.push(pair.passwordCard);
-  }
 }
 
 function generateCardGrid() {
@@ -50,22 +41,24 @@ function generateCardGrid() {
   }
 }
 
+function generatePasswords() {
+
+}
+
 function fillGridRand() {
   console.log(cells);
-  //getRandCell => append pair.service
    for(var i=0; i<_numberOfCards; i++) {
     var pair = new Pair(i);
     pair.create();
     services.push(pair.serviceCard);
     passwords.push(pair.passwordCard);
+
     var randInt = getRandomInt(cells.length);
-    console.log(randInt);
-    console.log(cells[randInt]);
     cells[randInt].appendChild(pair.serviceCard);
     cells.splice(randInt,1);
+
     var randInt_2 = getRandomInt(cells.length);
     cells[randInt_2].appendChild(pair.passwordCard);
     cells.splice(randInt_2,1);
-    console.log(randInt_2);
   }
 }

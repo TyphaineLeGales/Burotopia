@@ -25,10 +25,9 @@ button {
 }
 
 .cell {
-    height:10%;
+  height:10%;
   width:10%;
   margin: 1em;
-  border-style:solid;
 }
 
 .card {
@@ -37,7 +36,6 @@ button {
   perspective: 1000px;
   height:100%;
   width:100%;
-  margin: 1em;
 }
 
 .card:hover .cardInner {

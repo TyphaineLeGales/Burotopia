@@ -7,7 +7,6 @@ class Pair {
     this.passwordCard = document.createElement("div");
     this.graphics = null;
     this.password = null;
-    this.div = document.createElement("div");
     this.id = id;
   }
 
@@ -23,6 +22,10 @@ class Pair {
 
   flipCard () {
     //onclick
+  }
+
+  setPassword(password) {
+    this.password = password;
   }
 
   createServiceCard() {
@@ -42,11 +45,11 @@ class Pair {
 
     var debugName = document.createElement("p");
     debugName.innerHTML = "service";
-    cardFront.appendChild(debugName);
+    cardBack.appendChild(debugName);
     var debugId = document.createElement("p");
     debugId.innerHTML = this.id;
+    cardBack.appendChild(debugId);
 
-    cardFront.appendChild(debugId);
 
     cardInner.appendChild(cardFront);
 
@@ -70,11 +73,11 @@ class Pair {
     cardFront.classList.add('cardFront');
     var debugName = document.createElement("p");
     debugName.innerHTML = "password";
-    cardFront.appendChild(debugName);
+    cardBack.appendChild(debugName);
     var debugId = document.createElement("p");
     debugId.innerHTML = this.id;
+    cardBack.appendChild(debugId);
 
-    cardFront.appendChild(debugId);
 
     cardInner.appendChild(cardFront);
 
