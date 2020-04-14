@@ -19,8 +19,10 @@ var playerHasWon = false;
 //TO DO :
 //winning Condition
 //count tries
+//can't pick the same card more than 3 times in a row
 //timer
 //ajouter un post it manuscrit avec noter chaque password pour chaque site
+//fix responsive
 
 
 function clickHandler() {
@@ -112,19 +114,20 @@ function flip(e) {
   } else if (innerCardContainer.classList[1] != "fliped" && flipedCards.length === 1 ) {
     innerCardContainer.classList.add('fliped');
     checkForWin(e, innerCardContainer);
-    setTimeout(flipBackAll, 1000);
+    if(playerHasWon === false) {
+      setTimeout(flipBackAll, 1000);
+    }
   } else{
     innerCardContainer.classList.remove('fliped');
   }
 }
 
-  function flipBackAll () {
-    var flipedCards = document.querySelectorAll("div.fliped");
-    flipedCards.forEach(card => card.classList.remove('fliped'));
-  }
+function flipBackAll () {
+  var flipedCards = document.querySelectorAll("div.fliped");
+  flipedCards.forEach(card => card.classList.remove('fliped'));
+}
 
 function checkForWin(e) {
-  console.log("checkForVictory");
   var flipedCards = document.querySelectorAll("div.fliped");
   var idFlipedCards = [];
   flipedCards.forEach(function(card) {
@@ -134,12 +137,8 @@ function checkForWin(e) {
 
   if(idFlipedCards[0] === idFlipedCards[1]) {
     console.log("you win");
+    playerHasWon = true;
   } else {
     console.log("you loose");
   }
 }
-
-
-
- //if card is not flipped && guesses.length < 2 => flip card
- //if card is flipped && guess
