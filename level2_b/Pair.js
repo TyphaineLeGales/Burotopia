@@ -51,8 +51,8 @@ class Pair {
 
     container.appendChild(this.serviceCard);
 
-    // cardBack.style.backgroundImage = 'url(../Assets/Graphics/Level2/'+ this.name.trim() +'.png)';
-    // cardBack.classList.add('serviceGraphics');
+    cardBack.style.backgroundImage = 'url(../Assets/Graphics/Level2/'+ this.name.trim() +'.png)';
+    cardBack.classList.add('serviceGraphics');
   }
 
   createPasswordCard() {

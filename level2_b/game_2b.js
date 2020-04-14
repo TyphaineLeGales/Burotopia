@@ -11,8 +11,8 @@ var _guesses =[];
 var cells = [];
 var services = [];
 var passwords = [];
-var sitesNames = ["bank", "foodDelivery", "mail", "phoneCompany", "streaming"];
-var _numberOfPairs = 10;
+var sitesNames = ["bank", "delivery", "eMail", "phone", "streaming", "health", "shop", "friend", "dating", "news"];
+var _numberOfPairs = sitesNames.length;
 var _numberOfCards = 2* _numberOfPairs;
 var playerHasWon = false;
 
@@ -133,12 +133,8 @@ function checkForWin(e) {
   });
 
   if(idFlipedCards[0] === idFlipedCards[1]) {
-    console.log(idFlipedCards[0]);
-    console.log(idFlipedCards[1]);
     console.log("you win");
   } else {
-    console.log(idFlipedCards[0]);
-    console.log(idFlipedCards[1]);
     console.log("you loose");
   }
 }
