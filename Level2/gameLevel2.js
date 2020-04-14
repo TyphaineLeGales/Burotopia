@@ -8,7 +8,6 @@ button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
 // TO DO :
-//set background img
 //Placeholder userName
 // tick box when task is done +  animation before restart
 //drag and drop compatible with user input

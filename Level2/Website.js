@@ -30,7 +30,7 @@ class Website{
 
   create () {
     this.websiteDiv.classList.add("websiteDiv");
-    // websiteDiv.classList.add("drag");
+    this.websiteDiv.classList.add("drag");
 
     this.createTopBar(this.websiteDiv);
     this.backgroundDiv.classList.add("backgroundSite");
@@ -99,7 +99,8 @@ class Website{
   createForm() {
 
     this.inputUsername.setAttribute("type", "text");
-    this.inputUsername.setAttribute("placeholder", "Username");
+    this.inputUsername.setAttribute("placeholder", "Client15068");
+    this.inputUsername.setAttribute("disabled", "true");
 
     this.inputPassword.setAttribute("type", "text");
     this.inputPassword.setAttribute("placeholder", "Password");
