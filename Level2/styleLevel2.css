@@ -31,13 +31,12 @@ body {
   display:flex;
   justify-content:center;
   flex-direction: column;
-   background-color: white;
-/*  background-image: url(../Assets/Graphics/Level2/backgroundBank.png);
   background-repeat: no-repeat;
-  background-size: 100% 100%;*/
+  background-size: 100% 100%;
   height:92%;
   width:100%;
 }
+
 input {
   font-family: silom;
   font-size:1em;

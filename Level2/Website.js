@@ -2,8 +2,8 @@ const container = document.querySelector("div.webpagesContainer");
 const exitDiv = document.querySelector("div.exitIcon");
 
 
-  function randomInRange(min, max) {
-    return(Math.floor((Math.random() * (max - min) + 1) + min));
+function randomInRange(min, max) {
+  return(Math.floor((Math.random() * (max - min) + 1) + min));
 }
 
 class Website{
@@ -15,6 +15,7 @@ class Website{
     this.service ="";
     this.task = task;
     this.taskDiv = document.createElement("h1");
+    this.backgroundDiv = document.createElement("div");
     this.taskIsDone = false;
     this.resetLink = null;
     this.loginBtn = document.createElement("button");
@@ -24,7 +25,6 @@ class Website{
     this.isAlreadyOpened = false;
     this.taskCheckBox =  document.createElement("div");
 
-
     this.create();
   }
 
@@ -32,12 +32,48 @@ class Website{
     this.websiteDiv.classList.add("websiteDiv");
     // websiteDiv.classList.add("drag");
 
+    this.createTopBar(this.websiteDiv);
+    this.backgroundDiv.classList.add("backgroundSite");
+
+    this.taskDiv.innerHTML = this.task;
+    this.taskDiv.style.display = "none";
+
+    this.taskCheckBox.classList.add('popUpCheckbox');
+    this.taskCheckBox.onclick = e => {
+      this.taskIsDone = true;
+    }
+
+    this.createForm();
+
+    this.backgroundDiv.appendChild(this.formInput);
+    this.backgroundDiv.appendChild(this.taskDiv);
+    this.backgroundDiv.appendChild(this.taskCheckBox);
+
+    this.websiteDiv.appendChild(this.backgroundDiv);
+
+    container.appendChild(this.websiteDiv);
+
+    this.generateRandPos(container, this.websiteDiv);
+
+    var inputValidity = this.inputPassword.checkValidity();
+
+      this.loginBtn.onclick = e => {
+        if(this.inputPassword.validity.valid === true && this.inputPassword) {
+          console.log("login onclick");
+          this.setUsername();
+          this.setPassword();
+          this.showTask();
+        }
+      }
+
+  }
+
+  createTopBar (websiteDiv) {
     var topBar = document.createElement("div");
     topBar.classList.add("topBarSite");
 
     this.crossIcon.classList.add("crossIcon");
     this.crossIcon.classList.add("topBarSquare");
-
 
     var minusIcon = document.createElement("div");
     minusIcon.classList.add("minusIcon");
@@ -56,46 +92,11 @@ class Website{
     topBar.appendChild(plusIcon);
     topBar.appendChild(urlBar);
 
-    var background = document.createElement("div");
-    background.classList.add("backgroundSite");
-
-
-    this.taskDiv.innerHTML = this.task;
-    this.taskDiv.style.display = "none";
-
-    this.taskCheckBox.classList.add('popUpCheckbox');
-    this.taskCheckBox.onclick = e => {
-      this.taskIsDone = true;
-    }
-
-    this.createForm();
-
-    background.appendChild(this.formInput);
-    background.appendChild(this.taskDiv);
-    background.appendChild(this.taskCheckBox);
-
-    this.websiteDiv.appendChild(topBar);
-    this.websiteDiv.appendChild(background);
-
-    container.appendChild(this.websiteDiv);
-
-    this.generateRandPos(container, this.websiteDiv);
-
-    var inputValidity = this.inputPassword.checkValidity();
-
-      this.loginBtn.onclick = e => {
-        if(this.inputPassword.validity.valid === true && this.inputPassword) {
-          console.log("login onclick");
-          this.setUsername();
-          this.setPassword();
-          this.showTask();
-        }
-    }
+    websiteDiv.appendChild(topBar);
 
   }
 
   createForm() {
-
 
     this.inputUsername.setAttribute("type", "text");
     this.inputUsername.setAttribute("placeholder", "Username");
@@ -112,6 +113,14 @@ class Website{
     this.formInput.appendChild(this.inputPassword);
     this.formInput.appendChild(this.loginBtn);
 
+  }
+
+  setBackgroundImg(img) {
+    console.log(img);
+
+    console.log('url(../Assets/Graphics/Level2/'+ img +'.png)');
+    this.backgroundDiv.style.backgroundImage = 'url(../Assets/Graphics/Level2/'+ img.trim() +'.png)';
+    console.log(this.backgroundDiv.style.backgroundImage);
   }
 
   showTask() {
@@ -133,8 +142,10 @@ class Website{
     this.password = this.inputPassword.value;
   }
 
-  setTask() {
-
+  reset() {
+    this.formInput.style.display = "block";
+    this.taskDiv.style.display = "none";
+    this.taskCheckBox.style.display="none";
   }
 
   sendResetLink () {

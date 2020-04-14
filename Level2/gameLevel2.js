@@ -1,4 +1,4 @@
-var tasks = ["bank", "phoneCompany", "streaming", "socialMedia", "news", "shopping", "socialSecurity", "getFood" ];
+var tasks = ["bank", "phoneCompany", "streaming", "socialMedia", "news", "shopping", "socialSecurity", "getFood", "mail" ];
 var taskContainer = document.querySelector("#tasksList");
 var taskList = [];
 var openedWindows = [];
@@ -8,19 +8,19 @@ button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
 // TO DO :
+//set background img
+//Placeholder userName
+// tick box when task is done +  animation before restart
+//drag and drop compatible with user input
 
-// if password check succesful => can tick a box and mark task as done in to do list
-//when completed a task => restore to form
 //on creation button = create => other time button = login
 //can't login if null
 
 // check that password is different than your other password
 // is first time => store password if not compare
 
-//drag and drop compatible with user input
-// - implement reset link logic
-// - design layout + websites content
-//generate listOfTasks
+// implement reset link logic
+// design layout + websites content
 //generate an email
 //several emails ?
 //add tasks as the player goes along
@@ -64,11 +64,11 @@ function completeTask(popUp) {
   var taskList = document.querySelectorAll('li');
   for(var i = 0; i< taskList.length; i++) {
     var taskName = taskList[i].childNodes[2].innerHTML;
-    console.log(taskName);
       if(popUp.task === taskName) {
         taskList[i].childNodes[2].classList.add("isDone");
       }
-    }
+  }
+  popUp.reset();
 }
 
 function createSitePopUp (e) {
@@ -84,6 +84,7 @@ function createSitePopUp (e) {
 
     if(isAlreadyOpened === false) {
       var siteWindow = new Website(e.target.textContent);
+      siteWindow.setBackgroundImg(e.target.textContent);
       openedWindows.push(siteWindow);
       siteWindow.crossIcon.onclick = e => {
         deletePopUp(siteWindow);
