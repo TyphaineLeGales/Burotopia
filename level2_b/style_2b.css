@@ -19,7 +19,8 @@ button {
   display:flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-around ;
+  justify-content: start ;
+  align-content:start;
 
 }
 
@@ -29,7 +30,7 @@ button {
   perspective: 1000px;
   height:10%;
   width:10%;
-  border-style:solid;
+  margin: 1em;
 }
 
 .card:hover .cardInner {
@@ -60,4 +61,12 @@ button {
   height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
+}
+
+.password {
+  color:white;
+}
+
+.service {
+  color:yellow;
 }

@@ -43,10 +43,11 @@ class Pair {
     var debugName = document.createElement("p");
     debugName.innerHTML = "service";
     cardFront.appendChild(debugName);
-
     var debugId = document.createElement("p");
     debugId.innerHTML = this.id;
+
     cardFront.appendChild(debugId);
+
     cardInner.appendChild(cardFront);
 
     container.appendChild(this.serviceCard);
@@ -56,12 +57,27 @@ class Pair {
   createPasswordCard() {
     this.passwordCard.classList.add('card');
     this.passwordCard.classList.add('password');
+
+    var cardInner = document.createElement("div");
+    cardInner.classList.add('cardInner');
+    this.passwordCard.appendChild(cardInner);
+
+    var cardBack = document.createElement("div");
+    cardBack.classList.add('cardBack');
+    cardInner.appendChild(cardBack);
+
+    var cardFront = document.createElement("div");
+    cardFront.classList.add('cardFront');
     var debugName = document.createElement("p");
     debugName.innerHTML = "password";
-    this.passwordCard.appendChild(debugName);
+    cardFront.appendChild(debugName);
     var debugId = document.createElement("p");
     debugId.innerHTML = this.id;
-    this.passwordCard.appendChild(debugId);
+
+    cardFront.appendChild(debugId);
+
+    cardInner.appendChild(cardFront);
+
     container.appendChild(this.passwordCard);
   }
 
