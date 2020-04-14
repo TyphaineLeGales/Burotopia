@@ -1,6 +1,5 @@
 const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-const numbers = ["0","1", "2", "3", "4", "5", "6", "7", "8", "9"];
-const symbols = [];
+const symbols = ["@", "#", "$", "%", "§", "(", ")", "*", "£", "{", "}"];
 var button = document.querySelector("button");
 var gameContainer =  document.querySelector("div.gameContainer");
 const cardContainer = document.querySelector("div.cardContainer");
@@ -8,6 +7,7 @@ button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
 var _numberOfCards = 10;
+var _passwordLength = 14;
 var cells = [];
 var services = [];
 var passwords = [];
@@ -30,6 +30,7 @@ function clickHandler() {
 function playGame() {
   generateCardGrid();
   fillGridRand();
+  generatePassword();
 }
 
 function generateCardGrid() {
@@ -41,8 +42,35 @@ function generateCardGrid() {
   }
 }
 
-function generatePasswords() {
+function generatePassword() {
+  var password="";
+  for(var i = 0; i < _passwordLength; i++) {
+    password = ""+password+ generateCharacter();
+  }
+  console.log(password);
+}
 
+function generateCharacter() {
+  var randBinary = Math.round(Math.random());
+  var isNumber = randBinary == 1 ? true : false;
+
+  var randBinary_2 = Math.round(Math.random());
+  var isSymbol = randBinary_2 == 1 ? true : false;
+
+  var randBinary_3 = Math.round(Math.random());
+  var isLowerCase = randBinary_3 == 1 ? true : false;
+  var idElement = "";
+
+  if(isNumber) {
+    idElement = "" + getRandomInt(9);
+  } else if (isSymbol){
+    idElement = "" + symbols[getRandomInt(symbols.length)];
+  } else if(isLowerCase) {
+    idElement = letters[getRandomInt(letters.length)].toLowerCase();
+  }else {
+    idElement = letters[getRandomInt(letters.length)];
+  }
+  return idElement ;
 }
 
 function fillGridRand() {

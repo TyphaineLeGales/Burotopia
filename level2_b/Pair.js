@@ -78,7 +78,6 @@ class Pair {
     debugId.innerHTML = this.id;
     cardBack.appendChild(debugId);
 
-
     cardInner.appendChild(cardFront);
 
     container.appendChild(this.passwordCard);
