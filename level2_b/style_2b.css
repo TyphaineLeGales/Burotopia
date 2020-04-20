@@ -10,6 +10,7 @@ button {
   margin-left:10%;
   width:80vw;
   height:60vh;
+  margin-top:-5vh;
 }
 
 .cardContainer {
@@ -20,14 +21,14 @@ button {
   flex-wrap: wrap;
   justify-content: start ;
   align-content:start;
+  padding:5px;
 
 }
 
 .cell {
-  height:13vw;
-  width:11vw;
-  flex: 1 1 0px
-  margin: 1vw;
+  height:11vw;
+  width:9vw;
+  margin: 0.5vw;
 }
 
 .card {
@@ -70,14 +71,13 @@ button {
 
 .password {
   color:black;
-  font-size:1.2em;
+  font-size:1vw;
 }
 
 .password p {
   margin-top:45%;
   margin-left:25%;
   width:min-content;
-  border-style:solid;
 }
 
 .endGameMSG {
@@ -94,7 +94,7 @@ button {
 }
 
 .matchIndex {
-  font-size:80%;
+  font-size:1vw;
   background-image:url(../Assets/Graphics/Level2/postIt.png);
   background-size:contain;
 }
@@ -105,8 +105,8 @@ button {
 
 .insidePostIt {
   overflow-y:scroll;
-  height:80%;
-  width:80%;
+  height:75%;
+  width:83%;
   margin-left:10%;
   margin-top:10%;
 }
