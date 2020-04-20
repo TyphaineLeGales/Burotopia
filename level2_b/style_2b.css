@@ -105,6 +105,7 @@ button {
 
 .insidePostIt {
   overflow-y:scroll;
+  overflow-x: hidden;
   height:75%;
   width:83%;
   margin-left:10%;

@@ -39,8 +39,8 @@ button {
   position:fixed;
   bottom:0;
   right:0;
-  width:50%;
-  height:50%;
+  width:7.5vw;
+  height:3.25vw;
   z-index:50;
   display:none;
 }
@@ -104,13 +104,15 @@ button {
   width:100%;
   display:flex;
   flex-wrap: wrap;
+  justify-content: start ;
+  align-content:start;
   overflow:hidden;
   margin:0 5vw;
 }
 
 .counterDesk {
-  width:15em;
-  height:6.5em;
+  width:15vw;
+  height:6.5vw;
   position:relative;
   background-image: url(../Assets/Graphics/Level1/deskBackground.png);
   background-repeat: no-repeat;
@@ -123,8 +125,8 @@ button {
   position:absolute;
   right:35%;
   bottom:0;
-  height:4em;
-  width:4.5em;
+  height:4vw;
+  width:5vw;
   background-size: contain;
   cursor:crosshair;
 }
@@ -149,7 +151,7 @@ button {
   background-color:black;
   color:white;
   letter-spacing: 3px;
-  font-size:0.8;
+  font-size:1vw;
   animation-name: fadeIn;
   animation-duration:1s;
 
