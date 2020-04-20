@@ -18,7 +18,7 @@ var playerHasWon = false;
 
 //TO DO :
 //winning Condition
-//count tries
+//count tries => after 3 reset Password
 //can't pick the same card more than 3 times in a row
 //timer
 //ajouter un post it manuscrit avec noter chaque password pour chaque site
