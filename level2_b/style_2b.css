@@ -94,11 +94,19 @@ button {
 }
 
 .matchIndex {
-  border-color:red;
-  border-style:solid;
+  font-size:80%;
+  background-image:url(../Assets/Graphics/Level2/postIt.png);
+  background-size:contain;
 }
 
 .passwordServiceMatch {
-  display:flex;
-  flex-direction : row;
+  padding-left:5%;
+}
+
+.insidePostIt {
+  overflow-y:scroll;
+  height:80%;
+  width:80%;
+  margin-left:10%;
+  margin-top:10%;
 }

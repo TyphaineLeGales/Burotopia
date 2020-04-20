@@ -56,19 +56,16 @@ function createMatchIndexCell () {
 }
 
 function displayPasswordServiceMatch (cell) {
+  var insidePostIt = document.createElement("div");
+  insidePostIt.classList.add("insidePostIt");
   for(var i =0; i < _numberOfPairs; i++) {
-    var passwordServiceMatch = document.createElement("div");
+    var passwordServiceMatch = document.createElement("p");
     passwordServiceMatch.classList.add('passwordServiceMatch');
-    var passwordDisp = document.createElement("p");
-    passwordDisp.innerHTML = passwords[i];
-    passwordServiceMatch.appendChild(passwordDisp);
-
-    var serviceDisp = document.createElement("p");
-    serviceDisp.innerHTML = services[i];
-    passwordServiceMatch.appendChild(serviceDisp);
-
-    cell.appendChild(passwordServiceMatch);
+    passwordServiceMatch.innerHTML = "<u>" +services[i] + "</u>" + " : " + "<br>"+ passwords[i];
+    insidePostIt.appendChild(passwordServiceMatch);
   }
+
+  cell.appendChild(insidePostIt);
 
 }
 
