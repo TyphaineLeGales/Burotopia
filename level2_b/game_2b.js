@@ -6,6 +6,8 @@ const cardContainer = document.querySelector("div.cardContainer");
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
+var endGameMSG =  document.querySelector("h1.endGameMSG");
+
 var _passwordLength = 10;
 var _guesses =[];
 var cells = [];
@@ -136,9 +138,14 @@ function checkForWin(e) {
   });
 
   if(idFlipedCards[0] === idFlipedCards[1]) {
-    console.log("you win");
-    playerHasWon = true;
+    win();
   } else {
     console.log("you loose");
   }
+}
+
+function win() {
+  endGameMSG.innerHTML = "you win";
+  endGameMSG.style.display = "block";
+  playerHasWon = true;
 }
