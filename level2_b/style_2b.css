@@ -75,18 +75,30 @@ button {
 
 .password p {
   margin-top:45%;
+  margin-left:25%;
+  width:min-content;
   border-style:solid;
-
-
 }
 
 .endGameMSG {
   position: fixed;
+  top:0;
   display:none;
+  z-index:2;
 }
 
 .serviceGraphics {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 
+}
+
+.matchIndex {
+  border-color:red;
+  border-style:solid;
+}
+
+.passwordServiceMatch {
+  display:flex;
+  flex-direction : row;
 }

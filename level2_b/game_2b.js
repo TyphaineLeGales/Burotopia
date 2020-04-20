@@ -24,8 +24,6 @@ var playerHasWon = false;
 //can't pick the same card more than 3 times in a row
 //timer
 //ajouter un post it manuscrit avec noter chaque password pour chaque site
-//fix responsive
-
 
 function clickHandler() {
   gameContainer.style.display = "flex";
@@ -37,15 +35,41 @@ function playGame() {
   generateCardGrid();
   fillGridRand();
   generatePassword();
+  createMatchIndexCell();
 }
 
 function generateCardGrid() {
   for(var i=0; i<_numberOfCards; i++) {
-    var cell = document.createElement("div")
+    var cell = document.createElement("div");
     cell.classList.add("cell");
     cardContainer.appendChild(cell);
     cells.push(cell);
   }
+}
+
+function createMatchIndexCell () {
+  var indexCell = document.createElement("div");
+  indexCell.classList.add("cell");
+  indexCell.classList.add("matchIndex");
+  cardContainer.appendChild(indexCell);
+  displayPasswordServiceMatch(indexCell);
+}
+
+function displayPasswordServiceMatch (cell) {
+  for(var i =0; i < _numberOfPairs; i++) {
+    var passwordServiceMatch = document.createElement("div");
+    passwordServiceMatch.classList.add('passwordServiceMatch');
+    var passwordDisp = document.createElement("p");
+    passwordDisp.innerHTML = passwords[i];
+    passwordServiceMatch.appendChild(passwordDisp);
+
+    var serviceDisp = document.createElement("p");
+    serviceDisp.innerHTML = services[i];
+    passwordServiceMatch.appendChild(serviceDisp);
+
+    cell.appendChild(passwordServiceMatch);
+  }
+
 }
 
 function generatePassword() {
@@ -85,8 +109,8 @@ function fillGridRand() {
     pair.password = generatePassword();
     pair.name = sitesNames[i];
     pair.create();
-    services.push(pair.serviceCard);
-    passwords.push(pair.passwordCard);
+    services.push(pair.name);
+    passwords.push(pair.password);
 
     pair.serviceCard.onclick = e => {
       flip(e);
