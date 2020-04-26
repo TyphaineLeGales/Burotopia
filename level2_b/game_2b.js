@@ -7,6 +7,7 @@ button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
 var endGameMSG =  document.querySelector("h1.endGameMSG");
+var matchMsg = document.querySelector("h1.matchMSG");
 
 var _passwordLength = 10;
 var _guesses =[];
@@ -19,11 +20,10 @@ var _numberOfCards = 2* _numberOfPairs;
 var playerHasWon = false;
 
 //TO DO :
-//winning Condition
+//on win : login successful
 //count tries => after 3 reset Password
 //can't pick the same card more than 3 times in a row
 //timer
-//ajouter un post it manuscrit avec noter chaque password pour chaque site
 
 function clickHandler() {
   gameContainer.style.display = "flex";
@@ -160,6 +160,8 @@ function checkForMatch(e) {
       card.classList.remove('fliped');
       card.classList.add('hasBeenFound');
     });
+    matchMsg.classList.add('in');
+    setTimeout(matchMSGOut, 1000);
     checkWin();
 
   } else {
@@ -167,9 +169,13 @@ function checkForMatch(e) {
   }
 }
 
+function matchMSGOut () {
+  matchMsg.classList.remove('in');
+}
+
+
 function checkWin() {
   var hasBeenFoundCards = document.querySelectorAll('div.hasBeenFound');
-  console.log(hasBeenFoundCards.length);
   if(hasBeenFoundCards.length === _numberOfCards) {
     playerWins();
   }
