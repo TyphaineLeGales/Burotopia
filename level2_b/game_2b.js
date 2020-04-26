@@ -14,13 +14,15 @@ var _guesses =[];
 var cells = [];
 var services = [];
 var passwords = [];
+var cards = [];
 var sitesNames = ["bank", "delivery", "eMail", "phone", "streaming", "health", "shop", "friend", "dating", "news"];
 var _numberOfPairs = sitesNames.length;
 var _numberOfCards = 2* _numberOfPairs;
 var playerHasWon = false;
 
 //TO DO :
-//on win : login successful
+//start screen
+//count number of time card has been clicked
 //count tries => after 3 reset Password
 //can't pick the same card more than 3 times in a row
 //timer
@@ -128,9 +130,13 @@ function fillGridRand() {
 }
 
 function flip(e) {
-
   var innerCardContainer = e.target.parentElement;
+  var card = innerCardContainer.parentElement;
+  var cell = card.parentElement;
   var flipedCards = document.querySelectorAll("div.fliped");
+
+  //+1 to card clickedCount
+  //access pair object onClick
 
   if(innerCardContainer.classList[1] != "fliped" && flipedCards.length < 1) {
      innerCardContainer.classList.add('fliped');
@@ -157,13 +163,12 @@ function checkForMatch(e) {
 
   if(idFlipedCards[0] === idFlipedCards[1]) {
     flipedCards.forEach(function(card){
-      card.classList.remove('fliped');
-      card.classList.add('hasBeenFound');
-    });
-    matchMsg.classList.add('in');
-    setTimeout(matchMSGOut, 1000);
-    checkWin();
-
+    card.classList.remove('fliped');
+    card.classList.add('hasBeenFound');
+  });
+  matchMsg.classList.add('in');
+  setTimeout(matchMSGOut, 1000);
+  checkWin();
   } else {
     setTimeout(flipBackAll, 1000);
   }
@@ -179,8 +184,6 @@ function checkWin() {
   if(hasBeenFoundCards.length === _numberOfCards) {
     playerWins();
   }
-
-
 }
 
 function playerWins () {
