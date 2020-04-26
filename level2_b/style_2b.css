@@ -111,3 +111,9 @@ button {
   margin-left:10%;
   margin-top:10%;
 }
+
+.hasBeenFound {
+  border-style:solid;
+  border-color:red;
+  transform: rotateY(180deg);
+}

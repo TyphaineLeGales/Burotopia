@@ -132,14 +132,11 @@ function flip(e) {
   var innerCardContainer = e.target.parentElement;
   var flipedCards = document.querySelectorAll("div.fliped");
 
-  if(innerCardContainer.classList[1] != "fliped" && flipedCards.length < 1 ) {
+  if(innerCardContainer.classList[1] != "fliped" && flipedCards.length < 1) {
      innerCardContainer.classList.add('fliped');
   } else if (innerCardContainer.classList[1] != "fliped" && flipedCards.length === 1 ) {
     innerCardContainer.classList.add('fliped');
-    checkForWin(e, innerCardContainer);
-    if(playerHasWon === false) {
-      setTimeout(flipBackAll, 1000);
-    }
+    checkForMatch(e, innerCardContainer);
   } else{
     innerCardContainer.classList.remove('fliped');
   }
@@ -150,7 +147,7 @@ function flipBackAll () {
   flipedCards.forEach(card => card.classList.remove('fliped'));
 }
 
-function checkForWin(e) {
+function checkForMatch(e) {
   var flipedCards = document.querySelectorAll("div.fliped");
   var idFlipedCards = [];
   flipedCards.forEach(function(card) {
@@ -159,13 +156,28 @@ function checkForWin(e) {
   });
 
   if(idFlipedCards[0] === idFlipedCards[1]) {
-    win();
+    flipedCards.forEach(function(card){
+      card.classList.remove('fliped');
+      card.classList.add('hasBeenFound');
+    });
+    checkWin();
+
   } else {
-    console.log("you loose");
+    setTimeout(flipBackAll, 1000);
   }
 }
 
-function win() {
+function checkWin() {
+  var hasBeenFoundCards = document.querySelectorAll('div.hasBeenFound');
+  console.log(hasBeenFoundCards.length);
+  if(hasBeenFoundCards.length === _numberOfCards) {
+    playerWins();
+  }
+
+
+}
+
+function playerWins () {
   endGameMSG.innerHTML = "you win";
   endGameMSG.style.display = "block";
   playerHasWon = true;
