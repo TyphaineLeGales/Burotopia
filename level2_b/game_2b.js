@@ -3,7 +3,7 @@ const symbols = ["@", "#", "$", "%", "§", "(", ")", "*", "£", "{", "}"];
 var button = document.querySelector("button");
 var gameContainer =  document.querySelector("div.gameContainer");
 const cardContainer = document.querySelector("div.cardContainer");
-const beginningScreen =  document.querySelector("div.beginningScreen");
+const beginningScreen =  document.querySelector("div.introLevel");
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 

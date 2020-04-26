@@ -18,8 +18,6 @@ class Pair {
     this.createPasswordCard();
   }
 
-
-
   resetPassword() {
     //after 3 failed trials
   }
