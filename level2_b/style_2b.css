@@ -1,9 +1,25 @@
 
 button {
+  margin-left:22%;
+  font-family : silom;
+  font-size:3em;
+  text-decoration: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+h1 {
+  margin:0;
+}
+
+img {
+  margin:0;
+}
+.beginningScreen {
   position:fixed;
-  font-size:1em;
-  left:45vh;
-  top:45vh;
+  top:5%;
+  left:20%;
+  width:50%;
 }
 
 .gameContainer {

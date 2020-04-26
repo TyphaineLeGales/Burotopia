@@ -3,6 +3,7 @@ const symbols = ["@", "#", "$", "%", "§", "(", ")", "*", "£", "{", "}"];
 var button = document.querySelector("button");
 var gameContainer =  document.querySelector("div.gameContainer");
 const cardContainer = document.querySelector("div.cardContainer");
+const beginningScreen =  document.querySelector("div.beginningScreen");
 button.style.cursor = "pointer";
 button.addEventListener("click", clickHandler, false);
 
@@ -29,7 +30,7 @@ var playerHasWon = false;
 
 function clickHandler() {
   gameContainer.style.display = "flex";
-  button.style.display="none";
+  beginningScreen.style.display="none";
   playGame();
 }
 
@@ -167,7 +168,7 @@ function checkForMatch(e) {
     card.classList.add('hasBeenFound');
   });
   matchMsg.classList.add('in');
-  setTimeout(matchMSGOut, 1000);
+  setTimeout(matchMSGOut, 2000);
   checkWin();
   } else {
     setTimeout(flipBackAll, 1000);
