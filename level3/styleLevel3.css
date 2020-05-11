@@ -4,18 +4,24 @@ body {
 
 .gameContainer {
   display:none;
+  position:fixed;
+  margin-left:10%;
   padding:2em;
+  height:100%;
+  width:80%;
 }
 
 .conditionContainer {
   position:fixed;
-  left:5%;
-  background-color:grey;
+  left:0%;
   width:80%;
 }
 .conditionBlock {
   border:solid;
   padding:1em;
+  position:fixed;
+  top:0;
+  left:0;
 }
 
 button {

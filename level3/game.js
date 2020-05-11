@@ -26,13 +26,21 @@ function clickHandler() {
 function playGame() {
   var randIndex = getRandomInt(numberOfBlocks);
   var testBlock = new Condition(textConditions[0], _colors[randIndex]);
-  var id = setInterval(moveBlock, 1000);
+
+  var counter = 0;
+  function moveBlock () {
+    counter ++;
+    console.log(counter);
+    testBlock.div.style.top = counter + "px";
+    if (counter < gameContainer.offsetHeight) {
+      window.requestAnimationFrame(moveBlock);
+    }
+  }
+
+  window.requestAnimationFrame(moveBlock);
 }
 
 function generateBlocks () { 
 
 }
 
-function moveBlock () {
-
-}
