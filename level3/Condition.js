@@ -26,12 +26,13 @@ class Condition{
   setRandPos(div) {
     var minMarginRight = 50;
     var randLeft = getRandomInt(container.offsetWidth - 50);
-    console.log(randLeft);
     div.style.marginLeft = randLeft + "px";
+    this.setRandWidth(div, randLeft);
   }
 
-  setRandWidth () {
-
+  setRandWidth (div, leftOffset) {
+    var randWidth = getRandomInt(container.offsetWidth - leftOffset);
+    div.style.width = randWidth + "px";
   }
 
 
