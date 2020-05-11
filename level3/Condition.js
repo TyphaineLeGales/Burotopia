@@ -4,7 +4,7 @@ class Condition{
   constructor (text, color) {
     this.speed = 0;
     this.text = text;
-    this.accepted = false;
+    this.isChecked = false;
     this.isNeeded = false;
     this.div = document.createElement("div");
     this.pDiv = document.createElement("p");
@@ -15,7 +15,7 @@ class Condition{
 
   create () {
     this.div.classList.add('conditionBlock');
-    this.div.classList.add('drag');
+    // this.div.classList.add('drag');
     this.div.style.backgroundColor = 'white';
     this.pDiv.innerHTML = this.text;
     this.checkBox.classList.add('check');
@@ -45,6 +45,14 @@ class Condition{
 
   setSpeed (speed) {
     this.speed = speed;
+  }
+
+  check () {
+    if(this.isChecked === true) {
+      this.div.style.backgroundColor = this.color;
+    } else {
+       this.div.style.backgroundColor = "white";
+    }
   }
 
   delete () {

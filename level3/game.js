@@ -45,9 +45,18 @@ function moveBlock (block) {
   var counter = 0;
 
   block.div.addEventListener('mousedown', e => {
-    isClicked = true;
-    block.div.style.zIndex += 1;
-    counter = e.clientY - block.div.offsetHeight/2;
+    console.log(e.target.className);
+    if(e.target.className != "check") {
+      isClicked = true;
+      block.div.style.zIndex += 1;
+    } else {
+      if(block.isChecked === false) {
+        block.isChecked = true;
+      } else {
+        block.isChecked = false;
+      }
+      block.check();
+    }
   });
 
   block.div.addEventListener('mouseup', e => {
