@@ -45,8 +45,8 @@ class Condition{
   }
 
 
-  setSpeed () {
-
+  setSpeed (speed) {
+    this.speed = speed;
   }
 
   delete () {
