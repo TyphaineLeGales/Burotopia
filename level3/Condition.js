@@ -2,12 +2,9 @@ const container = document.querySelector('div.conditionContainer');
 
 class Condition{
   constructor (text, color) {
-    this.width = 0;
-    this.marginLeft = 0;
     this.speed = 0;
     this.text = text;
-    this.selected = false;
-    this.outOfScreen = false;
+    this.accepted = false;
     this.isNeeded = false;
     this.div = document.createElement("div");
     this.pDiv = document.createElement("p");
@@ -18,6 +15,7 @@ class Condition{
 
   create () {
     this.div.classList.add('conditionBlock');
+    this.div.classList.add('drag');
     this.div.style.backgroundColor = this.color;
     this.pDiv.innerHTML = this.text;
     this.checkBox.classList.add('check');

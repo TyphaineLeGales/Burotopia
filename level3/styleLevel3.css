@@ -1,5 +1,4 @@
 body {
-  display : flex;
 }
 
 .gameContainer {
@@ -38,4 +37,16 @@ button {
   -webkit-appearance: none;
   -moz-appearance: none;
   width:min-content;
+}
+
+
+.introLevel {
+ position:fixed;
+  width:100%;
+  height:100%;
+  left:0;
+  top:15%;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
 }
