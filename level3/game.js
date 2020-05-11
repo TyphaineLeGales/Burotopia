@@ -3,6 +3,7 @@ button.addEventListener("click", clickHandler, false);
 const beginningScreen =  document.querySelector("div.introLevel");
 const gameContainer =  document.querySelector("div.gameContainer");
 var _playerHasWon = false;
+
 const textConditions = [
   "You agree to grant Us a non-transferable option to claim, for now and for ever more, your immortal soul. Should We wish to exercise this option, you agree to surrender your immortal soul, and any claim you may have on it, within 5 (five) working days of receiving written notification from burotopia.fun or one of its duly authorized minions.",
   "You agree to enjoy the experience. However, this restriction will not apply in the event of the occurrence (certified by the United States Centers for Disease Control or successor body) of a widespread viral infection transmitted via bites or contact with bodily fluids that causes human corpses to reanimate and seek to consume living human flesh, blood, brain or nerve tissue and is likely to result in the fall of organized civilization.",
@@ -27,16 +28,31 @@ function playGame() {
   var randIndex = getRandomInt(numberOfBlocks);
   var testBlock = new Condition(textConditions[0], _colors[randIndex]);
 
+  var mouseY =0;
+  var isClicked = false;
+  testBlock.div.addEventListener('mousedown', e => {
+    // testBlock.div.style.top = e.clientY + "px";
+    isClicked = true;
+    mouseY = e.clientY;
+});
+
+
   var counter = 0;
+
   function moveBlock () {
-    counter ++;
     console.log(counter);
+    console.log(isClicked);
+    if(isClicked === true) {
+      counter = mouseY;
+    } else {
+      counter ++;
+    }
+    isClicked = false;
     testBlock.div.style.top = counter + "px";
     if (counter < gameContainer.offsetHeight) {
       window.requestAnimationFrame(moveBlock);
     }
   }
-
   window.requestAnimationFrame(moveBlock);
 }
 
