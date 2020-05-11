@@ -1,0 +1,7 @@
+body {
+  display : flex;
+}
+
+.conditionBlock {
+ width:50%;
+}
