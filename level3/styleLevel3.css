@@ -6,8 +6,16 @@ body {
   display:none;
   padding:2em;
 }
+
+.conditionContainer {
+  position:fixed;
+  left:0;
+  background-color:red;
+  width:90%;
+}
 .conditionBlock {
- width:50%;
+  width:50%;
+
 }
 
 button {
