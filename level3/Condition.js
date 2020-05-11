@@ -33,8 +33,13 @@ class Condition{
 
   setRandWidth (div, leftOffset) {
     var minWidth= 150;
-    var randWidth = getRandomInt(container.offsetWidth - leftOffset + minWidth);
-    div.style.width = randWidth + "px";
+    var randWidth = getRandomInt(container.offsetWidth - leftOffset);
+    console.log(randWidth);
+    if(randWidth < minWidth) {
+       div.style.width = randWidth + minWidth + "px";
+    } else {
+      div.style.width = randWidth + "px";
+    }
   }
 
 

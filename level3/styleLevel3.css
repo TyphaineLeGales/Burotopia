@@ -9,8 +9,9 @@ body {
 
 .conditionContainer {
   position:fixed;
-  left:0;
-  width:90%;
+  left:5%;
+  background-color:grey;
+  width:80%;
 }
 .conditionBlock {
   border:solid;
