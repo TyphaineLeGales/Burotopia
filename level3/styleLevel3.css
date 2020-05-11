@@ -2,6 +2,19 @@ body {
   display : flex;
 }
 
+.gameContainer {
+  display:none;
+  padding:2em;
+}
 .conditionBlock {
  width:50%;
+}
+
+button {
+  font-family : silom;
+  font-size:3em;
+  text-decoration: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width:min-content;
 }
