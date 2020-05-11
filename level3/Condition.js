@@ -16,7 +16,7 @@ class Condition{
   create () {
     this.div.classList.add('conditionBlock');
     this.div.classList.add('drag');
-    this.div.style.backgroundColor = this.color;
+    this.div.style.backgroundColor = 'white';
     this.pDiv.innerHTML = this.text;
     this.checkBox.classList.add('check');
     this.div.appendChild(this.checkBox);

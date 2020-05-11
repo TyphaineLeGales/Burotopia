@@ -46,6 +46,7 @@ function moveBlock (block) {
 
   block.div.addEventListener('mousedown', e => {
     isClicked = true;
+    block.div.style.zIndex += 1;
     counter = e.clientY - block.div.offsetHeight/2;
   });
 

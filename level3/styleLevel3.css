@@ -14,7 +14,10 @@ body {
   position:fixed;
   left:0%;
   width:80%;
+  cursor:crosshair;
 }
+
+
 .conditionBlock {
   border:solid;
   padding:1em;
@@ -23,9 +26,18 @@ body {
   left:0;
 }
 
+.conditionBlock p {
+  -webkit-user-select: none; /* Safari */
+-moz-user-select: none; /* Firefox */
+-ms-user-select: none; /* IE10+/Edge */
+user-select: none; /* Standard */
+  font-size:0.8vh;
+}
+
 .check {
-  width:2em;
-  height:2em;
+  border-radius: 15%;
+  width:1em;
+  height:1em;
   border-style:solid;
   background-color:white;
 }
