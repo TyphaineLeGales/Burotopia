@@ -3,6 +3,7 @@ button.addEventListener("click", clickHandler, false);
 const beginningScreen =  document.querySelector("div.introLevel");
 const gameContainer =  document.querySelector("div.gameContainer");
 var _playerHasWon = false;
+var interval;
 
 const textConditions = [
   "You agree to grant Us a non-transferable option to claim, for now and for ever more, your immortal soul. Should We wish to exercise this option, you agree to surrender your immortal soul, and any claim you may have on it, within 5 (five) working days of receiving written notification from burotopia.fun or one of its duly authorized minions.",
@@ -17,7 +18,7 @@ const textConditions = [
 var numberOfBlocks = textConditions.length;
 const _colors = ["#A56544", "#7C9ACD", "#336EA3", "#E2A2A1", "#B6BBBF", "#00928D", "#E19378", "#F2C600", "#E37634", "#D2693F"];
 
-
+//delay creation conditions
 function clickHandler() {
   gameContainer.style.display = "flex";
   beginningScreen.style.display="none";
@@ -30,12 +31,19 @@ function playGame() {
 
   var mouseY =0;
   var isClicked = false;
-  testBlock.div.addEventListener('mousedown', e => {
-    // testBlock.div.style.top = e.clientY + "px";
-    isClicked = true;
-    mouseY = e.clientY;
-});
 
+  testBlock.div.addEventListener('mousedown', e => {
+    interval = setInterval(fixedMouse, 100);
+    function fixedMouse () {
+      isClicked = true;
+      mouseY = e.clientY - testBlock.div.offsetHeight/2;
+    }
+  });
+
+   testBlock.div.addEventListener('mouseup', e => {
+      isClicked = false;
+      clearInterval(interval);
+  });
 
   var counter = 0;
 
@@ -47,7 +55,6 @@ function playGame() {
     } else {
       counter ++;
     }
-    isClicked = false;
     testBlock.div.style.top = counter + "px";
     if (counter < gameContainer.offsetHeight) {
       window.requestAnimationFrame(moveBlock);

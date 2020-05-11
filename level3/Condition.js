@@ -11,6 +11,7 @@ class Condition{
     this.isNeeded = false;
     this.div = document.createElement("div");
     this.pDiv = document.createElement("p");
+    this.checkBox = document.createElement("div");
     this.color = color;
     this.create();
   }
@@ -19,6 +20,8 @@ class Condition{
     this.div.classList.add('conditionBlock');
     this.div.style.backgroundColor = this.color;
     this.pDiv.innerHTML = this.text;
+    this.checkBox.classList.add('check');
+    this.div.appendChild(this.checkBox);
     this.div.appendChild(this.pDiv);
     container.appendChild(this.div);
     this.setRandPos(this.div);

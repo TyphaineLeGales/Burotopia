@@ -24,6 +24,13 @@ body {
   left:0;
 }
 
+.check {
+  width:2em;
+  height:2em;
+  border-style:solid;
+  background-color:white;
+}
+
 button {
   font-family : silom;
   font-size:3em;
