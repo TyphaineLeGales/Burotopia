@@ -24,9 +24,15 @@ function clickHandler() {
 }
 
 function playGame() {
-  var testBlock = new Condition(textConditions[0]);
+  var randIndex = getRandomInt(numberOfBlocks);
+  var testBlock = new Condition(textConditions[0], _colors[randIndex]);
+  var id = setInterval(moveBlock, 1000);
 }
 
 function generateBlocks () { 
+
+}
+
+function moveBlock () {
 
 }

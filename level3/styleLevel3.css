@@ -10,11 +10,11 @@ body {
 .conditionContainer {
   position:fixed;
   left:0;
-  background-color:red;
   width:90%;
 }
 .conditionBlock {
   border:solid;
+  padding:1em;
 }
 
 button {

@@ -1,7 +1,7 @@
 const container = document.querySelector('div.conditionContainer');
 
 class Condition{
-  constructor (text) {
+  constructor (text, color) {
     this.width = 0;
     this.marginLeft = 0;
     this.speed = 0;
@@ -11,12 +11,13 @@ class Condition{
     this.isNeeded = false;
     this.div = document.createElement("div");
     this.pDiv = document.createElement("p");
-
+    this.color = color;
     this.create();
   }
 
   create () {
     this.div.classList.add('conditionBlock');
+    this.div.style.backgroundColor = this.color;
     this.pDiv.innerHTML = this.text;
     this.div.appendChild(this.pDiv);
     container.appendChild(this.div);
@@ -24,14 +25,15 @@ class Condition{
   }
 
   setRandPos(div) {
-    var minMarginRight = 50;
-    var randLeft = getRandomInt(container.offsetWidth - 50);
+    var minMarginRight = 100;
+    var randLeft = getRandomInt(container.offsetWidth - minMarginRight);
     div.style.marginLeft = randLeft + "px";
     this.setRandWidth(div, randLeft);
   }
 
   setRandWidth (div, leftOffset) {
-    var randWidth = getRandomInt(container.offsetWidth - leftOffset);
+    var minWidth= 150;
+    var randWidth = getRandomInt(container.offsetWidth - leftOffset + minWidth);
     div.style.width = randWidth + "px";
   }
 
