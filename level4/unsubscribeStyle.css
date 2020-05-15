@@ -3,11 +3,34 @@
   height:90%;
   margin-left:5%;
   top:0;
-  border-color:red;
-  border-style:solid;
   position:fixed;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
 }
 
 #unsubscribe {
   display:none;
+  color:white;
+  position:fixed;
+
 }
+
+#unsubscribe:hover {
+  cursor:crosshair;
+  color:black;
+  z-index:5;
+}
+
+.endGameMSG {
+  display:none;
+}
+
+/*.box {
+  margin-left:5%;
+  position:fixed;
+  border-style:solid;
+  height:50px;
+  width: 50px;
+}
+*/
