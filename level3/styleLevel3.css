@@ -14,7 +14,7 @@ body {
   position:fixed;
   left:0%;
   width:80%;
-  cursor:crosshair;
+  cursor:pointer;
 }
 
 
@@ -40,6 +40,7 @@ user-select: none; /* Standard */
   height:1em;
   border-style:solid;
   background-color:white;
+  cursor:crosshair;
 }
 
 button {
