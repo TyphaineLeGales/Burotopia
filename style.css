@@ -26,6 +26,15 @@ body {
   align-items:center;
 }
 
+button {
+  font-family : silom;
+  font-size:3em;
+  text-decoration: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width:min-content;
+}
+
 
 ul {
   display:flex;

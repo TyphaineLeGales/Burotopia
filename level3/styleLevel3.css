@@ -42,13 +42,3 @@ user-select: none; /* Standard */
   background-color:white;
   cursor:crosshair;
 }
-
-button {
-  font-family : silom;
-  font-size:3em;
-  text-decoration: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  width:min-content;
-}
-
