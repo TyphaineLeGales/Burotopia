@@ -6,6 +6,7 @@ var unsubscribe = document.getElementById("unsubscribe");
 unsubscribe.addEventListener('click', win, false);
 var container = document.querySelector('div.gameContainer');
 var endGameMSG = document.querySelector('.endGameMSG');
+var beginningGameMSG = document.querySelector('.beginningGameMSG');
 var _spacing = 50;
 
 function clickHandler() {
@@ -17,6 +18,17 @@ function clickHandler() {
 function playGame() {
   generateRandPos();
   unsubscribe.style.display = "block";
+  beginningGameMSG.style.display = "block";
+  setTimeout(fadeOutStartMSG, 2000);
+}
+
+function fadeOutStartMSG () {
+  beginningGameMSG.classList.add('fadeOut');
+  setTimeout(msgDisplayNone, 2000);
+
+  function msgDisplayNone () {
+    beginningGameMSG.style.display = "none";
+  }
 }
 
 function generateRandPos() {
