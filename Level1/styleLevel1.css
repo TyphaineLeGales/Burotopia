@@ -19,17 +19,6 @@ button {
   -moz-appearance: none;
 }
 
-.introLevel{
-  position:fixed;
-  width:100%;
-  height:100%;
-  left:0;
-  top:15%;
-  display:flex;
-  flex-direction: column;
-  align-items:center;
-}
-
 #playerGraphicsContainer {
   position:fixed;
   bottom:0;

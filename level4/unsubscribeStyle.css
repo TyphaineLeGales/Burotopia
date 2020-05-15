@@ -1,0 +1,18 @@
+.gameContainer {
+  width:90%;
+  height:90%;
+  margin-left:5%;
+  top:0;
+  border-color:red;
+  border-style:solid;
+  position:fixed;
+}
+
+button {
+  font-family : silom;
+  font-size:3em;
+  text-decoration: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width:min-content;
+}
