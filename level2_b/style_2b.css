@@ -1,13 +1,3 @@
-
-button {
-  font-family : silom;
-  font-size:3em;
-  text-decoration: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  width:min-content;
-}
-
 .gameContainer {
   margin-left:10%;
   width:80vw;

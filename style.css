@@ -24,9 +24,10 @@ body {
   display:flex;
   flex-direction: column;
   align-items:center;
+  z-index:2;
 }
 
-button {
+.startBtn {
   font-family : silom;
   font-size:3em;
   text-decoration: none;
