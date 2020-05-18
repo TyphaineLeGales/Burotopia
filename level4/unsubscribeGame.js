@@ -52,20 +52,3 @@ function endOfGame() {
   playGame();
 }
 
-function playLevel2 () {
-  generateGridOfCheckBox();
-
-}
-
-function generateGridOfCheckBox() {
-  for(var i = 0; i < 3; i++ ){
-    for(var j= 0; j < 3; j++) {
-      var box = document.createElement("div");
-      box.classList.add('box');
-      console.log( i*_spacing);
-      box.style.left = i*_spacing + "px";
-      box.style.top = j*_spacing + "px";
-      container.appendChild(box);
-    }
-  }
-}
