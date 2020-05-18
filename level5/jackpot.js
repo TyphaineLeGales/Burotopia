@@ -4,7 +4,7 @@ button.addEventListener("click", clickHandler, false);
 var startUI = document.querySelector(".introLevel");
 var container = document.querySelector('div.gameContainer');
 var endGameMSG = document.querySelector('.endGameMSG');
-var machineGraphics = document.querySelector('.slotMachineGraphics');
+var machineGraphics = document.querySelector('.slotMachine');
 
 function clickHandler() {
 
