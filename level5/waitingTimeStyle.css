@@ -1,0 +1,19 @@
+
+
+.slotMachineGraphics {
+  background-image: url(../Assets/Graphics/Level5/SlotMachine.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  display:none;
+  width:51vw;
+  height:22vw;
+  left:30vw;
+  position:fixed;
+}
+
+.slot {
+  position:fixed;
+  border-style:solid;
+  width:100%;
+  height:100%;
+}
