@@ -18,8 +18,7 @@
   display:flex;
   flex-flow:row wrap;
   justify-content:space-evenly;
-  overflow-y: scroll;
-  overflow-x:hidden;
+  overflow:hidden;
 }
 
 .icon {

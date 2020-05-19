@@ -27,10 +27,9 @@ function testScroll () {
   if(counter < slot_1.offsetHeight) {
     counter += 1;
   } else {
-    console.log("branching works");
     counter = 0;
   }
-  console.log(counter);
-  slot_1.scrollTop = counter + "px";
+  slot_1.scrollTop = counter;
+  console.log(slot_1.scrollTop );
   window.requestAnimationFrame(testScroll);
 }
