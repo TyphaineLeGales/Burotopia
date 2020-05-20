@@ -18,16 +18,23 @@ function clickHandler() {
 }
 
 function playGame() {
-
   machineGraphics.style.display = "block";
+  // slots[0].addEventListener("scroll", debugOffsetHeight, false);
+  // console.log(slots[0].offsetHeight);
+  // console.log(slots[0].scrollHeight);
+}
+
+function debugOffsetHeight () {
+    console.log(slots[0].scrollTop);
 }
 
 function testScroll () {
 
-  if(counter < slots[0].offsetHeight) {
+  if(counter < slots[0].scrollHeight - slots[0].offsetHeight) {
     counter += 1;
     window.requestAnimationFrame(testScroll);
   }
+  // console.log(counter);
   for(var i = 0; i < slots.length; i++) {
      slots[i].scrollTop = counter;
 
