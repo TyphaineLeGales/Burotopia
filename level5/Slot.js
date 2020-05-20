@@ -3,6 +3,7 @@ class Slot{
   constructor (container) {
     this.container = container;
     this.numberOfIcons = 8;
+    this.iconArray = [];
     this.fillRandSlot();
   }
 
@@ -13,6 +14,7 @@ class Slot{
       img.src = "../Assets/Graphics/Level5/Person_"+(i+randImg)%this.numberOfIcons+".png";
       img.classList.add('icon');
       this.container.appendChild(img);
+      this.iconArray.push(img);
     }
   }
  }

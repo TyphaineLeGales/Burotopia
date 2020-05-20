@@ -15,11 +15,7 @@
   height:18vw;
   left:31vw;
   margin-top:1.5vw;
-/*  display:flex;
-  flex-flow:row wrap;
-  justify-content:space-evenly;*/
- /* overflow:hidden;*/
-  overflow-y:scroll;
+  overflow:hidden;
 }
 
 .icon {

@@ -19,6 +19,7 @@ function clickHandler() {
   playGame();
   startUI.style.display= "none";
   createSlot();
+  console.log(slot1.iconArray);
 }
 
 function playGame() {
