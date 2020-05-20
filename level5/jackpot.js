@@ -10,16 +10,26 @@ btnStartMachine.addEventListener("click", startRound, false);
 
 var counter = 0;
 var slots = document.querySelectorAll('.slot');
+var slot1;
+var slot2;
+var slot3;
 
 function clickHandler() {
 
   playGame();
   startUI.style.display= "none";
+  createSlot();
 }
 
 function playGame() {
   machineGraphics.style.display = "block";
   // slots[0].addEventListener("scroll", debugOffsetHeight, false);
+}
+
+function createSlot() {
+  slot1 = new Slot(slots[0]);
+  slot2 = new Slot(slots[1]);
+  slot3 = new Slot(slots[2]);
 }
 
 function debugOffsetHeight () {
