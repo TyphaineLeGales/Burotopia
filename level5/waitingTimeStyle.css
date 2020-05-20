@@ -12,10 +12,11 @@
 .slot {
   position:fixed;
   width:10vw;
-  height:18vw;
+  height:19vw;
   left:31vw;
   margin-top:1.5vw;
   overflow:hidden;
+ /* overflow-y:scroll;*/
 }
 
 .icon {

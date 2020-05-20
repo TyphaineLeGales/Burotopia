@@ -4,6 +4,8 @@ class Slot{
     this.container = container;
     this.numberOfIcons = 8;
     this.iconArray = [];
+    this.counter = 0;
+    this.index = 0;
     this.fillRandSlot();
   }
 
@@ -16,5 +18,9 @@ class Slot{
       this.container.appendChild(img);
       this.iconArray.push(img);
     }
+  }
+
+  reset() {
+    this.counter = 0;
   }
  }
