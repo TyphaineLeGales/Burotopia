@@ -20,12 +20,13 @@ function clickHandler() {
 function playGame() {
   machineGraphics.style.display = "block";
   // slots[0].addEventListener("scroll", debugOffsetHeight, false);
-  // console.log(slots[0].offsetHeight);
-  // console.log(slots[0].scrollHeight);
 }
 
 function debugOffsetHeight () {
-    console.log(slots[0].scrollTop);
+
+  // console.log(testIcon.offsetTop);
+  console.log(testIcon.clientHeight);
+  // console.log(testIcon.scrollTop);
 }
 
 function testScroll () {
@@ -36,7 +37,7 @@ function testScroll () {
   }
   // console.log(counter);
   for(var i = 0; i < slots.length; i++) {
-     slots[i].scrollTop = counter;
+     slots[i].scrollTop = counter*(i+1);
 
   }
 }

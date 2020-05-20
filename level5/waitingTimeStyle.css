@@ -15,14 +15,17 @@
   height:18vw;
   left:31vw;
   margin-top:1.5vw;
-  display:flex;
+/*  display:flex;
   flex-flow:row wrap;
-  justify-content:space-evenly;
-  overflow:hidden;
+  justify-content:space-evenly;*/
+ /* overflow:hidden;*/
+  overflow-y:scroll;
 }
 
 .icon {
   padding-top:2vw;
+  width:7vw;
+  padding-left:1vw;
 }
 
 #slot1 {
