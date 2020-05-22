@@ -15,8 +15,8 @@
   height:19vw;
   left:31vw;
   margin-top:1.5vw;
-  overflow:hidden;
- /* overflow-y:scroll;*/
+  /*overflow:hidden;*/
+  overflow-y:scroll;
 }
 
 .icon {

@@ -16,7 +16,7 @@ var slot3;
 var _speed = 4;
 
 //delay slot animation
-
+//stop placement
 //infinite loop
 //winning condition
 
@@ -29,7 +29,7 @@ function clickHandler() {
 function playGame() {
   machineGraphics.style.display = "block";
   createSlot();
-  slots[0].addEventListener("scroll", debugOffsetHeight, false);
+  // slots[0].addEventListener("scroll", debugOffsetHeight, false);
 }
 
 function createSlot() {
@@ -46,12 +46,12 @@ function debugOffsetHeight () {
 }
 
 function automaticScroll () {
-
-  if(counter < slots[0].scrollHeight - slots[0].offsetHeight) {
+  console.log(slots[0].offsetHeight);
+  if(counter < slots[0].offsetHeight) {
     counter += 1;
     window.requestAnimationFrame(automaticScroll);
   }
-  // console.log(counter);
+  console.log(counter);
   for(var i = 0; i < slots.length; i++) {
      slots[i].scrollTop = counter*(i+_speed);
   }
@@ -59,11 +59,6 @@ function automaticScroll () {
 
 function startRound () {
   counter = 0;
-  for(var i = 0; i < slots.length; i++) {
-    setTimeout(startScroll, i*1000);
-  }
-}
-
-function startScroll() {
   window.requestAnimationFrame(automaticScroll);
 }
+

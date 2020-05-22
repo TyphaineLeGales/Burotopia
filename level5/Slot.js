@@ -18,8 +18,13 @@ class Slot{
       this.container.appendChild(img);
       this.iconArray.push(img);
     }
-  }
 
+    //duplicate the order so that the loop is seemless
+    for(var j = 0; j < this.numberOfIcons; j++){
+      var copyImg = this.iconArray[j].cloneNode(true);
+      this.container.appendChild(copyImg);
+    }
+  }
   reset() {
     this.counter = 0;
   }
