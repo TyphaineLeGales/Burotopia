@@ -1,0 +1,13 @@
+.formContainer {
+  border-style : solid;
+  border-color:black;
+  width:10vw;
+  height:15vw;
+}
+
+.picture {
+  border-style : solid;
+  border-color:black;
+  width:5vw;
+  height:5vw;
+}
