@@ -1,5 +1,5 @@
 body {
- /* overflow:hidden;*/
+  overflow:hidden;
   position:relative;
 
 }
@@ -13,9 +13,23 @@ body {
 
 }
 
-.imgContainer img{
+.menuItem{
   position:absolute;
-  top:0;
-  left:0;
+/*  top:0;
+  left:0;*/
 }
 
+#titleMenu {
+ right:10%;
+ top:0;
+}
+
+#titleMenu:hover{
+  transform:scale(1.1);
+
+}
+
+#counter:hover {
+  trsnform:scale(0.9);
+  z-index:2;
+}
