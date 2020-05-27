@@ -45,7 +45,7 @@ body {
 }
 
 #stairs {
-  top:46%;
+  top:43%;
   left:35%;
   width:20%;
   z-index:2;
@@ -58,14 +58,14 @@ body {
 }
 
 #password {
-  width:25%;
-  top:35%;
-  left:17%;
+  width:23%;
+  top:30%;
+  left:20%;
 }
 
 #counter {
   width:30%;
-  top:65%;
+  top:60%;
   left:5%;
   z-index:2;
 }
