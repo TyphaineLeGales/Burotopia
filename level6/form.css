@@ -63,6 +63,17 @@
 
 }
 
+.email {
+  right:10%;
+  width: 20vw;
+  height:2vw;
+  top:50%;
+/*  font-size:2vw;*/
+  display:flex;
+  flex-direction: row;
+}
+
+
 .signature {
   bottom:10%;
   right:10%;
