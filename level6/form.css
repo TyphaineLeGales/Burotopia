@@ -1,13 +1,41 @@
 .formContainer {
   border-style : solid;
   border-color:black;
-  width:10vw;
-  height:15vw;
+  width:25vw;
+  height:40vw;
+  position:relative;
+}
+
+.formItem {
+  position:absolute;
+  border-style : solid;
+  border-color:black;
 }
 
 .picture {
-  border-style : solid;
-  border-color:black;
+  left:10%;
+  top:10%;
   width:5vw;
-  height:5vw;
+  height:7vw;
+}
+
+.name {
+  top:10%;
+  right:10%;
+  width: 12vw;
+  height:2vw;
+}
+
+.zip {
+  left:20%;
+  top:10%;
+  width:12vw;
+  height:2vw;
+
+}
+
+.zipBox {
+  width:2vw;
+  height:2vw;
+  background-color: white;
 }
