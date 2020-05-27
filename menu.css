@@ -15,8 +15,10 @@ body {
 
 .menuItem{
   position:absolute;
-/*  top:0;
-  left:0;*/
+}
+.menuItem:hover{
+  transform:scale(1.1);
+
 }
 
 #titleMenu {
@@ -24,12 +26,9 @@ body {
  top:0;
 }
 
-#titleMenu:hover{
-  transform:scale(1.1);
 
+#TC {
+  left:35%;
+  top:55%;
 }
 
-#counter:hover {
-  trsnform:scale(0.9);
-  z-index:2;
-}
