@@ -11,6 +11,7 @@ class Form {
     this.address = document.createElement('div');
     this.email = document.createElement('div');
     this.signature = document.createElement('div');
+    this.block = document.createElement('div');
 
     this.create();
   }
@@ -41,6 +42,9 @@ class Form {
     this.email.classList.add('formItem');
     this.createEmail(this.email);
 
+    this.block.classList.add('block');
+    this.block.classList.add('formItem');
+
     this.signature.classList.add('signature');
     this.signature.classList.add('formItem');
 
@@ -51,6 +55,7 @@ class Form {
     this.container.appendChild(this.zip);
     this.container.appendChild(this.city);
     this.container.appendChild(this.email);
+    this.container.appendChild(this.block);
     this.container.appendChild(this.signature);
 
 
