@@ -15,6 +15,7 @@ body {
 
 .menuItem{
   position:absolute;
+  transition: all 1s;
 }
 
 .interactive:hover {
@@ -33,20 +34,20 @@ body {
 }
 
 #callingCenter {
-  top:160%;
+  top:30%;
   right:14.5%;
   width:31%;
 }
 
 #TC {
-  left:35%;
-  top:12%;
+  left:37%;
+  top:10%;
 }
 
 #stairs {
-  bottom:10%;
+  top:46%;
   left:35%;
-  width:12%;
+  width:20%;
   z-index:2;
 }
 
@@ -58,13 +59,14 @@ body {
 
 #password {
   width:25%;
-  top:20%;
+  top:35%;
   left:17%;
 }
 
 #counter {
   width:30%;
-  bottom:0;
+  top:65%;
   left:5%;
+  z-index:2;
 }
 
