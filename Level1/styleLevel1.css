@@ -87,22 +87,23 @@ body {
 }
 
 .counterDesk {
-  width:15vw;
-  height:6.5vw;
+  width:17vw;
+  height:8vw;
   position:relative;
-  background-image: url(../Assets/Graphics/Level1/deskBackground.png);
+  /*background-image: url(../Assets/Graphics/Level1/deskBackground.png);*/
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   /*background-position: 45%;*/
 }
 
 
 .clickTarget {
   position:absolute;
-  right:35%;
-  bottom:0;
-  height:4vw;
-  width:5vw;
+  right:45%;
+  bottom:25%;
+  height:5vw;
+  width:6vw;
+  z-index:-5;
   background-size: contain;
   cursor:crosshair;
 }

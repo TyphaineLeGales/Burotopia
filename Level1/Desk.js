@@ -108,6 +108,8 @@ class Desk{
 
   createDesk() {
     this.divDesk = document.createElement("div");
+    var randImgDesk = getRandomInt(4);
+    this.divDesk.style.backgroundImage = 'url(../Assets/Graphics/Level1/deskBackground'+ randImgDesk +'.png)';
     this.divDesk.classList.add('counterDesk');
     if(this.isTheAnswer) {
       this.divDesk.classList.add("isTheAnswer");
