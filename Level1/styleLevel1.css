@@ -41,7 +41,7 @@ body {
   position:fixed;
   bottom:5vh;
   left:35vw;
-  font-size:2em;
+  font-size:1vw;
 }
 
 .idCard {
@@ -57,7 +57,7 @@ body {
   right:0;
   text-align:center;
   width:100%;
-  font-size:0.8em;
+  font-size:0.8vw;
   z-index:40;
   text-align:center;
   animation-duration: 0.5s;
@@ -124,7 +124,7 @@ body {
   background:white;
   padding:0 0.2em;
   border-radius:5px;
-  font-size:0.8em;
+  font-size:0.5vw;
   z-index:10;
 }
 
