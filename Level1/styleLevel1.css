@@ -52,6 +52,7 @@ body {
 .textEmployee {
   background-color:white;
   display:none;
+  color:#212121;
   position:absolute;
   bottom:5%;
   right:0;
@@ -60,7 +61,7 @@ body {
   font-size:0.8vw;
   z-index:40;
   text-align:center;
-  animation-duration: 0.5s;
+  animation-duration: 0.3s;
   animation-name: employeeText;
 }
 
@@ -155,7 +156,7 @@ body {
   position:absolute;
   left:0;
   top:0;
-  width:0;
+  width:50%;
   transition:all 0.5s;
   transition-timing-function: ease-in;
 }
@@ -164,7 +165,7 @@ body {
   position:absolute;
   right:0;
   top:0;
-  width:100%;
+  width:50%;
   transition:all 0.5s;
   transition-timing-function: ease-in;
 }
@@ -193,9 +194,12 @@ body {
   width:40%;
   display:none;
   transform: scale(1.2);
-  background-size: contain;
+  /*background-size: contain;*/
+  border-style:dotted;
+  border-color:blue;
   animation-name:customerPopUp;
   animation-duration:0.5s;
+
 }
 
 .customerPopOut {

@@ -59,7 +59,7 @@ class Desk{
     this.employee.style.backgroundRepeat = "no-repeat";
     this.textEmployee.classList.add('textEmployee');
     this.divDesk.appendChild(this.textEmployee);
-    this.employee.onclick = e => {
+    this.clickTarget.onclick = e => {
       if(this.state === "closed") {
          this.displayTextEmployee(this.textEmployee, employeeTextClosed);
       } else {
@@ -83,11 +83,18 @@ class Desk{
     this.leftDoor.classList.add("deskDoorLeft");
     this.leftDoor.classList.add("deskDoors");
     this.divDesk.appendChild(this.leftDoor);
-    this.initDoors(this.leftDoor);
     this.rightDoor.classList.add("deskDoorRight");
     this.rightDoor.classList.add("deskDoors");
     this.divDesk.appendChild(this.rightDoor);
-    this.initDoors(this.rightDoor);
+
+    //init state
+    if(this.state === "open") {
+      this.leftDoor.classList.add('doorLeftOpen');
+      this.rightDoor.classList.add('doorRightOpen');
+    } else {
+      this.leftDoor.classList.add('doorLeftClosed');
+      this.rightDoor.classList.add('doorRightClosed');
+    }
   }
 
   createCustomer () {
@@ -122,7 +129,7 @@ class Desk{
     this.createState();
     this.createEmployee();
     this.createDoors();
-    // this.createCustomer();
+    this.createCustomer();
 
   }
 
@@ -132,14 +139,6 @@ class Desk{
 
   setIndex(index) {
     this.index = index;
-  }
-
-  initDoors (door) {
-    if(this.state === "open") {
-      door.style.width = 0 + '%'
-    } else {
-      door.style.width = 49 + '%'
-    }
   }
 
   openDoors () {
