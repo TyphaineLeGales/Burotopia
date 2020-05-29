@@ -53,7 +53,7 @@ body {
   background-color:white;
   display:none;
   position:absolute;
-  bottom:0;
+  bottom:5%;
   right:0;
   text-align:center;
   width:100%;
@@ -89,23 +89,30 @@ body {
 .counterDesk {
   width:12vw;
   height:8vw;
-  margin-top:2vw;
   position:relative;
   background-repeat: no-repeat;
   background-size: contain;
   overflow:hidden;
-  /*background-position: 45%;*/
 }
 
 
-.clickTarget {
+.employee {
   position:absolute;
-  right:30%;
+  right:25%;
   top:15%;
   height:5vw;
   width:6vw;
   z-index:-5;
   background-size: contain;
+}
+
+.clickTarget {
+  position:absolute;
+  right:25%;
+  top:15%;
+  height:5vw;
+  width:6vw;
+  z-index:10;
   cursor:crosshair;
 }
 
@@ -122,7 +129,7 @@ body {
 }
 
 .deskId {
-  left:30%;
+  left:35%;
   top:-5%;
   padding:0 0.5em;
   position:absolute;

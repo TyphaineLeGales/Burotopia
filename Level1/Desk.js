@@ -14,6 +14,7 @@ class Desk{
     this.leftDoor = document.createElement("div");
     this.rightDoor = document.createElement("div");
     this.employee = document.createElement("div");
+    this.clickTarget = document.createElement("div");
     this.hasACustomer = false;
     this.customer = document.createElement("div");
     this.customerLife = getRandomInt(6000);
@@ -51,7 +52,7 @@ class Desk{
   }
 
   createEmployee() {
-    this.employee.classList.add('clickTarget');
+    this.employee.classList.add('employee');
     this.divDesk.appendChild(this.employee);
     var randImg = getRandomInt(4);
     this.employee.style.backgroundImage = 'url(../Assets/Graphics/Level1/guichet_perso'+ randImg +'.png)';
@@ -115,6 +116,8 @@ class Desk{
       this.divDesk.classList.add("isTheAnswer");
     }
     deskContainer.appendChild(this.divDesk);
+    this.clickTarget.classList.add('clickTarget');
+    this.divDesk.appendChild(this.clickTarget);
     this.createId();
     this.createState();
     this.createEmployee();
@@ -140,19 +143,10 @@ class Desk{
   }
 
   openDoors () {
-    // var widthPercentage = 49;
+
     var doorLeft = this.leftDoor;
     var doorRight = this.rightDoor;
-    // var id = setInterval(openingAnim, 10);
-    // function openingAnim() {
-    //   if (widthPercentage === 0) {
-    //     clearInterval(id);
-    //   } else {
-    //     doorRight.style.width = widthPercentage + '%';
-    //     doorLeft.style.width = widthPercentage + '%';
-    //     widthPercentage--;
-    //   }
-    // }
+
     doorLeft.classList.remove('doorLeftClosed');
     doorRight.classList.remove('doorRightClosed');
     doorLeft.classList.add('doorLeftOpen');
@@ -160,19 +154,8 @@ class Desk{
   }
 
   closeDoors () {
-    // var widthPercentage = 0;
-    // var doorLeft = this.leftDoor;
-    // var doorRight = this.rightDoor;
-    // var id = setInterval(closingAnim, 10);
-    // function closingAnim() {
-    //   if (widthPercentage === 50) {
-    //     clearInterval(id);
-    //   } else {
-    //     doorRight.style.width = widthPercentage + '%';
-    //     doorLeft.style.width = widthPercentage + '%';
-    //     widthPercentage++;
-    //   }
-    // }
+    var doorLeft = this.leftDoor;
+    var doorRight = this.rightDoor;
     doorLeft.classList.add('doorLeftClosed');
     doorRight.classList.add('doorRightClosed');
     doorLeft.classList.remove('doorLeftOpen');
