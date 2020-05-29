@@ -93,6 +93,7 @@ body {
   position:relative;
   background-repeat: no-repeat;
   background-size: contain;
+  overflow:hidden;
   /*background-position: 45%;*/
 }
 
@@ -122,7 +123,7 @@ body {
 
 .deskId {
   left:30%;
-  top:-25%;
+  top:-5%;
   padding:0 0.5em;
   position:absolute;
   background-image:url(../Assets/Graphics/Level1/idBackground.png);
@@ -138,25 +139,43 @@ body {
 }
 
 .deskDoors {
-  background-color: white;
-  opacity:40%;
-  height:80%;
+  background-image:url(../Assets/Graphics/Level1/doorBackground.png);
+  background-size:cover;
+  height:75%;
 }
 
 .deskDoorLeft {
   position:absolute;
   left:0;
   top:0;
-  height:95%;
   width:0;
+  transition:all 0.5s;
+  transition-timing-function: ease-in;
 }
 
 .deskDoorRight {
   position:absolute;
   right:0;
   top:0;
-  height:95%;
-  width:0;
+  width:100%;
+  transition:all 0.5s;
+  transition-timing-function: ease-in;
+}
+
+.doorLeftOpen {
+ left:-40%;
+}
+
+.doorLeftClosed {
+  left:0;
+}
+
+.doorRightOpen {
+ right:-40%;
+}
+
+.doorRightClosed {
+  right:0;
 }
 
 .customer {

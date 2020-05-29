@@ -140,35 +140,44 @@ class Desk{
   }
 
   openDoors () {
-    var widthPercentage = 49;
+    // var widthPercentage = 49;
     var doorLeft = this.leftDoor;
     var doorRight = this.rightDoor;
-    var id = setInterval(openingAnim, 10);
-    function openingAnim() {
-      if (widthPercentage === 0) {
-        clearInterval(id);
-      } else {
-        doorRight.style.width = widthPercentage + '%';
-        doorLeft.style.width = widthPercentage + '%';
-        widthPercentage--;
-      }
-    }
+    // var id = setInterval(openingAnim, 10);
+    // function openingAnim() {
+    //   if (widthPercentage === 0) {
+    //     clearInterval(id);
+    //   } else {
+    //     doorRight.style.width = widthPercentage + '%';
+    //     doorLeft.style.width = widthPercentage + '%';
+    //     widthPercentage--;
+    //   }
+    // }
+    doorLeft.classList.remove('doorLeftClosed');
+    doorRight.classList.remove('doorRightClosed');
+    doorLeft.classList.add('doorLeftOpen');
+    doorRight.classList.add('doorRightOpen');
   }
 
   closeDoors () {
-    var widthPercentage = 0;
-    var doorLeft = this.leftDoor;
-    var doorRight = this.rightDoor;
-    var id = setInterval(closingAnim, 10);
-    function closingAnim() {
-      if (widthPercentage === 50) {
-        clearInterval(id);
-      } else {
-        doorRight.style.width = widthPercentage + '%';
-        doorLeft.style.width = widthPercentage + '%';
-        widthPercentage++;
-      }
-    }
+    // var widthPercentage = 0;
+    // var doorLeft = this.leftDoor;
+    // var doorRight = this.rightDoor;
+    // var id = setInterval(closingAnim, 10);
+    // function closingAnim() {
+    //   if (widthPercentage === 50) {
+    //     clearInterval(id);
+    //   } else {
+    //     doorRight.style.width = widthPercentage + '%';
+    //     doorLeft.style.width = widthPercentage + '%';
+    //     widthPercentage++;
+    //   }
+    // }
+    doorLeft.classList.add('doorLeftClosed');
+    doorRight.classList.add('doorRightClosed');
+    doorLeft.classList.remove('doorLeftOpen');
+    doorRight.classList.remove('doorRightOpen');
+
   }
 
 }
