@@ -83,14 +83,14 @@ body {
   justify-content: start ;
   align-content:start;
   overflow:hidden;
-  margin:0 5vw;
+  margin:3vw 5vw;
 }
 
 .counterDesk {
-  width:17vw;
+  width:12vw;
   height:8vw;
+  margin-top:2vw;
   position:relative;
-  /*background-image: url(../Assets/Graphics/Level1/deskBackground.png);*/
   background-repeat: no-repeat;
   background-size: contain;
   /*background-position: 45%;*/
@@ -99,8 +99,8 @@ body {
 
 .clickTarget {
   position:absolute;
-  right:45%;
-  bottom:25%;
+  right:30%;
+  top:15%;
   height:5vw;
   width:6vw;
   z-index:-5;
@@ -111,7 +111,7 @@ body {
 
 .deskState {
   left:1em;
-  bottom:0;
+  bottom:20%;
   position:absolute;
   background:white;
   padding:0 0.2em;
@@ -121,15 +121,17 @@ body {
 }
 
 .deskId {
-  right:33%;
-  top:0;
+  left:30%;
+  top:-25%;
   padding:0 0.5em;
   position:absolute;
-  background-image:url(../Assets/Graphics/Level1/burotopia_guichet_affichage.png);
-  background-size:200% 200%;
+  background-image:url(../Assets/Graphics/Level1/idBackground.png);
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:20%;
   color:black;
   letter-spacing: 3px;
-  font-size:1vw;
+  font-size:0.7vw;
   animation-name: fadeIn;
   animation-duration:1s;
 

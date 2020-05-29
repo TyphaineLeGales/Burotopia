@@ -119,7 +119,7 @@ class Desk{
     this.createState();
     this.createEmployee();
     this.createDoors();
-    this.createCustomer();
+    // this.createCustomer();
 
   }
 
