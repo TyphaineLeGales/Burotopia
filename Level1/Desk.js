@@ -53,8 +53,8 @@ class Desk{
   createEmployee() {
     this.employee.classList.add('clickTarget');
     this.divDesk.appendChild(this.employee);
-    var randImg = getRandomInt(8);
-    this.employee.style.backgroundImage = 'url(../Assets/Graphics/Level1/DeskEmployee-'+ randImg +'.png)';
+    var randImg = getRandomInt(4);
+    this.employee.style.backgroundImage = 'url(../Assets/Graphics/Level1/guichet_perso'+ randImg +'.png)';
 
     this.textEmployee.classList.add('textEmployee');
     this.divDesk.appendChild(this.textEmployee);
