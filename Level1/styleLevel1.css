@@ -124,8 +124,9 @@ body {
   top:0;
   padding:0 0.5em;
   position:absolute;
-  background-color:black;
-  color:white;
+  background-image:url(../Assets/Graphics/Level1/burotopia_guichet_affichage.png);
+  background-size:200% 200%;
+  color:black;
   letter-spacing: 3px;
   font-size:1vw;
   animation-name: fadeIn;
