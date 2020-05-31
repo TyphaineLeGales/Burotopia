@@ -51,6 +51,8 @@
 
 .cardFront {
   background-color:#E7E7E7;
+  background-image:url(../Assets/Graphics/Level2/lock.png);
+  background-size:contain;
 }
 
 .cardBack, .cardFront {
