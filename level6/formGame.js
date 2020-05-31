@@ -7,6 +7,8 @@ var form;
 var boundingRectForm;
 var offset = 100;
 var _pickedElement;
+var _formTargetElement;
+var _formElmntArray;
 
 function clickHandler() {
 
@@ -16,12 +18,10 @@ function clickHandler() {
 
 function playGame() {
   form = new Form();
+  _formElmntArray = form.container.children;
   boundingRectForm = form.container.getBoundingClientRect();
   generateSideItems();
-  container.addEventListener('mouseup', checkForWin, false);
-  container.addEventListener('click', test, false);
 
-  // Check correct position
 }
 
 function test () {
@@ -30,9 +30,27 @@ function test () {
 
 function checkForWin (e) {
   //get clicked el
+  //find target el on form
   // check that mouse is within bounding rect of form
   // identify the element that's being draged check it's being dropped on top of the form div that has the same class
-  console.log(e);
+
+  if(e.target.tagName === "P") {
+    _pickedElement = e.target.parentElement;
+  } else {
+    _pickedElement = e.target;
+  }
+
+  var elmntName = _pickedElement.classList[0];
+  console.log(elmntName );
+
+  for(var i = 0; i < _formElmntArray.length; i++) {
+    if(_formElmntArray[i].classList[0] === _pickedElement.classList[0]) {
+       _formTargetElement = _formElmntArray[i];
+       break;
+    }
+  }
+
+  console.log(_formTargetElement);
 }
 
 
@@ -90,7 +108,7 @@ function generateAdressSideItem () {
   var p = document.createElement('p');
   p.innerHTML = '187 STRIJPSESTRAAT';
   adressItem.appendChild(p);
-  adressItem.classList.add('name', 'sideItem','drag');
+  adressItem.classList.add('address', 'sideItem','drag');
   container.appendChild(adressItem);
   generateRandPos(container, adressItem);
   adressItem.onmouseup = e => {
