@@ -36,7 +36,7 @@ function checkForMatch (e) {
   } else {
     _pickedElement = e.target;
   }
-
+  console.log(_pickedElement);
   var elmntName = _pickedElement.classList[0];
 
   //find target form element for clicked item
