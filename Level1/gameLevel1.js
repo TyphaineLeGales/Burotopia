@@ -14,6 +14,7 @@ var _maxTime = 60 //timer is called every second;
 var timeLeft = _maxTime;
 var _timerId;
 var playerIDContainer = document.querySelector("#playerID");
+var playerGraphics = document.querySelector("#playerGraphics");
 var deskContainer = document.querySelector("div.deskContainer");
 var timerContainer = document.querySelector("#timer");
 var endGameMsg =  document.querySelector("#endGameMsg");
@@ -29,6 +30,7 @@ button.addEventListener("click", clickHandler, false);
 function clickHandler() {
   playGame();
   startUI.style.display= "none";
+  playerGraphics.style.display="block";
 }
 
 function playGame() {
@@ -45,7 +47,7 @@ function generatePlayerId() {
     playerIdArray[i] = generateCharacter();
   }
   playerID = playerIdArray[0] + playerIdArray[1] + playerIdArray[2] + playerIdArray[3] + playerIdArray[4] ;
-  playerIDContainer.innerHTML = 'your number is <span class="idCard">' + playerID + "</span>";
+  playerIDContainer.innerHTML = '<span class="idCard">' + playerID + "</span>";
 }
 
 function generateCharacter() {

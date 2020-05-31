@@ -22,11 +22,16 @@ body {
 }
 
 #playerGraphics {
-  align-self:bottom;
-  display:flex;
-  position:relative;
-  height:50%;
-  width:30%;
+  position:fixed;
+  bottom:1vw;
+  left:42vw;
+  height:12vw;
+  width:12vw;
+  background-image:url(../Assets/Graphics/Level1/ticket.png);
+  z-index:15;
+  background-repeat:no-repeat;
+  background-size:contain;
+  display:none;
 }
 
 #timer {
@@ -39,14 +44,14 @@ body {
 
 #playerID {
   position:fixed;
-  bottom:5vh;
-  left:35vw;
-  font-size:1vw;
+  bottom:6vh;
+  left:45vw;
+  font-size:0.9vw;
 }
 
 .idCard {
-  border-style:solid;
-  padding:0.25em 0.5em;
+  /*border-style:solid;*/
+  padding:0 0.5em;
 }
 
 .textEmployee {
