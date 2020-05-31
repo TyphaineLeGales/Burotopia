@@ -29,6 +29,7 @@ function dragElement(elmnt) {
   }
 
   function elementDrag(e) {
+      // console.log(elmnt);
     e = e || window.event;
     e.preventDefault();
     // calculate the new cursor position:

@@ -6,6 +6,8 @@ var container = document.querySelector('div.gameContainer');
 var form;
 var boundingRectForm;
 var offset = 100;
+var _pickedElement;
+
 function clickHandler() {
 
   playGame();
@@ -16,12 +18,23 @@ function playGame() {
   form = new Form();
   boundingRectForm = form.container.getBoundingClientRect();
   generateSideItems();
-  // generateSideItems();
-  // Generate empty form
-  // Generate side items
-  // Dragable item
+  container.addEventListener('mouseup', checkForWin, false);
+  container.addEventListener('click', test, false);
+
   // Check correct position
 }
+
+function test () {
+
+}
+
+function checkForWin (e) {
+  //get clicked el
+  // check that mouse is within bounding rect of form
+  // identify the element that's being draged check it's being dropped on top of the form div that has the same class
+  console.log(e);
+}
+
 
 function generateSideItems () {
 
@@ -34,20 +47,16 @@ function generateSideItems () {
   generateEmailSideItem();
   // generateZipCodeSideItem();
 
-  //generate rand position within game container
-  //add classlist picture
-  //dragable
-  // console.log(rectForm.top, rectForm.right, rectForm.bottom, rectForm.left);
-
-
 }
 
 function generatePictureSideItem () {
-   var pictureItem = document.createElement('div');
+  var pictureItem = document.createElement('div');
   pictureItem.classList.add('picture', 'sideItem','drag','pictureAsset');
   container.appendChild(pictureItem);
-
   generateRandPos(container, pictureItem);
+  pictureItem.onmouseup = e => {
+    checkForWin(e)
+  }
 }
 
 function generateNameSideItem () {
@@ -57,8 +66,10 @@ function generateNameSideItem () {
   nameItem.appendChild(p);
   nameItem.classList.add('name', 'sideItem','drag');
   container.appendChild(nameItem);
-
   generateRandPos(container, nameItem);
+  nameItem.onmouseup = e => {
+    checkForWin(e)
+  }
 }
 
 function generateLastNameSideItem () {
@@ -68,8 +79,10 @@ function generateLastNameSideItem () {
   lastNameItem.appendChild(p);
   lastNameItem.classList.add('lastName', 'sideItem','drag');
   container.appendChild(lastNameItem);
-
   generateRandPos(container, lastNameItem);
+  lastNameItem.onmouseup = e => {
+    checkForWin(e)
+  }
 }
 
 function generateAdressSideItem () {
@@ -79,8 +92,10 @@ function generateAdressSideItem () {
   adressItem.appendChild(p);
   adressItem.classList.add('name', 'sideItem','drag');
   container.appendChild(adressItem);
-
   generateRandPos(container, adressItem);
+  adressItem.onmouseup = e => {
+    checkForWin(e)
+  }
 }
 
 function generateCitySideItem () {
@@ -90,16 +105,20 @@ function generateCitySideItem () {
   cityItem.appendChild(p);
   cityItem.classList.add('city', 'sideItem','drag');
   container.appendChild(cityItem);
-
   generateRandPos(container, cityItem);
+  cityItem.onmouseup = e => {
+    checkForWin(e)
+  }
 }
 
 function generateSignatureSideItem () {
   var signatureItem = document.createElement('div');
   signatureItem.classList.add('signature','signatureAsset', 'sideItem','drag');
   container.appendChild(signatureItem);
-
   generateRandPos(container, signatureItem);
+  signatureItem.onmouseup = e => {
+    checkForWin(e)
+  }
 }
 
 function generateEmailSideItem () {
@@ -109,8 +128,10 @@ function generateEmailSideItem () {
   emailItem.appendChild(p);
   emailItem.classList.add('email', 'sideItem','drag');
   container.appendChild(emailItem);
-
   generateRandPos(container, emailItem);
+  emailItem.onmouseup = e => {
+    checkForWin(e)
+  }
 }
 
 // function generateZipCodeSideItem () {
@@ -132,7 +153,6 @@ function generateEmailSideItem () {
 function  generateRandPos (container, div) {
 
   var left = randomInRange(0, container.offsetWidth) + offset;
-  console.log(left, boundingRectForm.left);
   if(left < boundingRectForm.left - div.offsetWidth || left > boundingRectForm.right ) {
     div.style.left = left  + "px";
     div.style.top = randomInRange(0, container.offsetHeight) + "px";

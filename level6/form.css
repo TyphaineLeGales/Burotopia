@@ -20,11 +20,16 @@ body {
   position:absolute;
   border-style : solid;
   border-color:black;
+  transition:all 0.2s;
 }
 
 .sideItem {
   position:fixed;
   background-color:white;
+}
+
+.formItemCompleted{
+  border-color:green;
 }
 
 .pictureAsset {
