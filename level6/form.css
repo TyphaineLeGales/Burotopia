@@ -1,3 +1,7 @@
+.gameContainer {
+  padding:5vw;
+}
+
 .formContainer {
   border-style : solid;
   border-color:black;
@@ -16,6 +20,13 @@
 .sideItem {
   position:fixed;
   border-style:solid;
+}
+
+.pictureAsset {
+  background-image:url(../Assets/Graphics/Level5/Person_0.png);
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position: center;
 }
 
 .picture {

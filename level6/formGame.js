@@ -42,11 +42,10 @@ function generateSideItems () {
 
 function  generateRandPos (container, div) {
 
-  var left = randomInRange(0, container.offsetWidth);
+  var left = randomInRange(0, container.offsetWidth) + offset;
   console.log(left, boundingRectForm.left);
-  if(left < boundingRectForm.left - div.offsetWidth || left > boundingRectForm.right ) {
-    console.log("item is on blank space");
-    div.style.backgroundColor = "white";
+  if(left < boundingRectForm.left - div.offsetWidth || left > boundingRectForm.right  ) {
+    div.classList.add('pictureAsset');
   } else {
     // generateRandPos(container, div);
     div.style.backgroundColor = "red";
