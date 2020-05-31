@@ -80,11 +80,9 @@ class Desk{
   }
 
   createDoors () {
-    this.leftDoor.classList.add("deskDoorLeft");
-    this.leftDoor.classList.add("deskDoors");
+    this.leftDoor.classList.add('deskDoorLeft', 'deskDoors');
     this.divDesk.appendChild(this.leftDoor);
-    this.rightDoor.classList.add("deskDoorRight");
-    this.rightDoor.classList.add("deskDoors");
+    this.rightDoor.classList.add('deskDoorRight', 'deskDoors');
     this.divDesk.appendChild(this.rightDoor);
 
     //init state

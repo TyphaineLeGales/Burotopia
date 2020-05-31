@@ -24,7 +24,7 @@ body {
 
 .sideItem {
   position:fixed;
-  border-style:solid;
+  background-color:white;
 }
 
 .pictureAsset {
@@ -109,4 +109,11 @@ body {
   right:10%;
   width: 20vw;
   height:2vw;
+}
+
+.signatureAsset {
+   background-image:url(../Assets/Graphics/Level6/signature.png);
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position: center;
 }
