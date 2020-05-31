@@ -20,45 +20,27 @@ class Form {
     this.container = document.createElement('div');
     this.container.classList.add('formContainer');
 
-    this.picture.classList.add('picture');
-    this.picture.classList.add('formItem');
+    this.picture.classList.add('picture', 'formItem');
 
-    this.firstName.classList.add('name');
-    this.firstName.classList.add('formItem');
+    this.firstName.classList.add('name', 'formItem');
 
-    this.lastName.classList.add('lastName');
-    this.lastName.classList.add('formItem');
+    this.lastName.classList.add('lastName', 'formItem');
 
-    this.address.classList.add('address');
-    this.address.classList.add('formItem');
+    this.address.classList.add('address', 'formItem');
 
     this.zip.classList.add('zip');
     this.createZipCode(this.zip);
 
-    this.city.classList.add('city');
-    this.city.classList.add('formItem');
+    this.city.classList.add('city', 'formItem');
 
-    this.email.classList.add('email');
-    this.email.classList.add('formItem');
+    this.email.classList.add('email', 'formItem');
     this.createEmail(this.email);
 
-    this.block.classList.add('block');
-    this.block.classList.add('formItem');
+    this.block.classList.add('block', 'formItem');
 
-    this.signature.classList.add('signature');
-    this.signature.classList.add('formItem');
+    this.signature.classList.add('signature', 'formItem');
 
-    this.container.appendChild(this.picture);
-    this.container.appendChild(this.firstName);
-    this.container.appendChild(this.lastName);
-    this.container.appendChild(this.address);
-    this.container.appendChild(this.zip);
-    this.container.appendChild(this.city);
-    this.container.appendChild(this.email);
-    this.container.appendChild(this.block);
-    this.container.appendChild(this.signature);
-
-
+    this.container.innerHTML = this.picture.outerHTML + this.firstName.outerHTML + this.lastName.outerHTML + this.address.outerHTML + this.zip.outerHTML + this.city.outerHTML + this.email.outerHTML + this.block.outerHTML + this.signature.outerHTML;
     gameContainer.appendChild(this.container);
   }
 

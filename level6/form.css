@@ -1,5 +1,10 @@
+body {
+  overflow:hidden;
+}
+
 .gameContainer {
   padding:5vw;
+  overflow:hidden;
 }
 
 .formContainer {

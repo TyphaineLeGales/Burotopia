@@ -24,14 +24,9 @@ function playGame() {
 }
 
 function generateSideItems () {
-  var pictureItem = document.createElement('div');
-  pictureItem.classList.add('picture');
-  pictureItem.classList.add('sideItem');
-  pictureItem.classList.add('drag');
-  container.appendChild(pictureItem);
 
-  generateRandPos(container, pictureItem);
-
+  generatePictureSideItem();
+  generateNameSideItem();
   //generate rand position within game container
   //add classlist picture
   //dragable
@@ -40,12 +35,28 @@ function generateSideItems () {
 
 }
 
+function generatePictureSideItem () {
+   var pictureItem = document.createElement('div');
+  pictureItem.classList.add('picture', 'sideItem','drag','pictureAsset');
+  container.appendChild(pictureItem);
+
+  generateRandPos(container, pictureItem);
+}
+
+function generateNameSideItem () {
+  var nameItem = document.createElement('p');
+  nameItem.innerHTML = 'Typhaine';
+  nameItem.classList.add('name', 'sideItem','drag');
+  container.appendChild(nameItem);
+
+  generateRandPos(container, nameItem);
+}
+
 function  generateRandPos (container, div) {
 
   var left = randomInRange(0, container.offsetWidth) + offset;
   console.log(left, boundingRectForm.left);
   if(left < boundingRectForm.left - div.offsetWidth || left > boundingRectForm.right ) {
-    div.classList.add('pictureAsset');
     div.style.left = left  + "px";
     div.style.top = randomInRange(0, container.offsetHeight) + "px";
   } else {
