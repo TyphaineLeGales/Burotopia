@@ -28,6 +28,7 @@ function generateSideItems () {
   var pictureItem = document.createElement('div');
   pictureItem.classList.add('picture');
   pictureItem.classList.add('sideItem');
+  pictureItem.classList.add('drag');
   container.appendChild(pictureItem);
 
   generateRandPos(container, pictureItem);
@@ -44,17 +45,11 @@ function  generateRandPos (container, div) {
 
   var left = randomInRange(0, container.offsetWidth) + offset;
   console.log(left, boundingRectForm.left);
-  if(left < boundingRectForm.left - div.offsetWidth || left > boundingRectForm.right  ) {
+  if(left < boundingRectForm.left - div.offsetWidth || left > boundingRectForm.right ) {
     div.classList.add('pictureAsset');
+    div.style.left = left  + "px";
+    div.style.top = randomInRange(0, container.offsetHeight) + "px";
   } else {
-    // generateRandPos(container, div);
-    div.style.backgroundColor = "red";
-    console.log("item is on top of form");
+    generateRandPos(container, div);
   }
-
-  div.style.left = left  + "px";
-  // var top = randomInRange(0, container.offsetHeight) + "px";
-
-  div.style.top = randomInRange(0, container.offsetHeight) + "px";
-
-  }
+}
