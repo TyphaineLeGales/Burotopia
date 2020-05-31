@@ -9,6 +9,7 @@ var offset = 100;
 var _pickedElement;
 var _formTargetElement;
 var _formElmntArray;
+var _boundRectFormTarget;
 
 function clickHandler() {
 
@@ -28,11 +29,7 @@ function test () {
 
 }
 
-function checkForWin (e) {
-  //get clicked el
-  //find target el on form
-  // check that mouse is within bounding rect of form
-  // identify the element that's being draged check it's being dropped on top of the form div that has the same class
+function checkForMatch (e) {
 
   if(e.target.tagName === "P") {
     _pickedElement = e.target.parentElement;
@@ -41,8 +38,8 @@ function checkForWin (e) {
   }
 
   var elmntName = _pickedElement.classList[0];
-  console.log(elmntName );
 
+  //find target form element for clicked item
   for(var i = 0; i < _formElmntArray.length; i++) {
     if(_formElmntArray[i].classList[0] === _pickedElement.classList[0]) {
        _formTargetElement = _formElmntArray[i];
@@ -50,7 +47,33 @@ function checkForWin (e) {
     }
   }
 
-  console.log(_formTargetElement);
+  //get position of target
+  _boundRectFormTarget = _formTargetElement.getBoundingClientRect();
+  var mouseX = e.clientX;
+  var mouseY = e.clientY;
+
+  //check if item is droped at target position
+  if(mouseX > _boundRectFormTarget.left && mouseX < _boundRectFormTarget.right ) {
+    if(mouseY > _boundRectFormTarget.top && mouseY < _boundRectFormTarget.bottom) {
+     _formTargetElement.classList.add('formItemCompleted');
+     checkForWin();
+    }
+  }
+}
+
+function checkForWin() {
+  var completedItemCount = 0;
+  for(var i = 0; i < _formElmntArray.length; i++) {
+    if(_formElmntArray[i].classList[2] === 'formItemCompleted') {
+      completedItemCount += 1;
+    }
+  }
+
+  //check if every item of form has been completed
+  if(completedItemCount === _formElmntArray.length) {
+    console.log('form is completed');
+  }
+
 }
 
 
@@ -64,6 +87,7 @@ function generateSideItems () {
   generateSignatureSideItem();
   generateEmailSideItem();
   // generateZipCodeSideItem();
+  generateBlockSideItem();
 
 }
 
@@ -73,7 +97,7 @@ function generatePictureSideItem () {
   container.appendChild(pictureItem);
   generateRandPos(container, pictureItem);
   pictureItem.onmouseup = e => {
-    checkForWin(e)
+    checkForMatch(e)
   }
 }
 
@@ -86,7 +110,7 @@ function generateNameSideItem () {
   container.appendChild(nameItem);
   generateRandPos(container, nameItem);
   nameItem.onmouseup = e => {
-    checkForWin(e)
+    checkForMatch(e)
   }
 }
 
@@ -99,7 +123,7 @@ function generateLastNameSideItem () {
   container.appendChild(lastNameItem);
   generateRandPos(container, lastNameItem);
   lastNameItem.onmouseup = e => {
-    checkForWin(e)
+    checkForMatch(e)
   }
 }
 
@@ -112,7 +136,7 @@ function generateAdressSideItem () {
   container.appendChild(adressItem);
   generateRandPos(container, adressItem);
   adressItem.onmouseup = e => {
-    checkForWin(e)
+    checkForMatch(e)
   }
 }
 
@@ -125,7 +149,7 @@ function generateCitySideItem () {
   container.appendChild(cityItem);
   generateRandPos(container, cityItem);
   cityItem.onmouseup = e => {
-    checkForWin(e)
+    checkForMatch(e)
   }
 }
 
@@ -135,7 +159,7 @@ function generateSignatureSideItem () {
   container.appendChild(signatureItem);
   generateRandPos(container, signatureItem);
   signatureItem.onmouseup = e => {
-    checkForWin(e)
+    checkForMatch(e)
   }
 }
 
@@ -148,25 +172,50 @@ function generateEmailSideItem () {
   container.appendChild(emailItem);
   generateRandPos(container, emailItem);
   emailItem.onmouseup = e => {
-    checkForWin(e)
+    checkForMatch(e)
+  }
+}
+
+function generateBlockSideItem () {
+  var emailItem = document.createElement('div');
+  var p = document.createElement('p');
+  p.innerHTML = 'typhaineLeGales@protonMail.com';
+  emailItem.appendChild(p);
+  emailItem.classList.add('email', 'sideItem','drag');
+  container.appendChild(emailItem);
+  generateRandPos(container, emailItem);
+  emailItem.onmouseup = e => {
+    checkForMatch(e)
   }
 }
 
 // function generateZipCodeSideItem () {
-//   for(var i = 0; i< 6; i++) {
-//       var zipItem = document.createElement('div');
-//       var box = document.createElement('p');
-//       box.classList.add('zipBox', 'sideItem', 'drag');
-//       box.style.left = i*2 +  "vw";
-//       box.innerHTML = i;
-//       generateRandPos(container, box);
-//       zipItem.appendChild(box);
-//       container.appendChild(zipItem);
-//     }
-//   // zipItem.classList.add('zip', 'sideItem','drag');
-//   // container.appendChild(zipItem);
+//   var zipItem = document.createElement('div');
+//   var p = document.createElement('p');
+//   p.innerHTML = '5616GP';
+//   zipItem.classList.add('zip', 'sideItem','drag');
+//   zipItem.style.backgroundColor = "blue";
+//   container.appendChild(zipItem);
+//   generateRandPos(container, zipItem);
+//   zipItem.onmouseup = e => {
+//     checkForMatch(e)
+//   }
 
 // }
+
+function generateBlockSideItem () {
+  var blockItem = document.createElement('div');
+  var p = document.createElement('p');
+  p.innerHTML = 'block';
+  blockItem.appendChild(p);
+  blockItem.classList.add('block', 'sideItem', 'drag');
+  container.appendChild(blockItem);
+  generateRandPos(container, blockItem);
+  blockItem.onmouseup = e => {
+    checkForMatch(e);
+  }
+
+}
 
 function  generateRandPos (container, div) {
 
