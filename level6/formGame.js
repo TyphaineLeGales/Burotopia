@@ -6,8 +6,6 @@ var container = document.querySelector('div.gameContainer');
 var form;
 var boundingRectForm;
 var offset = 100;
-var testBtn = document.querySelector('button.testBtn');
-testBtn.addEventListener('click', generateSideItems, false);
 function clickHandler() {
 
   playGame();
@@ -17,6 +15,7 @@ function clickHandler() {
 function playGame() {
   form = new Form();
   boundingRectForm = form.container.getBoundingClientRect();
+  generateSideItems();
   // generateSideItems();
   // Generate empty form
   // Generate side items
