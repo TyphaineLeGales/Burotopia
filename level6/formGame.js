@@ -32,7 +32,6 @@ function checkForMatch (e) {
   } else {
     _pickedElement = e.target;
   }
-  console.log(_pickedElement);
   var elmntName = _pickedElement.classList[0];
 
   //find target form element for clicked item
@@ -68,7 +67,13 @@ function checkForWin() {
   //check if every item of form has been completed
   if(completedItemCount === _formElmntArray.length) {
     console.log('form is completed');
+    var sideItems = document.querySelectorAll('div.sideItem');
+    console.log(sideItems);
     form.container.classList.add('formCompleted');
+    // sideItem.forEach(e => e.classList.add('formCompleted'));
+    sideItems.forEach(e =>  e.classList.add('formCompleted'));
+
+
   }
 
 }
