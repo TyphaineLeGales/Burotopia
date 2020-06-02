@@ -221,8 +221,8 @@ function generateBlockSideItem () {
 
 function  generateRandPos (container, div) {
 
-  var left = randomInRange(0, container.offsetWidth) + offset;
-  if(left < boundingRectForm.left - div.offsetWidth || left > boundingRectForm.right ) {
+  var left = randomInRange(0, container.offsetWidth - div.offsetWidth) + offset;
+  if(left > boundingRectForm.right) {
     div.style.left = left  + "px";
     div.style.top = randomInRange(0, container.offsetHeight) + "px";
   } else {
