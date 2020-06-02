@@ -9,7 +9,7 @@ body {
 
 .pile {
   position:fixed;
-  bottom:2vw;
+  bottom:2.5vw;
   width:15vw;
   height:15vw;
   background-image:url(../Assets/Graphics/Level6/FormPile.png);
@@ -18,15 +18,21 @@ body {
   background-position: center;
 }
 
+.piledForm {
+
+}
 
 .formContainer {
   border-style : solid;
   border-color:black;
+  border-width:0.3vw;
   width:25vw;
   height:40vw;
   position:relative;
   left:35%;
   transition:all 1s;
+  transition-timing-function:ease-in-out;
+  background-color:white;
 }
 
 .formItem {
@@ -46,7 +52,11 @@ body {
 }
 
 .formCompleted {
-  transform: perspective(1000px) rotateX(45deg) scale(0.5);
+  transform: perspective(1000px) rotateX(75deg) scale(0.45);
+  border-width:0.6vw;
+  position:fixed;
+  bottom:-9vw;
+  left:0;
 }
 
 .pictureAsset {

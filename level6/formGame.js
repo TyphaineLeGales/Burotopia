@@ -106,7 +106,7 @@ function generatePictureSideItem () {
 function generateNameSideItem () {
   var nameItem = document.createElement('div');
   var p = document.createElement('p');
-  p.innerHTML = 'TYPHAINE';
+  p.innerHTML = 'JOHN';
   nameItem.appendChild(p);
   nameItem.classList.add('name', 'sideItem','drag');
   container.appendChild(nameItem);
@@ -119,7 +119,7 @@ function generateNameSideItem () {
 function generateLastNameSideItem () {
   var lastNameItem = document.createElement('div');
   var p = document.createElement('p');
-  p.innerHTML = 'LE GALES';
+  p.innerHTML = 'DOE';
   lastNameItem.appendChild(p);
   lastNameItem.classList.add('lastName', 'sideItem','drag');
   container.appendChild(lastNameItem);
@@ -168,7 +168,7 @@ function generateSignatureSideItem () {
 function generateEmailSideItem () {
   var emailItem = document.createElement('div');
   var p = document.createElement('p');
-  p.innerHTML = 'typhaineLeGales@protonMail.com';
+  p.innerHTML = 'JohnDoe@protonMail.com';
   emailItem.appendChild(p);
   emailItem.classList.add('email', 'sideItem','drag');
   container.appendChild(emailItem);
