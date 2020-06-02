@@ -106,7 +106,7 @@ function generatePictureSideItem () {
 function generateNameSideItem () {
   var nameItem = document.createElement('div');
   var p = document.createElement('p');
-  p.innerHTML = 'JOHN';
+  p.innerHTML = 'NAME';
   nameItem.appendChild(p);
   nameItem.classList.add('name', 'sideItem','drag');
   container.appendChild(nameItem);
@@ -119,7 +119,7 @@ function generateNameSideItem () {
 function generateLastNameSideItem () {
   var lastNameItem = document.createElement('div');
   var p = document.createElement('p');
-  p.innerHTML = 'DOE';
+  p.innerHTML = 'LAST NAME';
   lastNameItem.appendChild(p);
   lastNameItem.classList.add('lastName', 'sideItem','drag');
   container.appendChild(lastNameItem);
@@ -132,7 +132,7 @@ function generateLastNameSideItem () {
 function generateAdressSideItem () {
   var adressItem = document.createElement('div');
   var p = document.createElement('p');
-  p.innerHTML = '187 STRIJPSESTRAAT';
+  p.innerHTML = 'ADDRESS';
   adressItem.appendChild(p);
   adressItem.classList.add('address', 'sideItem','drag');
   container.appendChild(adressItem);
@@ -145,7 +145,7 @@ function generateAdressSideItem () {
 function generateCitySideItem () {
   var cityItem = document.createElement('div');
   var p = document.createElement('p');
-  p.innerHTML = 'EINDHOVEN';
+  p.innerHTML = 'CITY';
   cityItem.appendChild(p);
   cityItem.classList.add('city', 'sideItem','drag');
   container.appendChild(cityItem);
@@ -168,7 +168,7 @@ function generateSignatureSideItem () {
 function generateEmailSideItem () {
   var emailItem = document.createElement('div');
   var p = document.createElement('p');
-  p.innerHTML = 'JohnDoe@protonMail.com';
+  p.innerHTML = '@EMAIL';
   emailItem.appendChild(p);
   emailItem.classList.add('email', 'sideItem','drag');
   container.appendChild(emailItem);
