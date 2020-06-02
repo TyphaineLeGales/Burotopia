@@ -53,8 +53,8 @@ function checkForMatch (e) {
      _formTargetElement.classList.add('formItemCompleted');
      _pickedElement.style.top = _boundRectFormTarget.top +'px';
      _pickedElement.style.left =  _boundRectFormTarget.left+'px';
-
-     _formTargetElement.appendChild(_pickedElement);
+    _pickedElement.classList.remove('drag', 'sideItem');
+    _formTargetElement.appendChild(_pickedElement);
 
       checkForWin();
     }
@@ -73,14 +73,8 @@ function checkForWin() {
   if(completedItemCount === _formElmntArray.length) {
     console.log('form is completed');
     var sideItems = document.querySelectorAll('div.sideItem');
-    console.log(sideItems);
     form.container.classList.add('formCompleted');
-    // sideItem.forEach(e => e.classList.add('formCompleted'));
-    // sideItems.forEach(e =>  e.classList.add('formCompleted'));
-
-
   }
-
 }
 
 
