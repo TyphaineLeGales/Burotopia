@@ -25,10 +25,6 @@ function playGame() {
 
 }
 
-function test () {
-
-}
-
 function checkForMatch (e) {
 
   if(e.target.tagName === "P") {
@@ -72,6 +68,7 @@ function checkForWin() {
   //check if every item of form has been completed
   if(completedItemCount === _formElmntArray.length) {
     console.log('form is completed');
+    form.container.classList.add('formCompleted');
   }
 
 }

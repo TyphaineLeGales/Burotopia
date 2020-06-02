@@ -7,6 +7,18 @@ body {
   overflow:hidden;
 }
 
+.pile {
+  position:fixed;
+  bottom:2vw;
+  width:15vw;
+  height:15vw;
+  background-image:url(../Assets/Graphics/Level6/FormPile.png);
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position: center;
+}
+
+
 .formContainer {
   border-style : solid;
   border-color:black;
@@ -31,6 +43,10 @@ body {
 
 .formItemCompleted{
   border-color:green;
+}
+
+.formCompleted {
+  transform: perspective(1000px) rotateX(45deg) scale(0.5);
 }
 
 .pictureAsset {
