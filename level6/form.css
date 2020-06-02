@@ -26,13 +26,13 @@ body {
   height:40vw;
   position:relative;
   left:35%;
+  transition:all 1s;
 }
 
 .formItem {
   position:absolute;
   border-style : solid;
   border-color:black;
-  transition:all 0.2s;
 }
 
 .sideItem {

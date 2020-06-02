@@ -51,7 +51,12 @@ function checkForMatch (e) {
   if(mouseX > _boundRectFormTarget.left && mouseX < _boundRectFormTarget.right ) {
     if(mouseY > _boundRectFormTarget.top && mouseY < _boundRectFormTarget.bottom) {
      _formTargetElement.classList.add('formItemCompleted');
-     checkForWin();
+     _pickedElement.style.top = _boundRectFormTarget.top +'px';
+     _pickedElement.style.left =  _boundRectFormTarget.left+'px';
+
+     _formTargetElement.appendChild(_pickedElement);
+
+      checkForWin();
     }
   }
 }
@@ -71,7 +76,7 @@ function checkForWin() {
     console.log(sideItems);
     form.container.classList.add('formCompleted');
     // sideItem.forEach(e => e.classList.add('formCompleted'));
-    sideItems.forEach(e =>  e.classList.add('formCompleted'));
+    // sideItems.forEach(e =>  e.classList.add('formCompleted'));
 
 
   }
@@ -97,6 +102,7 @@ function generatePictureSideItem () {
   var pictureItem = document.createElement('div');
   pictureItem.classList.add('picture', 'sideItem','drag','pictureAsset');
   container.appendChild(pictureItem);
+
   generateRandPos(container, pictureItem);
   pictureItem.onmouseup = e => {
     checkForMatch(e)
