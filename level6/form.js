@@ -45,6 +45,10 @@ class Form {
     gameContainer.appendChild(this.container);
   }
 
+  delete() {
+    this.container.remove();
+  }
+
   // createZipCode (zipContainer) {
   //   for(var i = 0; i< 6; i++) {
   //     var box = document.createElement('div');

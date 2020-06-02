@@ -10,6 +10,7 @@ var _pickedElement;
 var _formTargetElement;
 var _formElmntArray;
 var _boundRectFormTarget;
+var _forms = [];
 
 function clickHandler() {
 
@@ -19,6 +20,7 @@ function clickHandler() {
 
 function playGame() {
   form = new Form();
+  _forms.push(form);
   _formElmntArray = form.container.children;
   boundingRectForm = form.container.getBoundingClientRect();
   generateSideItems();
@@ -74,6 +76,8 @@ function checkForWin() {
     console.log('form is completed');
     var sideItems = document.querySelectorAll('div.sideItem');
     form.container.classList.add('formCompleted');
+    form.container.style.bottom = -9 + (_forms.length-1) + "vw";
+    setTimeout(playGame, 2000);
   }
 }
 

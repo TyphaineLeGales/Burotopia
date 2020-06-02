@@ -28,11 +28,11 @@ body {
   border-width:0.3vw;
   width:25vw;
   height:40vw;
-  position:relative;
-  bottom:0;
+  position:fixed;
+  bottom:5vw;
   left:35%;
   transition: all 1.5s;
-  transition-delay: 0.5s;
+  transition-delay: 0.1s;
   transition-timing-function:ease-out;
   background-color:white;
 }
@@ -51,14 +51,14 @@ body {
 }
 
 .formItemCompleted{
-  border-color:green;
+  border-width:0.2vw;
 }
 
 .formCompleted {
   transform: perspective(1000px) rotateX(75deg) scale(0.45);
   border-width:0.6vw;
-  bottom:-12.5vw;
-  left:-5vw;
+  bottom:-9vw;
+  left:0.25vw;
 }
 
 .pictureAsset {
