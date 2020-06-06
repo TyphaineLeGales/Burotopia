@@ -15,7 +15,7 @@ body {
 
 .menuItem{
   position:absolute;
-  transition: all 0.7s;
+  transition: transform 0.7s;
   transition-timing-function: ease-out;
 }
 
@@ -52,7 +52,7 @@ body {
   z-index:2;
 }
 
-#form {
+.form {
   width:25%;
   left:5%;
   top:0%;
@@ -71,3 +71,10 @@ body {
   z-index:2;
 }
 
+.gray {
+  opacity:0;
+}
+
+.gray:hover {
+  opacity:1;
+}

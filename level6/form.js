@@ -13,7 +13,7 @@ class Form {
     this.signature = document.createElement('div');
     this.block = document.createElement('div');
     this.isFilled = false;
-
+    this.id = document.createElement('p');
     this.create();
   }
 
@@ -22,24 +22,16 @@ class Form {
     this.container.classList.add('formContainer');
 
     this.picture.classList.add('picture', 'formItem');
-
     this.firstName.classList.add('name', 'formItem');
-
     this.lastName.classList.add('lastName', 'formItem');
-
     this.address.classList.add('address', 'formItem');
+    this.city.classList.add('city', 'formItem');
+    this.email.classList.add('email', 'formItem');
+    this.block.classList.add('block', 'formItem');
+    this.signature.classList.add('signature', 'formItem');
 
     // this.zip.classList.add('zip');
     // this.createZipCode(this.zip);
-
-    this.city.classList.add('city', 'formItem');
-
-    this.email.classList.add('email', 'formItem');
-    this.createEmail(this.email);
-
-    this.block.classList.add('block', 'formItem');
-
-    this.signature.classList.add('signature', 'formItem');
 
     this.container.innerHTML = this.picture.outerHTML + this.firstName.outerHTML + this.lastName.outerHTML + this.address.outerHTML + this.city.outerHTML + this.email.outerHTML + this.block.outerHTML + this.signature.outerHTML;
     gameContainer.appendChild(this.container);
@@ -59,19 +51,9 @@ class Form {
   //     box.backgroundColor = "blue";
   //   }
   // }
-
-  createEmail (emailContainer) {
-    var firstPart = document.createElement('div');
-    firstPart.style.width = '15vw';
-    firstPart.style.height = '2vw';
-    var arobase = document.createElement('p');
-    arobase.innerHTML = "@";
-    arobase.style.width = '5vw';
-    var endPart = document.createElement('div');
-    endPart.style.width = '10vw';
-
-    emailContainer.appendChild(firstPart);
-    emailContainer.appendChild(arobase);
-    emailContainer.appendChild(endPart);
+createId() {
+    this.id.classList.add('formId');
+    this.divDesk.appendChild(this.deskId);
+    this.deskId.innerHTML = ""+this.id[0] + this.id[1] + this.id[2] + this.id[3] + this.id[4] ;
   }
 }

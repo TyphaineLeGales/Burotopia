@@ -55,7 +55,7 @@ class Desk{
     this.employee.classList.add('employee');
     this.divDesk.appendChild(this.employee);
     var randImg = getRandomInt(4);
-    this.employee.style.backgroundImage = 'url(../Assets/Graphics/Level1/guichet_perso'+ randImg +'.png)';
+    this.employee.style.backgroundImage = 'url(../Assets/Graphics/Level1/PersoGris'+ randImg +'.png)';
     this.employee.style.backgroundRepeat = "no-repeat";
     this.textEmployee.classList.add('textEmployee');
     this.divDesk.appendChild(this.textEmployee);

@@ -36,7 +36,7 @@ function checkForMatch (e) {
   }
   var elmntName = _pickedElement.classList[0];
 
-  //find target form element for clicked item
+  //find target element for clicked item
   for(var i = 0; i < _formElmntArray.length; i++) {
     if(_formElmntArray[i].classList[0] === _pickedElement.classList[0]) {
        _formTargetElement = _formElmntArray[i];
@@ -73,11 +73,12 @@ function checkForWin() {
 
   //check if every item of form has been completed
   if(completedItemCount === _formElmntArray.length) {
-    console.log('form is completed');
     var sideItems = document.querySelectorAll('div.sideItem');
     form.container.classList.add('formCompleted');
+    //pile up the forms
     form.container.style.bottom = -9 + (_forms.length-1) + "vw";
-    setTimeout(playGame, 2000);
+    //generate new Form
+    setTimeout(playGame, 100);
   }
 }
 
