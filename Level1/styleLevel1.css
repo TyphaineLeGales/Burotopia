@@ -99,7 +99,9 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   overflow:hidden;
+  background-image:url(../Assets/Graphics/Level1/greyBackground.png);
 }
+
 
 
 .employee {
