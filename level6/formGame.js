@@ -1,7 +1,3 @@
-var button = document.querySelector("button");
-button.style.cursor = "pointer";
-button.addEventListener("click", clickHandler, false);
-var startUI = document.querySelector(".introLevel");
 var container = document.querySelector('div.gameContainer');
 var form;
 var boundingRectForm;
@@ -12,11 +8,9 @@ var _formElmntArray;
 var _boundRectFormTarget;
 var _forms = [];
 
-function clickHandler() {
-
+document.addEventListener('DOMContentLoaded',(event) => {
   playGame();
-  startUI.style.display= "none";
-}
+});
 
 function playGame() {
   form = new Form();

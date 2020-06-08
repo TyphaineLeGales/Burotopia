@@ -1,6 +1,3 @@
-var button = document.querySelector("button");
-button.addEventListener("click", clickHandler, false);
-const beginningScreen =  document.querySelector("div.introLevel");
 const gameContainer =  document.querySelector("div.gameContainer");
 var _playerHasWon = false;
 var speed = 1;
@@ -19,11 +16,9 @@ const textConditions = [
 var numberOfBlocks = textConditions.length;
 const _colors = ["#A56544", "#7C9ACD", "#336EA3", "#E2A2A1", "#B6BBBF", "#00928D", "#E19378", "#F2C600", "#E37634", "#D2693F"];
 
-function clickHandler() {
-  gameContainer.style.display = "flex";
-  beginningScreen.style.display="none";
+document.addEventListener('DOMContentLoaded',(event) => {
   playGame();
-}
+});
 
 function playGame() {
   generateBlocks();

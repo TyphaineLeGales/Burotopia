@@ -1,7 +1,3 @@
-var button = document.querySelector("button");
-button.style.cursor = "pointer";
-button.addEventListener("click", clickHandler, false);
-var startUI = document.querySelector(".introLevel");
 var unsubscribe = document.getElementById("unsubscribe");
 unsubscribe.addEventListener('click', win, false);
 var container = document.querySelector('div.gameContainer');
@@ -9,11 +5,9 @@ var endGameMSG = document.querySelector('.endGameMSG');
 var beginningGameMSG = document.querySelector('.beginningGameMSG');
 var _spacing = 50;
 
-function clickHandler() {
-
+document.addEventListener('DOMContentLoaded',(event) => {
   playGame();
-  startUI.style.display= "none";
-}
+});
 
 function playGame() {
   generateRandPos();
