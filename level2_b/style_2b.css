@@ -123,10 +123,12 @@
 
 .passwordServiceMatch {
   padding-left:5%;
+  font-size:0.8em;
 }
 
 .insidePostIt {
   overflow-y:scroll;
+  scrollbar-width: thin;
   overflow-x: hidden;
   height:75%;
   width:83%;
