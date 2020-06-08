@@ -18,20 +18,10 @@ var playerGraphics = document.querySelector("#playerGraphics");
 var deskContainer = document.querySelector("div.deskContainer");
 var timerContainer = document.querySelector("#timer");
 var endGameMsg =  document.querySelector("#endGameMsg");
-var startUI = document.querySelector(".introLevel");
-var button = document.querySelector("button");
-button.style.cursor = "pointer";
-button.addEventListener("click", clickHandler, false);
 
-  //TO DO :
-  //responsive layout + number of desk
-  //Text box => hit customer text
-
-function clickHandler() {
+document.addEventListener('DOMContentLoaded',(event) => {
   playGame();
-  startUI.style.display= "none";
-  playerGraphics.style.display="block";
-}
+});
 
 function playGame() {
   generatePlayerId();

@@ -4,16 +4,13 @@ body {
 
 }
 
-.notDoneMsg {
+.clickMsg {
   position:absolute;
-  left:45%;
-  top:20%;
   z-index:30;
   font-size:1vw;
   padding:2em;
   width:14vw;
   background-color:white;
-  /*display:none;*/
   opacity:0;
   transition: all 0.5s;
   transform:scale(0.9);
@@ -22,8 +19,16 @@ body {
   border-radius:3px;
 }
 
+.clickForm {
+
+}
+
+.clickTC {
+  left:45%;
+  top:20%;
+}
+
 .dispMsg {
-  /*display:block;*/
   transform:scale(1);
   opacity:1;
 }
