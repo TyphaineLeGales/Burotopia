@@ -4,8 +4,6 @@ var taskList = [];
 var openedWindows = [];
 var button = document.querySelector("button");
 var gameContainer =  document.querySelector("div.gameContainer");
-button.style.cursor = "pointer";
-button.addEventListener("click", clickHandler, false);
 
 // TO DO :
 
@@ -26,11 +24,10 @@ button.addEventListener("click", clickHandler, false);
 //add tasks as the player goes along
 //animation loging button pulsing
 
-function clickHandler() {
-  gameContainer.style.display = "flex";
-  button.style.display="none";
+document.addEventListener('DOMContentLoaded',(event) => {
   playGame();
-}
+
+});
 
 function playGame() {
   generateTasks();

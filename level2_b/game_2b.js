@@ -1,11 +1,7 @@
 const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 const symbols = ["@", "#", "$", "%", "§", "(", ")", "*", "£", "{", "}"];
-var button = document.querySelector("button");
 var gameContainer =  document.querySelector("div.gameContainer");
 const cardContainer = document.querySelector("div.cardContainer");
-const beginningScreen =  document.querySelector("div.introLevel");
-button.style.cursor = "pointer";
-button.addEventListener("click", clickHandler, false);
 
 var endGameMSG =  document.querySelector("h1.endGameMSG");
 var matchMsg = document.querySelector("h1.matchMSG");
@@ -27,12 +23,10 @@ var playerHasWon = false;
 //count tries => after 3 reset Password
 //can't pick the same card more than 3 times in a row
 //timer
-
-function clickHandler() {
-  gameContainer.style.display = "flex";
-  beginningScreen.style.display="none";
+document.addEventListener('DOMContentLoaded',(event) => {
   playGame();
-}
+
+});
 
 function playGame() {
   generateCardGrid();
