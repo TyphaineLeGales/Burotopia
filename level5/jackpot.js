@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded',(event) => {
 
 function playGame() {
   machineGraphics.style.display = "block";
-  // preloadImg();
+  preloadAnimImg();
   createSlot();
 }
 
@@ -52,11 +52,13 @@ function createSlot() {
    }
 }
 
-// function preloadAnimImg () {
-//    for (var i = 1; i < totalFrames + 1; i++) {
-//     document.body.append(`<div id="preload-image-${i}" style="background-image: url('${imagePath}/Eye-${i}.svg');"></div>`);
-//   }
-// }
+function preloadAnimImg () {
+  console.log("preload is called");
+   for (var i = 1; i < totalFrames + 1; i++) {
+    var img = new Image();
+    img.src = "url('${imagePath}${i}.png')";
+  }
+}
 
 function handleFrameAnimationTrigger (startTime) {
 
