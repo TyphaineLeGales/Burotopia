@@ -15,8 +15,8 @@ var _offset = 145;
 
 const handle = document.querySelector('img.handleAnim');
 let totalFrames = 20;
-const animationDuration = 30;
-const animationDurationBack = 50;
+const animationDuration = 100;
+const animationDurationBack = 150;
 const timePerFrameBack = animationDurationBack / totalFrames;
 const timePerFrame = animationDuration / totalFrames;
 let timeWhenLastUpdate;
@@ -123,9 +123,7 @@ function startRound () {
   _animTriggerIsDone = false;
   _animBackIsDone = false;
   for(var i = 0; i < slotsObj.length; i++) {
-     // slotsObj[i].container.scrollTop = 0;
      slotsObj[i].drawResult();
-    // console.log(slotsObj[i].result);
   }
 
   if(slotsObj[0].result === slotsObj[1].result && slotsObj[0].result === slotsObj[2].result ) {
