@@ -36,29 +36,29 @@ var _animBackIsDone = false;
 //infinite loop
 
 document.addEventListener('DOMContentLoaded',(event) => {
-  playGame();
+  preloadAnimImg();
 });
+
+function preloadAnimImg () {
+   for (var i = 1; i < totalFrames + 1; i++) {
+    var img = new Image();
+    img.src = "url('${imagePath}${i}.png')";
+  }
+  console.log("preloaded");
+  playGame();
+}
 
 function playGame() {
   machineGraphics.style.display = "block";
-  preloadAnimImg();
   createSlot();
 }
 
 function createSlot() {
    for(var i = 0; i < slots.length; i++) {
       slotsObj.push(new Slot(slots[i]));
-      // console.log(slotsObj);
    }
 }
 
-function preloadAnimImg () {
-  console.log("preload is called");
-   for (var i = 1; i < totalFrames + 1; i++) {
-    var img = new Image();
-    img.src = "url('${imagePath}${i}.png')";
-  }
-}
 
 function handleFrameAnimationTrigger (startTime) {
 
@@ -90,7 +90,6 @@ function handleFrameAnimationBackToStart (startTime) {
       // timeWhenLastUpdate = startTime;
 
       if (totalFrames <= 1) {
-        console.log("condition gets checked");
         _animBackIsDone = true;
         totalFrames = 20;
       } else {
