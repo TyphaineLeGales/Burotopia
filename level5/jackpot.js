@@ -35,7 +35,7 @@ function createSlot() {
 function debugOffsetHeight () {
   var viewportOffset = slot1.iconArray[7].getBoundingClientRect();
   // console.log(testIcon.offsetTop);
-  console.log(Math.trunc(viewportOffset.top));
+  // console.log(Math.trunc(viewportOffset.top));
   // console.log(testIcon.scrollTop);
 }
 
@@ -45,7 +45,7 @@ function automaticScroll () {
     counter += 1;
     window.requestAnimationFrame(automaticScroll);
   }
-  console.log(counter);
+  // console.log(counter);
   for(var i = 0; i < slots.length; i++) {
      slots[i].scrollTop = counter*(i+_speed);
   }

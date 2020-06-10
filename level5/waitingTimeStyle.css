@@ -17,12 +17,27 @@
   margin-top:9vw;
   /*overflow:hidden;*/
   overflow-y:scroll;
+  background-color:#E7E7E7;
+}
+
+.phone {
+  position:relative;
+  width:30%;
+  left:0;
+  top:0;
 }
 
 .icon {
-  padding-top:2vw;
+
+  top:0;
+  left:8%;
   width:7vw;
-  padding-left:1vw;
+  margin-bottom:2vw;
+  position:relative;
+  border-style:solid;
+  border-width:0.1vw;
+  border-radius:10px;
+  background-color:white;
 }
 
 #slot1 {
@@ -34,7 +49,16 @@
 }
 
 #slot3 {
-  left:56vw;
+  left:56.5vw;
+}
+
+.iconWrap {
+  position:absolute;
+}
+button {
+  font-family:silom;
+  background-color:white;
+  border-color:black;
 }
 
 .btnStartMachine {
@@ -52,10 +76,4 @@
 
 .btnStartMachine:hover {
   transform: scale(1.2);
-}
-
-.icon {
-  border-style:solid;
-  border-width:0.1vw;
-  border-radius:10px;
 }
