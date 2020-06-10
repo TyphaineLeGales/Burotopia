@@ -14,18 +14,22 @@ var _speed = 10;
 var _offset = 145;
 
 const handle = document.querySelector('img.handleAnim');
-const totalFrames = 20;
-const animationDuration = 50;
+let totalFrames = 20;
+const animationDuration = 30;
+const animationDurationBack = 50;
+const timePerFrameBack = animationDurationBack / totalFrames;
 const timePerFrame = animationDuration / totalFrames;
 let timeWhenLastUpdate;
 let timeFromLastUpdate;
 let frameNumber = 1;
 const imagePath = '../Assets/Graphics/Level5/OriginalAnim/machine_anim_branche_';
 
-var _animationTime = 5*100;
+var _animationTime = 8*110;
 var _timerId;
 var _timer = 0;
 var userHasWon = false;
+var _animTriggerIsDone = false;
+var _animBackIsDone = false;
 
 //delay slot animation
 //stop placement
@@ -37,8 +41,8 @@ document.addEventListener('DOMContentLoaded',(event) => {
 
 function playGame() {
   machineGraphics.style.display = "block";
+  // preloadImg();
   createSlot();
-  // slots[0].addEventListener("scroll", debugOffsetHeight, false);
 }
 
 function createSlot() {
@@ -48,53 +52,77 @@ function createSlot() {
    }
 }
 
-function handleFrameAnimation (startTime) {
+// function preloadAnimImg () {
+//    for (var i = 1; i < totalFrames + 1; i++) {
+//     document.body.append(`<div id="preload-image-${i}" style="background-image: url('${imagePath}/Eye-${i}.svg');"></div>`);
+//   }
+// }
 
-  if (!timeWhenLastUpdate) timeWhenLastUpdate = startTime;
-    timeFromLastUpdate = startTime - timeWhenLastUpdate;
+function handleFrameAnimationTrigger (startTime) {
 
-  if (timeFromLastUpdate > timePerFrame) {
-    handle.src = imagePath + `${frameNumber}.png`;
-    console.log(handle.src);
-    timeWhenLastUpdate = startTime;
+  if(_animTriggerIsDone != true) {
+    if (!timeWhenLastUpdate) timeWhenLastUpdate = startTime;
+      timeFromLastUpdate = startTime - timeWhenLastUpdate;
 
-    if (frameNumber >= totalFrames) {
-      frameNumber = 1;
-    } else {
-       frameNumber = frameNumber + 1;
+    if (timeFromLastUpdate > timePerFrame) {
+      handle.src = imagePath + `${frameNumber}.png`;
+      // timeWhenLastUpdate = startTime;
+
+      if (frameNumber >= totalFrames) {
+        _animTriggerIsDone = true;
+         frameNumber = 1;
+      } else {
+         frameNumber = frameNumber + 1;
+      }
     }
   }
 }
 
-function debugOffsetHeight () {
-  var viewportOffset = slot1.iconArray[7].getBoundingClientRect();
-  // console.log(testIcon.offsetTop);
-  // console.log(Math.trunc(viewportOffset.top));
-  // console.log(testIcon.scrollTop);
+function handleFrameAnimationBackToStart (startTime) {
+  if(_animBackIsDone != true) {
+    if (!timeWhenLastUpdate) timeWhenLastUpdate = startTime;
+      timeFromLastUpdate = startTime - timeWhenLastUpdate;
+
+    if (timeFromLastUpdate > timePerFrame) {
+      handle.src = imagePath + `${totalFrames}.png`;
+      // timeWhenLastUpdate = startTime;
+
+      if (totalFrames <= 1) {
+        console.log("condition gets checked");
+        _animBackIsDone = true;
+        totalFrames = 20;
+      } else {
+         totalFrames = totalFrames - 1;
+      }
+    }
+  }
 }
 
+
 function automaticScroll () {
+    handleFrameAnimationTrigger(_timer);
   if(_timer< _animationTime) {
-    handleFrameAnimation(_timer);
-    for(var i = 0; i < slots.length; i++) {
-     slots[i].scrollTop += (i+1)*_speed;
-     if(slots[i].scrollTop >= slots[i].offsetHeight*2-180) {
-      slots[i].scrollTop = 0;
-     }
+    if(_animTriggerIsDone) {
+      handleFrameAnimationBackToStart(_timer);
+      for(var i = 0; i < slots.length; i++) {
+       slots[i].scrollTop += (i+1)*_speed;
+       if(slots[i].scrollTop >= slots[i].offsetHeight*2-180) {
+        slots[i].scrollTop = 0;
+       }
+      }
     }
     window.requestAnimationFrame(automaticScroll);
   } else {
     clearInterval(_timerId);
-    // console.log(userHasWon);
-    //lock with nearest target slots[i].result
   }
 }
 
 function startRound () {
   _timer=0;
+  _animTriggerIsDone = false;
+  _animBackIsDone = false;
   for(var i = 0; i < slotsObj.length; i++) {
-     slotsObj[i].container.scrollTop = 0;
-     console.log(slots[i].scrollHeight);
+     // slotsObj[i].container.scrollTop = 0;
      slotsObj[i].drawResult();
     // console.log(slotsObj[i].result);
   }
@@ -104,6 +132,7 @@ function startRound () {
   } else {
     userHasWon = false;
   }
+
   _timerId = window.setInterval(countdown, 1);
   window.requestAnimationFrame(automaticScroll);
 }
