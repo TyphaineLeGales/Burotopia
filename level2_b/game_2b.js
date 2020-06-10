@@ -1,5 +1,5 @@
 const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-const symbols = ["@", "#", "$", "%", "§", "(", ")", "*", "£", "{", "}"];
+const symbols = ["@", "#", "$", "%", "§", "(", ")", "*", "£", ";", "/", "{", "}" ];
 var gameContainer =  document.querySelector("div.gameContainer");
 const cardContainer = document.querySelector("div.cardContainer");
 
