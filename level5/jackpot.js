@@ -9,7 +9,12 @@ var slots = document.querySelectorAll('.slot');
 var slot1;
 var slot2;
 var slot3;
-var _speed = 4;
+var _speed = 0.01;
+var _offset = 145;
+
+var _animationTime = 12;
+var _timerId;
+var _timer = 0;
 
 //delay slot animation
 //stop placement
@@ -40,19 +45,24 @@ function debugOffsetHeight () {
 }
 
 function automaticScroll () {
-  console.log(slots[0].offsetHeight);
-  if(counter < slots[0].offsetHeight) {
-    counter += 1;
+  // console.log(slots[0].offsetHeight);
+  if(_timer< _animationTime) {
+    for(var i = 0; i < slots.length; i++) {
+     slots[i].scrollTop += 1+i+_speed;
+    }
     window.requestAnimationFrame(automaticScroll);
-  }
-  // console.log(counter);
-  for(var i = 0; i < slots.length; i++) {
-     slots[i].scrollTop = counter*(i+_speed);
+  } else {
+    clearInterval(_timerId);
   }
 }
 
 function startRound () {
   counter = 0;
   window.requestAnimationFrame(automaticScroll);
+   _timerId = window.setInterval(countdown, 1000);
 }
 
+function countdown () {
+  _timer += 1;
+  console.log(_timer);
+}
