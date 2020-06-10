@@ -10,7 +10,7 @@ var slotsObj = [];
 var slot1;
 var slot2;
 var slot3;
-var _speed = 1.5;
+var _speed = 5;
 var _offset = 145;
 
 var _animationTime = 5;
@@ -50,10 +50,14 @@ function automaticScroll () {
   if(_timer< _animationTime) {
     for(var i = 0; i < slots.length; i++) {
      slots[i].scrollTop += 1+i*_speed;
+     if(slots[i].scrollTop >= slots[i].offsetHeight*2-40) {
+      slots[i].scrollTop = 0;
+     }
     }
     window.requestAnimationFrame(automaticScroll);
   } else {
     clearInterval(_timerId);
+    console.log(userHasWon);
     //lock with nearest target slots[i].result
   }
 }
@@ -63,10 +67,13 @@ function startRound () {
   for(var i = 0; i < slotsObj.length; i++) {
      slotsObj[i].container.scrollTop = 0;
      slotsObj[i].drawResult();
+    console.log(slotsObj[i].result);
   }
 
   if(slotsObj[0].result === slotsObj[1].result && slotsObj[0].result === slotsObj[2].result ) {
     userHasWon = true;
+  } else {
+    userHasWon = false;
   }
   _timerId = window.setInterval(countdown, 1000);
   window.requestAnimationFrame(automaticScroll);
