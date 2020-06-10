@@ -98,8 +98,8 @@ class Desk{
   createCustomer () {
     this.customer.classList.add("customer");
     this.divDesk.appendChild(this.customer);
-    var randImgCustomer = getRandomInt(8);
-    this.customer.style.backgroundImage = 'url(../Assets/Graphics/Level1/customer-'+ randImgCustomer +'.png)';
+    var randImgCustomer = getRandomInt(2);
+    this.customer.style.backgroundImage = 'url(../Assets/Graphics/Level1/customer'+ randImgCustomer +'.png)';
   }
 
   customerUpdate() {

@@ -194,15 +194,14 @@ body {
 
 .customer {
   position:absolute;
-  bottom:0;
+  bottom:-20%;
   right:30%;
   height:80%;
   width:40%;
   display:none;
-  transform: scale(1.2);
-  /*background-size: contain;*/
-  border-style:dotted;
-  border-color:blue;
+  transform: scale(1.3);
+  background-size: contain;
+  background-repeat:no-repeat;
   animation-name:customerPopUp;
   animation-duration:0.5s;
 
@@ -215,7 +214,7 @@ body {
 
 @keyframes customerPopOut {
   from {
-    bottom:0%;
+    bottom:-20%;
   }
 
   to {
@@ -225,11 +224,11 @@ body {
 
 @keyframes customerPopUp {
   from {
-    bottom:-10%;
+    bottom:-50%;
   }
 
   to {
-    bottom:0;
+    bottom:-20%;
   }
 }
 
