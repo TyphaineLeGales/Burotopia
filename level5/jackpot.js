@@ -6,13 +6,14 @@ btnStartMachine.addEventListener("click", startRound, false);
 
 var counter = 0;
 var slots = document.querySelectorAll('.slot');
+var slotsObj = [];
 var slot1;
 var slot2;
 var slot3;
-var _speed = 0.01;
+var _speed = 1.5;
 var _offset = 145;
 
-var _animationTime = 12;
+var _animationTime = 5;
 var _timerId;
 var _timer = 0;
 
@@ -32,9 +33,13 @@ function playGame() {
 }
 
 function createSlot() {
-  slot1 = new Slot(slots[0]);
-  slot2 = new Slot(slots[1]);
-  slot3 = new Slot(slots[2]);
+
+   for(var i = 0; i < slots.length; i++) {
+      slotsObj.push(new Slot(slots[i]));
+      // console.log(slotsObj);
+   }
+
+
 }
 
 function debugOffsetHeight () {
@@ -45,24 +50,28 @@ function debugOffsetHeight () {
 }
 
 function automaticScroll () {
-  // console.log(slots[0].offsetHeight);
   if(_timer< _animationTime) {
     for(var i = 0; i < slots.length; i++) {
-     slots[i].scrollTop += 1+i+_speed;
+     slots[i].scrollTop += 1+i*_speed;
     }
     window.requestAnimationFrame(automaticScroll);
   } else {
     clearInterval(_timerId);
+    //lock with nearest target slots[i].result
   }
 }
 
 function startRound () {
-  counter = 0;
+  _timer=0;
+  for(var i = 0; i < slotsObj.length; i++) {
+     slotsObj[i].container.scrollTop = 0;
+     slotsObj[i].drawResult();
+  }
+  _timerId = window.setInterval(countdown, 1000);
   window.requestAnimationFrame(automaticScroll);
-   _timerId = window.setInterval(countdown, 1000);
 }
 
 function countdown () {
   _timer += 1;
-  console.log(_timer);
+  // console.log(_timer);
 }

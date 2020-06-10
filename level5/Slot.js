@@ -7,6 +7,7 @@ class Slot{
     this.counter = 0;
     this.index = 0;
     this.fillRandSlot();
+    this.result = 0;
   }
 
   fillRandSlot() {
@@ -25,7 +26,9 @@ class Slot{
       this.container.appendChild(copyImg);
     }
   }
-  reset() {
-    this.counter = 0;
+
+  drawResult() {
+     this.result = getRandomInt(4);
   }
+
  }
