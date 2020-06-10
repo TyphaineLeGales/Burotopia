@@ -16,11 +16,11 @@ var _offset = 145;
 var _animationTime = 5;
 var _timerId;
 var _timer = 0;
+var userHasWon = false;
 
 //delay slot animation
 //stop placement
 //infinite loop
-//winning condition
 
 document.addEventListener('DOMContentLoaded',(event) => {
   playGame();
@@ -33,13 +33,10 @@ function playGame() {
 }
 
 function createSlot() {
-
    for(var i = 0; i < slots.length; i++) {
       slotsObj.push(new Slot(slots[i]));
       // console.log(slotsObj);
    }
-
-
 }
 
 function debugOffsetHeight () {
@@ -67,11 +64,15 @@ function startRound () {
      slotsObj[i].container.scrollTop = 0;
      slotsObj[i].drawResult();
   }
+
+  if(slotsObj[0].result === slotsObj[1].result && slotsObj[0].result === slotsObj[2].result ) {
+    userHasWon = true;
+  }
   _timerId = window.setInterval(countdown, 1000);
   window.requestAnimationFrame(automaticScroll);
 }
 
 function countdown () {
   _timer += 1;
-  // console.log(_timer);
 }
+
