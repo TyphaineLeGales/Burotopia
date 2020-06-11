@@ -33,7 +33,6 @@ var _animBackIsDone = false;
 
 //delay slot animation
 //stop placement
-//infinite loop
 
 document.addEventListener('DOMContentLoaded',(event) => {
   preloadAnimImg();
