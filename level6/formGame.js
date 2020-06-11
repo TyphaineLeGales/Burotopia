@@ -156,7 +156,10 @@ function generateCitySideItem () {
 
 function generateSignatureSideItem () {
   var signatureItem = document.createElement('div');
-  signatureItem.classList.add('signature','signatureAsset', 'sideItem','drag');
+  signatureItem.classList.add('signature','sideItem','drag');
+  var p = document.createElement('p');
+  p.innerHTML = 'SIGNATURE';
+  signatureItem.appendChild(p);
   container.appendChild(signatureItem);
   generateRandPos(container, signatureItem);
   signatureItem.onmouseup = e => {
@@ -177,18 +180,6 @@ function generateEmailSideItem () {
   }
 }
 
-function generateBlockSideItem () {
-  var emailItem = document.createElement('div');
-  var p = document.createElement('p');
-  p.innerHTML = 'typhaineLeGales@protonMail.com';
-  emailItem.appendChild(p);
-  emailItem.classList.add('email', 'sideItem','drag');
-  container.appendChild(emailItem);
-  generateRandPos(container, emailItem);
-  emailItem.onmouseup = e => {
-    checkForMatch(e)
-  }
-}
 
 // function generateZipCodeSideItem () {
 //   var zipItem = document.createElement('div');
@@ -207,7 +198,7 @@ function generateBlockSideItem () {
 function generateBlockSideItem () {
   var blockItem = document.createElement('div');
   var p = document.createElement('p');
-  p.innerHTML = 'block';
+  p.innerHTML = 'Object of request';
   blockItem.appendChild(p);
   blockItem.classList.add('block', 'sideItem', 'drag');
   container.appendChild(blockItem);
