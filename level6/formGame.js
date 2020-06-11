@@ -18,7 +18,6 @@ function playGame() {
   _formElmntArray = form.container.children;
   boundingRectForm = form.container.getBoundingClientRect();
   generateSideItems();
-
 }
 
 function checkForMatch (e) {
@@ -72,22 +71,22 @@ function checkForWin() {
     //pile up the forms
     form.container.style.bottom = -9 + (_forms.length-1) + "vw";
     //generate new Form
-    setTimeout(playGame, 100);
+    setTimeout(playGame, 1000);
   }
 }
 
 
 function generateSideItems () {
 
-  generatePictureSideItem();
-  generateNameSideItem();
-  generateLastNameSideItem();
-  generateAdressSideItem();
-  generateCitySideItem();
-  generateSignatureSideItem();
-  generateEmailSideItem();
+  setTimeout(generatePictureSideItem, 100);
+  setTimeout(generateNameSideItem, 200);
+  setTimeout(generateLastNameSideItem, 300);
+  setTimeout(generateAdressSideItem, 400);
+  setTimeout(generateCitySideItem, 500);
+  setTimeout(generateSignatureSideItem, 600);
+  setTimeout(generateEmailSideItem, 700);
   // generateZipCodeSideItem();
-  generateBlockSideItem();
+  setTimeout(generateBlockSideItem, 800);
 
 }
 
