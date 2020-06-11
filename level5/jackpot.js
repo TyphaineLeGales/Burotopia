@@ -10,7 +10,7 @@ var slotsObj = [];
 var slot1;
 var slot2;
 var slot3;
-var _speed = 10;
+var _speed = 5;
 var _offset = 145;
 
 const handle = document.querySelector('img.handleAnim');
@@ -24,12 +24,14 @@ let timeFromLastUpdate;
 let frameNumber = 1;
 const imagePath = '../Assets/Graphics/Level5/OriginalAnim/machine_anim_branche_';
 
-var _animationTime = 8*110;
+var _animationTime = 2000;
 var _timerId;
 var _timer = 0;
 var userHasWon = false;
 var _animTriggerIsDone = false;
 var _animBackIsDone = false;
+var _threshold;
+var _sizeIcon;
 
 //delay slot animation
 //stop placement
@@ -56,6 +58,9 @@ function createSlot() {
    for(var i = 0; i < slots.length; i++) {
       slotsObj.push(new Slot(slots[i]));
    }
+
+   //get size of icon
+   _sizeIcon = slotsObj[0].iconArray[0].offsetHeight;
 }
 
 
@@ -105,8 +110,8 @@ function automaticScroll () {
     if(_animTriggerIsDone) {
       handleFrameAnimationBackToStart(_timer);
       for(var i = 0; i < slots.length; i++) {
-       slots[i].scrollTop += (i+1)*_speed;
-       if(slots[i].scrollTop >= slots[i].offsetHeight*2-180) {
+       slots[i].scrollTop += 1*_speed;
+       if(slots[i].scrollTop >= _sizeIcon*4 +20) {
         slots[i].scrollTop = 0;
        }
       }
@@ -116,7 +121,7 @@ function automaticScroll () {
     clearInterval(_timerId);
   }
 }
-
+//scroll to slot.offsetHeight%this.numberOfIcon === 0
 function startRound () {
   _timer=0;
   _animTriggerIsDone = false;
