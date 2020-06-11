@@ -2,7 +2,7 @@ body {
 }
 
 .gameContainer {
-  display:none;
+  display:block;
   position:fixed;
   margin-left:10%;
   padding:2em;
