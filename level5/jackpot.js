@@ -4,15 +4,7 @@ var machineGraphics = document.querySelector('.slotMachine');
 var btnStartMachine = document.querySelector('.btnStartMachine');
 btnStartMachine.addEventListener("click", startRound, false);
 
-var counter = 0;
-var slots = document.querySelectorAll('.slot');
-var slotsObj = [];
-var slot1;
-var slot2;
-var slot3;
-var _speed = 30;
-var _offset = 145;
-
+// Handle Frame by Frame animation
 const handle = document.querySelector('img.handleAnim');
 let totalFrames = 20;
 const animationDuration = 100;
@@ -24,6 +16,16 @@ let timeFromLastUpdate;
 let frameNumber = 1;
 const imagePath = '../Assets/Graphics/Level5/OriginalAnim/machine_anim_branche_';
 
+var counter = 0;
+var slots = document.querySelectorAll('.slot');
+var slotsObj = [];
+var slot1;
+var slot2;
+var slot3;
+var _speed = 50;
+var _offset = 145;
+
+
 var _animationTime = 2000;
 var _timerId;
 var _timer = 0;
@@ -31,10 +33,9 @@ var _t;
 var userHasWon = false;
 var _animTriggerIsDone = false;
 var _animBackIsDone = false;
-var _threshold;
 var _sizeIcon;
 
-//delay slot animation
+
 //stop placement
 
 document.addEventListener('DOMContentLoaded',(event) => {
@@ -56,7 +57,7 @@ function playGame() {
 
 function createSlot() {
    for(var i = 0; i < slots.length; i++) {
-      slotsObj.push(new Slot(slots[i], i+1));
+      slotsObj.push(new Slot(slots[i], i*0.2));
    }
 
    //get size of icon
@@ -103,16 +104,15 @@ function handleFrameAnimationBackToStart (startTime) {
   }
 }
 
-
 function automaticScroll () {
   _t = clamp(mapRange(_timer, 0, _animationTime, 0, 1), 0, 1);
   handleFrameAnimationTrigger(_timer);
-  if(_timer< _animationTime) {
+  if(_timer < _animationTime) {
     if(_animTriggerIsDone) {
       handleFrameAnimationBackToStart(_timer);
       _t = Math.sin(_t*3);
       for(var i = 0; i < slotsObj.length; i++) {
-          animateTurn(slotsObj[i], _t);
+          animateSlot(slotsObj[i], _t);
       }
     }
     window.requestAnimationFrame(automaticScroll);
@@ -121,12 +121,12 @@ function automaticScroll () {
   }
 }
 
-function animateTurn(slot, t) {
-  // slot.container.scrollTop += slot.offset*t*_speed;
-  slot.container.scrollTop += slot.offset*_speed*t;
-  console.log(t*_speed);
-  if(slot.container.scrollTop >= _sizeIcon*4 +20) {
-    slot.container.scrollTop = 0;
+function animateSlot(slot, t) {
+  if(t > slot.offset) {
+    slot.container.scrollTop += _speed*t;
+    if(slot.container.scrollTop >= _sizeIcon*4 +20) {
+      slot.container.scrollTop = 0;
+    }
   }
 }
 
@@ -150,16 +150,6 @@ function startRound () {
 
 function countdown () {
   _timer += 1;
-}
-
-function easeInOutQad (t) {
-  if(t < 0.5) {
-    return  2*t*t
-  } else {
-    console.log('desceleration');
-    return -1+(4-2*t)*t
-  }
-
 }
 
 function mapRange(value, a, b, c, d) {

@@ -44,12 +44,12 @@ body {
   overflow:hidden;
   /*overflow-y:scroll;*/
   /*background-color:#E7E7E7;*/
-   -ms-overflow-style: none;
+   /*-ms-overflow-style: none;*/
 }
 
-.slot::-webkit-scrollbar {
+/*.slot::-webkit-scrollbar {
   display: none;
-}
+}*/
 
 .phone {
   position:relative;

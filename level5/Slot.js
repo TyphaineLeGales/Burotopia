@@ -12,13 +12,20 @@ class Slot{
   }
 
   fillRandSlot() {
-    var randImg = getRandomInt(this.numberOfIcons);
+    var indexArray = [];
+    for(var j =0; j<this.numberOfIcons; j++){
+      indexArray.push(j);
+    }
+
     for(var i = 0; i < this.numberOfIcons; i++) {
+      var randImg = getRandomInt(indexArray.length);
+      console.log(randImg);
       var img = document.createElement("img");
-      img.src = "../Assets/Graphics/Level1/employee"+(i+randImg)%this.numberOfIcons+".png";
+      img.src = "../Assets/Graphics/Level1/employee"+randImg+".png";
       img.classList.add('icon');
       this.container.appendChild(img);
       this.iconArray.push(img);
+      indexArray.splice(randImg);
     }
 
     //duplicate the order so that the loop is seemless
