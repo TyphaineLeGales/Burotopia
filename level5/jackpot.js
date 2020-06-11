@@ -10,7 +10,7 @@ var slotsObj = [];
 var slot1;
 var slot2;
 var slot3;
-var _speed = 50;
+var _speed = 30;
 var _offset = 145;
 
 const handle = document.querySelector('img.handleAnim');
@@ -56,7 +56,7 @@ function playGame() {
 
 function createSlot() {
    for(var i = 0; i < slots.length; i++) {
-      slotsObj.push(new Slot(slots[i], i));
+      slotsObj.push(new Slot(slots[i], i+1));
    }
 
    //get size of icon
@@ -105,35 +105,34 @@ function handleFrameAnimationBackToStart (startTime) {
 
 
 function automaticScroll () {
-  _t = mapRange(_timer, 0, _animationTime, 0, 1);
+  _t = clamp(mapRange(_timer, 0, _animationTime, 0, 1), 0, 1);
   handleFrameAnimationTrigger(_timer);
   if(_timer< _animationTime) {
     if(_animTriggerIsDone) {
       handleFrameAnimationBackToStart(_timer);
-      _t = ease(_t);
-      for(var i = 0; i < slots.length; i++) {
-
-        animateTurn(slots[i], _t);
+      _t = Math.sin(_t*3);
+      for(var i = 0; i < slotsObj.length; i++) {
+          animateTurn(slotsObj[i], _t);
       }
     }
     window.requestAnimationFrame(automaticScroll);
   } else {
-    //scroll to slots[i].offsetHeight%_sizeIcon === 0
     clearInterval(_timerId);
   }
 }
 
 function animateTurn(slot, t) {
+  // slot.container.scrollTop += slot.offset*t*_speed;
+  slot.container.scrollTop += slot.offset*_speed*t;
   console.log(t*_speed);
-  slot.scrollTop += 1+t*_speed;
-  if(slot.scrollTop >= _sizeIcon*4 +20) {
-    slot.scrollTop = 0;
+  if(slot.container.scrollTop >= _sizeIcon*4 +20) {
+    slot.container.scrollTop = 0;
   }
 }
 
 function startRound () {
   _timerId = window.setInterval(countdown, 1);
-  _timer=0;
+  _timer = 0;
   _animTriggerIsDone = false;
   _animBackIsDone = false;
   for(var i = 0; i < slotsObj.length; i++) {
@@ -153,14 +152,25 @@ function countdown () {
   _timer += 1;
 }
 
-function ease (t) {
-    sqt = t * t;
-    return sqt / (2*(sqt-t)+1);
+function easeInOutQad (t) {
+  if(t < 0.5) {
+    return  2*t*t
+  } else {
+    console.log('desceleration');
+    return -1+(4-2*t)*t
+  }
+
 }
 
 function mapRange(value, a, b, c, d) {
   value = (value - a) / (b - a);
   return c + value*(d-c);
+}
+
+function  clamp ( value, min, max ) {
+
+  return Math.max( min, Math.min( max, value ) );
+
 }
 
 
