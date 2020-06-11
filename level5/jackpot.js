@@ -10,7 +10,7 @@ var slotsObj = [];
 var slot1;
 var slot2;
 var slot3;
-var _speed = 5;
+var _speed = 50;
 var _offset = 145;
 
 const handle = document.querySelector('img.handleAnim');
@@ -27,6 +27,7 @@ const imagePath = '../Assets/Graphics/Level5/OriginalAnim/machine_anim_branche_'
 var _animationTime = 2000;
 var _timerId;
 var _timer = 0;
+var _t;
 var userHasWon = false;
 var _animTriggerIsDone = false;
 var _animBackIsDone = false;
@@ -45,7 +46,6 @@ function preloadAnimImg () {
     var img = new Image();
     img.src = "url('${imagePath}${i}.png')";
   }
-  console.log("preloaded");
   playGame();
 }
 
@@ -56,7 +56,7 @@ function playGame() {
 
 function createSlot() {
    for(var i = 0; i < slots.length; i++) {
-      slotsObj.push(new Slot(slots[i]));
+      slotsObj.push(new Slot(slots[i], i));
    }
 
    //get size of icon
@@ -105,24 +105,34 @@ function handleFrameAnimationBackToStart (startTime) {
 
 
 function automaticScroll () {
-    handleFrameAnimationTrigger(_timer);
+  _t = mapRange(_timer, 0, _animationTime, 0, 1);
+  handleFrameAnimationTrigger(_timer);
   if(_timer< _animationTime) {
     if(_animTriggerIsDone) {
       handleFrameAnimationBackToStart(_timer);
+      _t = ease(_t);
       for(var i = 0; i < slots.length; i++) {
-       slots[i].scrollTop += 1*_speed;
-       if(slots[i].scrollTop >= _sizeIcon*4 +20) {
-        slots[i].scrollTop = 0;
-       }
+
+        animateTurn(slots[i], _t);
       }
     }
     window.requestAnimationFrame(automaticScroll);
   } else {
+    //scroll to slots[i].offsetHeight%_sizeIcon === 0
     clearInterval(_timerId);
   }
 }
-//scroll to slot.offsetHeight%this.numberOfIcon === 0
+
+function animateTurn(slot, t) {
+  console.log(t*_speed);
+  slot.scrollTop += 1+t*_speed;
+  if(slot.scrollTop >= _sizeIcon*4 +20) {
+    slot.scrollTop = 0;
+  }
+}
+
 function startRound () {
+  _timerId = window.setInterval(countdown, 1);
   _timer=0;
   _animTriggerIsDone = false;
   _animBackIsDone = false;
@@ -136,11 +146,21 @@ function startRound () {
     userHasWon = false;
   }
 
-  _timerId = window.setInterval(countdown, 1);
   window.requestAnimationFrame(automaticScroll);
 }
 
 function countdown () {
   _timer += 1;
 }
+
+function ease (t) {
+    sqt = t * t;
+    return sqt / (2*(sqt-t)+1);
+}
+
+function mapRange(value, a, b, c, d) {
+  value = (value - a) / (b - a);
+  return c + value*(d-c);
+}
+
 

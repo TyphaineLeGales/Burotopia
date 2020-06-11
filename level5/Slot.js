@@ -1,7 +1,8 @@
 
 class Slot{
-  constructor (container) {
+  constructor (container, offset) {
     this.container = container;
+    this.offset = offset;
     this.numberOfIcons = 4;
     this.iconArray = [];
     this.counter = 0;
