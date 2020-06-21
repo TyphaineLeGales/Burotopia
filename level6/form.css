@@ -57,10 +57,14 @@ body {
 
 .sideItem {
   position:fixed;
- background-color:#ECECEC;
+  background-color:#ECECEC;
   border-style:solid;
   border-width:0.1vw;
   border-radius:5px;
+}
+
+.sideItem p:hover {
+  cursor:pointer;
 }
 
 .sideItem p {
