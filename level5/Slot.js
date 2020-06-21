@@ -19,13 +19,13 @@ class Slot{
 
     for(var i = 0; i < this.numberOfIcons; i++) {
       var randImg = getRandomInt(indexArray.length);
-      console.log(randImg);
+
       var img = document.createElement("img");
       img.src = "../Assets/Graphics/Level1/employee"+randImg+".png";
       img.classList.add('icon');
       this.container.appendChild(img);
       this.iconArray.push(img);
-      indexArray.splice(randImg);
+      indexArray.splice(randImg, 1);
     }
 
     //duplicate the order so that the loop is seemless
@@ -33,6 +33,8 @@ class Slot{
       var copyImg = this.iconArray[j].cloneNode(true);
       this.container.appendChild(copyImg);
     }
+
+    console.log(this.iconArray);
   }
 
   drawResult() {

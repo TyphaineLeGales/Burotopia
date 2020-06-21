@@ -41,8 +41,8 @@ body {
   height:20vw;
   left:31vw;
   margin-top:5vw;
-  overflow:hidden;
-  /*overflow-y:scroll;*/
+  /*overflow:hidden;*/
+  overflow-y:scroll;
   /*background-color:#E7E7E7;*/
    /*-ms-overflow-style: none;*/
 }
