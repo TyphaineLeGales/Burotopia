@@ -122,7 +122,7 @@ function automaticScroll () {
 }
 
 function animateSlot(slot, t) {
-  if(t > slot.offset && t < animationTime) {
+  if(t > slot.offset) {
     slot.container.scrollTop += _speed*t;
     if(slot.container.scrollTop >= _sizeIcon*4 -20) {
       slot.container.scrollTop = 0;
