@@ -105,17 +105,26 @@ body {
   opacity:1;
 }
 
-#textAbout{
+.textAbout{
   width:20vw;
   background-color:white;
   border:solid;
   padding:0.5vw 1vw;
   border-radius: 5px;
   position:fixed;
-  left:10vw;
-  top:2vw;
-  display:none;
+  left:2vw;
+  top:10vw;
   font-size:0.8vw;
+  border-width:0.15em;
+  padding: 2em;
+  opacity:0;
+  transform:scale(0);
+  transition: all 0.5s;
+}
+
+.dispTextAbout {
+  transform:scale(1);
+  opacity:1;
 }
 
 #info {
@@ -127,9 +136,10 @@ body {
   position:fixed;
   left:2vw;
   z-index:5;
+  border-width:2px;
 }
 
 #info:hover {
-  transform:scale(1.2);
+  transform:scale(0.8);
   cursor:pointer;
 }

@@ -5,13 +5,13 @@ function showClosedMsg () {
 }
 
 function showAbout () {
-  var about = document.getElementById('textAbout');
-  about.style.display = "block";
+  var about =  document.querySelector('div.textAbout');
+  about.classList.add('dispTextAbout');
 }
 
 function hideAbout() {
-  var about = document.getElementById('textAbout');
-  about.style.display = "none";
+  var about = document.querySelector('div.textAbout');
+  about.classList.remove('dispTextAbout');
 
 }
 
