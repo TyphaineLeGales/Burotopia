@@ -107,3 +107,31 @@ body {
 .gray:hover {
   opacity:1;
 }
+
+#textAbout{
+  width:10vw;
+  background-color:white;
+  border:solid;
+  padding:0.5vw 1vw;
+  border-radius: 5px;
+  position:fixed;
+  left:2vw;
+  top:2vw;
+  display:none;
+}
+
+#info {
+  background-color:white;
+  width:min-content;
+  border:solid;
+  padding:0.5vw 1vw;
+  border-radius: 5px;
+  position:fixed;
+  left:2vw;
+  z-index:5;
+}
+
+#info:hover {
+  transform:scale(1.2);
+  cursor:pointer;
+}

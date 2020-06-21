@@ -36,7 +36,6 @@ var _animBackIsDone = false;
 var _sizeIcon;
 
 
-//stop placement
 
 document.addEventListener('DOMContentLoaded',(event) => {
   preloadAnimImg();
@@ -57,7 +56,7 @@ function playGame() {
 
 function createSlot() {
    for(var i = 0; i < slots.length; i++) {
-      slotsObj.push(new Slot(slots[i], i*0.2));
+      slotsObj.push(new Slot(slots[i], 0.1+i*0.2));
    }
 
    //get size of icon
@@ -105,14 +104,15 @@ function handleFrameAnimationBackToStart (startTime) {
 }
 
 function automaticScroll () {
-  _t = clamp(mapRange(_timer, 0, _animationTime, 0, 1), 0, 1);
   handleFrameAnimationTrigger(_timer);
+  _t = clamp(mapRange(_timer, 0, _animationTime, 0, 1), 0, 1);
+  _t = Math.sin(_t*3);
+
   if(_timer < _animationTime) {
     if(_animTriggerIsDone) {
       handleFrameAnimationBackToStart(_timer);
-      _t = Math.sin(_t*3);
       for(var i = 0; i < slotsObj.length; i++) {
-          animateSlot(slotsObj[i], _t);
+        animateSlot(slotsObj[i], _t, _timer);
       }
     }
     window.requestAnimationFrame(automaticScroll);
@@ -122,9 +122,9 @@ function automaticScroll () {
 }
 
 function animateSlot(slot, t) {
-  if(t > slot.offset) {
+  if(t > slot.offset && t < animationTime) {
     slot.container.scrollTop += _speed*t;
-    if(slot.container.scrollTop >= _sizeIcon*4 +20) {
+    if(slot.container.scrollTop >= _sizeIcon*4 -20) {
       slot.container.scrollTop = 0;
     }
   }
