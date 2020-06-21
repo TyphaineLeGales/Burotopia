@@ -19,9 +19,6 @@ body {
   border-radius:3px;
 }
 
-.clickForm {
-
-}
 
 .clickTC {
   left:45%;
@@ -109,15 +106,16 @@ body {
 }
 
 #textAbout{
-  width:10vw;
+  width:20vw;
   background-color:white;
   border:solid;
   padding:0.5vw 1vw;
   border-radius: 5px;
   position:fixed;
-  left:2vw;
+  left:10vw;
   top:2vw;
   display:none;
+  font-size:0.8vw;
 }
 
 #info {
