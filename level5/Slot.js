@@ -21,7 +21,7 @@ class Slot{
       var randImg = getRandomInt(indexArray.length);
 
       var img = document.createElement("img");
-      img.src = "../Assets/Graphics/Level1/employee"+randImg+".png";
+      img.src = "../Assets/Graphics/Level1/employee"+indexArray[randImg]+".png";
       img.classList.add('icon');
       this.container.appendChild(img);
       this.iconArray.push(img);
@@ -33,8 +33,6 @@ class Slot{
       var copyImg = this.iconArray[j].cloneNode(true);
       this.container.appendChild(copyImg);
     }
-
-    console.log(this.iconArray);
   }
 
   drawResult() {
