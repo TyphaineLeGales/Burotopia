@@ -1,5 +1,5 @@
 const randomizeStateDesk =(desk) => {
-  doorAnimation(desk);
+  changeState(desk);
 }
 
 const randDeskCustomer = (desk) => {
@@ -28,7 +28,7 @@ const randomizeId = (desk, playerID) => {
   }
 }
 
-const doorAnimation = (desk) => {
+const changeState = (desk) => {
   if(desk.state === "open") {
     desk.closeDoors();
     desk.state= "closed";

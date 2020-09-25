@@ -1,6 +1,7 @@
 import {generatePlayerId, setPlayerId} from './init_playerID.js'
 import generateDesks from './init_desks.js'
 import {randomizeStateDesk, randDeskCustomer, randomizeId} from './update_randomize.js'
+import generateAnswerDesk from './update_generateAnswerDesk.js'
 
 var _playerHasWon = false;
 var _maxNumberOfGuess = 3;
@@ -16,46 +17,34 @@ let _playerID;
 const _idLength = 5;
 let _desks = [];
 const numberOfDesks = 28;
-
+const playerIDContainer = document.querySelector("#playerID");
 var deskContainer = document.querySelector("div.deskContainer");
 var timerContainer = document.querySelector("#timer");
 var endGameMsg =  document.querySelector("#endGameMsg");
 
 document.addEventListener('DOMContentLoaded',(event) => {
+  init();
   playGame();
 });
 
-function playGame() {
-  _playerID = generatePlayerId(_idLength);
-  setPlayerId(_playerID, document.querySelector("#playerID"));
-
+const init = () => {
+   _playerID = generatePlayerId(_idLength);
+  setPlayerId(_playerID, playerIDContainer);
   _desks = generateDesks(numberOfDesks, _playerID);
+}
+
+const playGame = () => {
   deskContainer.onclick = e => {
     checkForWin(e);
   }
-  _timerId = window.setInterval(countdown, 1000);
-}
-
-function introduceAnswerDesk() {
-  var randIndex = getRandomInt(_desks.length);
-  var changingDesk = _desks[randIndex];
-  changingDesk.index = randIndex;
-  changingDesk.setIndex();
-  changingDesk.number = playerID;
-  changingDesk.setId();
-  changingDesk.state = "open";
-  changingDesk.setState();
-  changingDesk.openDoors();
-  changingDesk.hasACustomer = true;
-  changingDesk.customerUpdate();
-
+  _timerId = window.setInterval(update, 1000);
 }
 
 function displayNumberOfGuesses () {
   guessesContainer.innerHTML ="You have" + _remainingGuessesNum + "guesses Left";
 }
 
-function countdown () {
+function update () {
   timeLeft -= 1;
   timerContainer.innerHTML = "" + timeLeft;
 
@@ -68,7 +57,7 @@ function countdown () {
   }
 
   if(timeLeft > _introduceAnswerDelay && _answerDeskHasBeenCreated != true) {
-    setTimeout(introduceAnswerDesk, getRandomInt(20000));
+    setTimeout(createAnswer, getRandomInt(20000));
     _answerDeskHasBeenCreated = true;
   }
   if(timeLeft === 0) {
@@ -78,6 +67,8 @@ function countdown () {
   }
   updateIsTheAnswer();
 }
+
+const createAnswer = () => generateAnswerDesk(_desks[getRandomInt(_desks.length)], _playerID);
 
 function checkForWin (e) {
   if(e.target.classList[0] === "clickTarget") {
@@ -130,9 +121,7 @@ function endGame() {
 }
 
 function reset () {
-  for(var i=0; i < numberOfDesks; i++) {
-    _desks[i].destroyDesk();
-  }
+  _desks.forEach((desk)=> desk.destroy());
   timeLeft = _maxTime;
   _desks = [];
   endGameMsg.style.display="none";

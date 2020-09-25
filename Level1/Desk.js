@@ -130,7 +130,7 @@ class Desk{
 
   }
 
-  destroyDesk() {
+  destroy() {
     this.divDesk.remove();
   }
 
