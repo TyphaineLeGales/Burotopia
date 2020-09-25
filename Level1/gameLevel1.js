@@ -1,7 +1,7 @@
 import {generatePlayerId, setPlayerId} from './init_playerID.js'
 import generateDesks from './init_desks.js'
+import {randomizeStateDesk, randDeskCustomer, randomizeId} from './update_randomize.js'
 
-var playerIdArray = [];
 var _playerHasWon = false;
 var _maxNumberOfGuess = 3;
 const _introduceAnswerDelay = 10;
@@ -36,42 +36,6 @@ function playGame() {
   _timerId = window.setInterval(countdown, 1000);
 }
 
-
-function randomizeStateDesk() {
-  var changingDesk = _desks[getRandomInt(_desks.length)];
-  doorAnimation(changingDesk);
-}
-
-function randDeskCustomer() {
-  var changingDesk = _desks[getRandomInt(_desks.length)];
-  var timeAtDesk = changingDesk.customerLife+3000;
-  if(changingDesk.state === "open") {
-    changingDesk.hasACustomer = true;
-    changingDesk.customerUpdate();
-    setTimeout(customerGoesOutDesk, timeAtDesk);
-    function customerGoesOutDesk() {
-      changingDesk.customer.classList.add('customerPopOut');
-    }
-    setTimeout(customerIsRemoved, timeAtDesk + 450);
-    function customerIsRemoved () {
-      changingDesk.hasACustomer = false;
-      changingDesk.customerUpdate();
-      changingDesk.customer.classList.remove('customerPopOut');
-    }
-  }
-}
-
-const randomizeId = () => {
-  let changingDesk = _desks[getRandomInt(_desks.length)];
-  if(changingDesk.state === "open") {
-    for(let j = 0; j < _idLength; j++) {
-      changingDesk.number[j] = _playerID[getRandomInt(_idLength)];
-    }
-    changingDesk.setId();
-    changingDesk.displayTextEmployee(changingDesk.textEmployee, "Next Please !");
-  }
-}
-
 function introduceAnswerDesk() {
   var randIndex = getRandomInt(_desks.length);
   var changingDesk = _desks[randIndex];
@@ -91,30 +55,16 @@ function displayNumberOfGuesses () {
   guessesContainer.innerHTML ="You have" + _remainingGuessesNum + "guesses Left";
 }
 
-function doorAnimation (desk) {
-  if(desk.state === "open") {
-    desk.closeDoors();
-    desk.state= "closed";
-    desk.setState();
-  } else if (desk.state === "closed") {
-    desk.openDoors();
-    desk.state ="open";
-    desk.setState();
-  }
-}
-
-
 function countdown () {
   timeLeft -= 1;
   timerContainer.innerHTML = "" + timeLeft;
 
   if(timeLeft%1 ===0) {
-    randomizeId();
+    randomizeId(_desks[getRandomInt(_desks.length)], _playerID);
   }
   if(timeLeft%_randomizeDeskTimer===0) {
-    randomizeStateDesk();
-    updateIsTheAnswer();
-    randDeskCustomer();
+    randomizeStateDesk(_desks[getRandomInt(_desks.length)]);
+    randDeskCustomer(_desks[getRandomInt(_desks.length)]);
   }
 
   if(timeLeft > _introduceAnswerDelay && _answerDeskHasBeenCreated != true) {
@@ -126,6 +76,7 @@ function countdown () {
     endGameMsg.innerHTML = "you're number has already been called pick another and pay attention this time";
     endGame();
   }
+  updateIsTheAnswer();
 }
 
 function checkForWin (e) {
