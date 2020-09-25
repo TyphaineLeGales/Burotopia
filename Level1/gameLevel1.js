@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded',(event) => {
 });
 
 const init = () => {
-   _playerID = generatePlayerId(_idLength);
+  _playerID = generatePlayerId(_idLength);
   setPlayerId(_playerID, playerIDContainer);
   _desks = generateDesks(numberOfDesks, _playerID);
 }
@@ -91,6 +91,7 @@ function updateIsTheAnswer() {
    for(var i=0; i < numberOfDesks; i++) {
      if(_desks[i].id ===  playerID && _desks[i].state === "open") {
         _desks[i].setIsTheAnswer(true);
+         console.log(`desk ${i} is the answer`);
      } else {
         _desks[i].setIsTheAnswer(false);
      }
@@ -130,5 +131,6 @@ function reset () {
   _playerHasWon = false;
   endGameMsg.innerHTML = "";
   deskContainer.style.display="flex";
+  init();
   playGame();
 }
