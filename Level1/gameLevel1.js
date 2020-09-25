@@ -1,4 +1,6 @@
-const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+import {generatePlayerId, setPlayerId} from './init_playerID.js'
+import Desk from './Desk.js'
+
 var playerIdArray = [];
 var playerID = "";
 var _idLength = 5;
@@ -24,35 +26,12 @@ document.addEventListener('DOMContentLoaded',(event) => {
 });
 
 function playGame() {
-  generatePlayerId();
+  setPlayerId(generatePlayerId(_idLength), playerIDContainer);
   generateDesks();
   deskContainer.onclick = e => {
     checkForWin(e);
   }
   _timerId = window.setInterval(countdown, 1000);
-}
-
-function generatePlayerId() {
-  for(var i = 0; i < _idLength; i++) {
-    playerIdArray[i] = generateCharacter();
-  }
-  playerID = playerIdArray.join('');
-  console.log(playerID);
-  playerIDContainer.innerHTML = '<span class="idCard">' + playerID + "</span>";
-}
-
-function generateCharacter() {
-  var randBinary = Math.round(Math.random());
-  var isNumber = randBinary == 1 ? true : false;
-  var idElement = "";
-
-  if(isNumber) {
-    idElement = "" + getRandomInt(9);
-  } else {
-    idElement = letters[getRandomInt(letters.length)];
-  }
-
-  return idElement ;
 }
 
 function generateDesks() {

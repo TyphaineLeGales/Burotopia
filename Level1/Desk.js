@@ -160,3 +160,5 @@ class Desk{
   }
 
 }
+
+export default Desk
