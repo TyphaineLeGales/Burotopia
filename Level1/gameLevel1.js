@@ -36,7 +36,8 @@ function generatePlayerId() {
   for(var i = 0; i < _idLength; i++) {
     playerIdArray[i] = generateCharacter();
   }
-  playerID = playerIdArray[0] + playerIdArray[1] + playerIdArray[2] + playerIdArray[3] + playerIdArray[4] ;
+  playerID = playerIdArray.join('');
+  console.log(playerID);
   playerIDContainer.innerHTML = '<span class="idCard">' + playerID + "</span>";
 }
 
