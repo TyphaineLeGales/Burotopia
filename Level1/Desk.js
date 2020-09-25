@@ -5,7 +5,7 @@ var employeeTextClosed = "Can't you see I'm on a break ?!";
 class Desk{
   constructor() {
     this.index = null;
-    this.id = [];
+    this.number = [];
     this.state = "closed";
     this.isTheAnswer = false;
     this.divDesk = document.createElement("div");
@@ -25,11 +25,11 @@ class Desk{
   createId() {
     this.deskId.classList.add('deskId');
     this.divDesk.appendChild(this.deskId);
-    this.deskId.innerHTML = ""+this.id[0] + this.id[1] + this.id[2] + this.id[3] + this.id[4] ;
+    this.deskId.innerHTML = ""+this.number[0] + this.number[1] + this.number[2] + this.number[3] + this.number[4] ;
   }
 
   setId() {
-    this.deskId.innerHTML = ""+this.id[0] + this.id[1] + this.id[2] + this.id[3] + this.id[4] ; ;
+    this.deskId.innerHTML = ""+this.number[0] + this.number[1] + this.number[2] + this.number[3] + this.number[4] ; ;
   }
 
   createState() {
@@ -112,7 +112,7 @@ class Desk{
      }
   }
 
-  createDesk() {
+  create() {
     var randImgDesk = getRandomInt(4);
     this.divDesk.style.backgroundImage = 'url(../Assets/Graphics/Level1/desk'+ randImgDesk +'.png)';
     this.divDesk.classList.add('counterDesk');
