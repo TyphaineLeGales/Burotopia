@@ -15,10 +15,11 @@ body {
 
 .slotMachine {
   display:none;
+  position: relative;
 }
 
 .slotMachineGraphics{
-  position:fixed;
+  position:absolute;
   top:5vw;
   width:40vw;
   left:30vw;
@@ -26,7 +27,7 @@ body {
 }
 
 .handleAnim {
-   position:fixed;
+   position:absolute;
   width:50vw;
   left:32vw;
 }
@@ -36,11 +37,11 @@ body {
 }
 
 .slot {
-  position:fixed;
+  position:absolute;
   width:10vw;
   height:20vw;
   left:31vw;
-  margin-top:5vw;
+  margin-top:7vw;
   /*overflow:hidden;*/
   overflow-y:scroll;
   /*background-color:#E7E7E7;*/
@@ -91,12 +92,11 @@ button {
 }
 
 .btnStartMachine {
-  position:fixed;
+  position:absolute;
   width:min-content;
   border-style:solid;
   border-width:0.15vw;
   z-index:2;
-  bottom:10vw;
   left:46%;
   font-size:2.5vw;
   padding:0.2em 0.3em;
@@ -105,6 +105,12 @@ button {
 
 .btnStartMachine:hover {
   transform: scale(1.2);
+  cursor: pointer;
 }
 
-#titleMenu
+.msg {
+  text-align: center;
+  font-size: 1.3em;
+  transition: all ease 0.2s;
+  opacity:1;
+}

@@ -118,6 +118,7 @@ function automaticScroll () {
     window.requestAnimationFrame(automaticScroll);
   } else {
     clearInterval(_timerId);
+    document.querySelector('h1.msg').style.opacity=1
   }
 }
 
@@ -131,6 +132,7 @@ function animateSlot(slot, t) {
 }
 
 function startRound () {
+  document.querySelector('h1.msg').style.opacity=0
   _timerId = window.setInterval(countdown, 1);
   _timer = 0;
   _animTriggerIsDone = false;
