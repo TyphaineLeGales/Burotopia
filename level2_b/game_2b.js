@@ -25,25 +25,25 @@ let _guessesCounter = _numberOfPairs*2;
 //count tries => after 3 reset Password
 //can't pick the same card more than 3 times in a row
 //timer
-//too many attempts
+
 document.addEventListener('DOMContentLoaded',(event) => {
   playGame();
 });
 
 function reset() {
   document.querySelector("div.tooManyWrongGuesses").style.display = "none";
-  cells.forEach(cell => cell.remove())
+  let children = cardContainer.querySelectorAll('*')
+  children.forEach(child => child.remove())
   _guesses =[];
   cells = [];
   services = [];
   passwords = [];
   cards = [];
-  _guessesCounter=0;
+  _guessesCounter=_numberOfPairs*2;
   playGame()
 }
 
 function playGame() {
-  console.log("play game is called")
   cardContainer.style.display = "flex";
   generateCardGrid();
   fillGridRand();
