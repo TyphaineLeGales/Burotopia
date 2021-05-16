@@ -2,9 +2,9 @@ const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"
 const symbols = ["@", "#", "$", "%", "§", "(", ")", "*", "£", ";", "/", "{", "}" ];
 var gameContainer =  document.querySelector("div.gameContainer");
 const cardContainer = document.querySelector("div.cardContainer");
-
-var endGameMSG =  document.querySelector("h1.endGameMSG");
+const endGameMsg = document.querySelector("div.endGameMSGWrapper");
 var matchMsg = document.querySelector("h1.matchMSG");
+const debugBtn = document.getElementById("debugBtn");
 
 var _passwordLength = 10;
 var _guesses =[];
@@ -17,18 +17,34 @@ var _numberOfPairs = sitesNames.length;
 var _numberOfCards = 2* _numberOfPairs;
 var playerHasWon = false;
 
+let _guessesCounter = _numberOfPairs*2;
+
 //TO DO :
 //start screen
 //count number of time card has been clicked
 //count tries => after 3 reset Password
 //can't pick the same card more than 3 times in a row
 //timer
+//too many attempts
 document.addEventListener('DOMContentLoaded',(event) => {
   playGame();
-
 });
 
+function reset() {
+  document.querySelector("div.tooManyWrongGuesses").style.display = "none";
+  cells.forEach(cell => cell.remove())
+  _guesses =[];
+  cells = [];
+  services = [];
+  passwords = [];
+  cards = [];
+  _guessesCounter=0;
+  playGame()
+}
+
 function playGame() {
+  console.log("play game is called")
+  cardContainer.style.display = "flex";
   generateCardGrid();
   fillGridRand();
   generatePassword();
@@ -149,6 +165,14 @@ function flipBackAll () {
 }
 
 function checkForMatch(e) {
+  _guessesCounter -= 1;
+  console.log("guesses remaining" + _guessesCounter)
+  if(_guessesCounter === 0 ) {
+     cardContainer.style.display = "none";
+     document.querySelector("div.tooManyWrongGuesses").style.display = "flex";
+     setTimeout(reset, 3000);
+  }
+
   var flipedCards = document.querySelectorAll("div.fliped");
   var idFlipedCards = [];
   flipedCards.forEach(function(card) {
@@ -182,7 +206,17 @@ function checkWin() {
 }
 
 function playerWins () {
-  endGameMSG.innerHTML = "you win";
-  endGameMSG.style.display = "block";
+  cardContainer.style.display = "none";
+  endGameMsg.style.display = "flex";
   playerHasWon = true;
+}
+
+function goToLandingIfPlayerIsNotARobot() {
+  if(document.getElementById("robot").checked === true) {
+    window.location = "../index.html"
+  }
+}
+
+function zeroOutGuesses() {
+  _guessesCounter = 1;
 }

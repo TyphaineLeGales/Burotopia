@@ -12,9 +12,21 @@
     <a href="../index.html"><p id="exitTxt">EXIT</p></a>
     <div id="doorExitBackground" class="doorIcon"></div>
     <div id="doorExit" class="doorIcon"></div>
+    <button id="debugBtn" onclick="playerWins()">Win</button>
+    <button id="debugAttempts" onclick="zeroOutGuesses()">attempts</button>
   </div>
   <div class="gameContainer">
-    <h1 class="endGameMSG"></h1>
+    <div class="endGameMSGWrapper flexMSGContainer">
+      <h1 class="endGameMSG">Please confirm to go back to Burotopia</h1>
+      <div>
+      <input type="checkbox" id="robot" name="robot" onclick="goToLandingIfPlayerIsNotARobot()">
+      <label for="robot">I'm not a robot</label>
+    </div>
+    </div>
+    <div class="tooManyWrongGuesses flexMSGContainer">
+      <h1>Too many wrong attempts</h1>
+      <p>Your passwords will be resetted for security reasons</p>
+    </div>
     <h1 class="matchMSG">Login Successful &#10003</h1>
     <div class="cardContainer"></div>
   </div>
